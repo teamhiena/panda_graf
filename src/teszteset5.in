@@ -1,0 +1,29 @@
+new tile weak t1
+new tile empty t2
+new tile empty t3
+new tile empty t4
+new tile empty t5
+new tile empty t6
+new tile weak t7
+set neighbor t2 t1 t3
+set neighbor t3 t4
+set neighbor t6 t7 t5
+new orangutan o t1
+new panda tired p1 t2
+new panda diabetic p2 t3
+new entity wardrobe w1 t4 t3
+new entity wardrobe w2 t5 t6
+step orangutan o t2
+step orangutan o t3
+step orangutan o t4
+step orangutan o t7
+stat orangutan o
+stat panda p2
+stat panda p1
+stat tile strong t3
+stat tile strong t4
+stat tile strong t5
+stat tile strong t6
+stat tile weak t7
+stat entity wardrobe w1
+stat entity wardrobe w2

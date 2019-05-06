@@ -1,0 +1,14 @@
+stats of: p
+Tile: t1
+nextTile: t2
+followedBy: null
+following: null
+stats of: t1
+entity: null
+animal: p
+subbedPandas: null
+neighbors: t2
+numOfSteps: 8
+isBroken: false
+stats of: a
+tile: t3

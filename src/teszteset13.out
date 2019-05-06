@@ -1,0 +1,19 @@
+stats of: p
+tile: ft
+nextTile: null
+followedBy: null
+following: null
+stats of: fotel
+tile: ft
+enteredFrom: pt
+timeleft: 100
+stats of: ft
+entity: fotel
+animal: p
+subbedPandas: null
+neighbors: ot
+stats of: pt
+entity: null
+animal: o
+subbedPandas: null
+neighbors: ft

@@ -1,0 +1,16 @@
+stats of: o1
+tile: t2
+nextTile: null
+followedBy: null
+following: null
+score: 0
+stats of: t1
+entity: null
+animal: null
+subbedPandas: null
+neighbors: t2
+stats of: t2
+entity: null
+animal: o1
+subbedPandas: null
+neighbors: t1

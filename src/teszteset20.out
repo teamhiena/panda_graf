@@ -1,0 +1,13 @@
+stats of: f
+tile: ft
+enteredFrom: pt
+timeleft: 100
+stats of: f
+Tile: ft
+enteredFrom: null
+timeleft: 100
+stats of: p
+tile: ft
+nextTile: null
+followedBy: null
+following: null

@@ -1,0 +1,11 @@
+stats of: o
+tile: t1
+nextTile: null
+followedBy: p1
+following: null
+score: 0
+stats of: p1
+tile: t2
+nextTile: t1
+followedBy: null
+following: o
