@@ -10,6 +10,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Game game=new Game();
         GameMap gameMap=new GameMap();
+        
+        GameFrame gf = new GameFrame();
+        
         //EZEKNEK SINGLETONNAK KELLENE LENNI CSAK NEM TOM AZT HOGY KELL SORRY
         InputLanguage inlang = new InputLanguage(game,gameMap);
 

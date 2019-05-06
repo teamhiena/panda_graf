@@ -1,17 +1,60 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Tile {
+public class Tile implements Serializable{
     //A Tile-on all-e valamilyen entitas (arcade, automat stb). Null eseten nem talalhato ilyen.
-    protected Entity entity=null;
+    protected transient Entity entity=null;
     //A Tile-on all-e Orangutan/Panda, null eseten nincs rajta semmi.
-    protected Animal animal=null;
+    protected transient Animal animal=null;
     //A Tile szomszedos Tile-jait tarolo lista
-    private ArrayList<Tile> neighbors=new ArrayList<Tile>();
+    private transient ArrayList<Tile> neighbors=new ArrayList<Tile>();
     //A Tile-ra feliratkozott pandak.
-    private ArrayList<Panda> subbedPandas=new ArrayList<Panda>();
+    private transient ArrayList<Panda> subbedPandas=new ArrayList<Panda>();
 
+    //A csempét alkotó háromszögek
+	private ArrayList<Triangle> triangles=new ArrayList<Triangle>();
+	//A csempe színe
+	private Color color;
+    
     //METODUSOK
+	/**
+	 * Újonnan berakott
+	 */
+	public Tile() {
+		//AUTO
+	}
+	
+	public Color getColor() {
+		return color;
+	}
+	
+	public void addTriangle(Triangle t) {
+		triangles.add(t);
+		System.out.println("added, new: "+triangles.size());
+	}
+	
+	public void fill(Graphics g) {
+		for(Triangle t: triangles)
+			t.fill(g, color);
+	}
+	
+	public boolean containsTriangle(Triangle t) {
+		return triangles.contains(t);
+	}
+	
+	public Tile(Tile rhs) {
+		for(Triangle t:rhs.triangles)
+			triangles.add(new Triangle(t));
+		color=rhs.color;
+	}
+
+	public ArrayList<Triangle> getTriangles() {
+		return triangles;
+	}
+	
     /**
      * A Tile-rol elenged egy Animalt, azaz ezutan ures.
      */
