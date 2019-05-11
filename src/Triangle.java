@@ -9,7 +9,7 @@ public class Triangle implements Serializable{
 	private int[] xPoints=new int[3];
 	private int[] yPoints=new int[3];
 	private Tile tile;
-	
+
 	public void setTile(Tile pt) {
 		tile=pt;
 	}
@@ -75,6 +75,5 @@ public class Triangle implements Serializable{
 		//ez fill/draw
 		g2.fill(polygon);
 	}
-
 
 }

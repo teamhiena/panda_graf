@@ -105,7 +105,8 @@ public class GamePanel extends JPanel {
 					y3[0]=y4[k];
 					x3[1]=x4[(k+1)%4];
 					y3[1]=y4[(k+1)%4];
-					triangles[i][j][k]=new Triangle(x3,y3);
+					Triangle t = new Triangle(x3,y3);
+					triangles[i][j][k]= t;
 				}
 				base.width+=step;
 				//System.out.println(i+" "+j);

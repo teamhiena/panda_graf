@@ -28,7 +28,7 @@ public class GameFrame extends JFrame{
 		
 		gp.setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
+		//setVisible(true);
 
 		Dimension dim=new Dimension(max(0,gp.getSize().width+10),gp.getSize().height+75);
 		//Dimension dim = gp.getSize();
