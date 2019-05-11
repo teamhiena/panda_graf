@@ -78,5 +78,11 @@ public class Fotel extends Entity implements MakeEffect{
 	}
 	public Tile getEnteredFrom(){ return enteredFrom; }
 	public long getTimeLeft() { return timeLeft; }
+
+	@Override
+	public void drawSelf() {
+		// más az ikon ha ülnek benne
+		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
+	}
 }
 

@@ -7,7 +7,10 @@ public class Timer {
 	private int elapsedTime = 0;
 	private Game game;
 	private GameMap gamemap;
-
+	private View v;
+	
+	private boolean running = true;
+	
 	static public Timer instance() {
 		if (instance == null) instance = new Timer();
 		return instance;
@@ -18,8 +21,25 @@ public class Timer {
 	}
 
 	public void Tick() {
-		//TODO
-		elapsedTime++;
+		while(running) {
+			
+			//TODO: Steppelés, (Make)Effectelés 
+			System.out.println("Tick!");
+			for (IDrawable id : v.getDrawables()) {
+				id.drawSelf();
+				System.out.println("drawself!");
+			}
+				
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				System.out.println("Timer Tick() failed");
+				e.printStackTrace();
+			}
+			
+			elapsedTime++;
+		}
 	}
 
 	public int getTime() { return elapsedTime; }
@@ -85,5 +105,8 @@ public class Timer {
 	}
 	public void setGame(Game game) {
 		this.game = game;
+	}
+	public void setView(View view) {
+		v = view;
 	}
 }

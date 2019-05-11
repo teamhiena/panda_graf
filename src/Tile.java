@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Tile implements Serializable{
+public class Tile{
     //A Tile-on all-e valamilyen entitas (arcade, automat stb). Null eseten nem talalhato ilyen.
     protected Entity entity=null;
     //A Tile-on all-e Orangutan/Panda, null eseten nincs rajta semmi.
@@ -162,4 +162,21 @@ public class Tile implements Serializable{
         }
         return ret;
     }
+    //Visszaadja a Tile közepét
+    public int[] getCenter() {
+		int[] center=new int[2];
+		center[0]=0;
+		center[1]=0;
+		
+		for(Triangle tr : triangles) {
+			for(int xpos : tr.getXPoints())
+				center[0]+=xpos;
+			for(int ypos : tr.getYPoints())
+				center[1]+=ypos;
+		}
+		center[0]/=triangles.size()*3;
+		center[1]/=triangles.size()*3;
+		//System.out.println("CENTER "+center[0]+" "+center[1]);
+		return center;
+	}
 }

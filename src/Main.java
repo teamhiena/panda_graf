@@ -7,12 +7,17 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 
+		View view = new View();
 		Game game = new Game();
 		GameMap gameMap = new GameMap();
-		GameFrame gf = new GameFrame(gameMap, game);
+		GameFrame gf = new GameFrame(gameMap, game, view);
 		
 		Menu menu = new Menu(game, gf);
 
+		Timer timer = Timer.instance();
+		timer.setView(view);
+		timer.Tick();
+		
 		/*
 		 * Scanner scanner = new Scanner(System.in);
 		 * 

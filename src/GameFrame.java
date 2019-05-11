@@ -15,19 +15,23 @@ import javax.swing.plaf.basic.BasicButtonListener;
 
 public class GameFrame extends JFrame{
 
-	GameMap gm;
-	Game g;
+	private GameMap gm;
+	private Game g;
+	private View v;
 	
-	private GamePanel gp=new GamePanel(gm, g);
+	private GamePanel gp;
 	
 	public GamePanel getGP() {
 		return gp;
 	}
-
-	public GameFrame(GameMap gamemap, Game game) {
+	
+	public GameFrame(GameMap gamemap, Game game, View view) {
 		super();
 		gm = gamemap;
 		g = game;
+		v = view;
+		
+		gp =new GamePanel(gm, g, v);
 		add(gp,BorderLayout.CENTER);
 		
 		gp.setVisible(true);

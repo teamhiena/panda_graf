@@ -1,12 +1,16 @@
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+
 /**
  * Egy entitast megvalosito absztrakt ososztaly.
  */
-public abstract class Entity {
+public abstract class Entity implements IDrawable{
 	protected Tile tile;
 	public abstract boolean stepIn(Orangutan a);
 	public abstract boolean stepIn(Panda p);
+	
+	JLabel imageholder;
 
 	/**
 	 * tile adattag setter fuggvenye
@@ -15,4 +19,5 @@ public abstract class Entity {
 		tile=t;
 	}
 	public Tile getTile(){ return tile; }
+	public void setImageHolder(JLabel l) {imageholder = l;}
 }

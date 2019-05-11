@@ -13,11 +13,14 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
 public class GamePanel extends JPanel {
 	
+	View v;
 	GameMap gm;
 	Game g;
 	
@@ -36,10 +39,11 @@ public class GamePanel extends JPanel {
 		return tiles;
 	}
 	
-	public GamePanel(GameMap gamemap, Game game) {
+	public GamePanel(GameMap gamemap, Game game, View view) {
 		super();
 		gm = gamemap;
 		g = game;
+		v = view;
 		setPreferredSize(size);
 		setBackground(Color.WHITE);
 		initTriangles();
@@ -96,27 +100,35 @@ public class GamePanel extends JPanel {
 						switch (row_split[2]) {
 						case "wa":
 							newTile.entity = new Wardrobe();
+							newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/icons8-black-blood-48.png")));
 							break;
 						case "j":
 							newTile.entity = new Arcade();
+							newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/icons8-hammerstein-48.png")));
 							break;
 						case "cs":
 							newTile.entity = new Automat();
+							newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/icons8-joe-pineapples-48.png")));
 							break;
 						case "f":
 							newTile.entity = new Fotel();
+							newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/icons8-mek-quake-48.png")));
 							break;
 						case "ap":
 							newTile.animal = new AfraidPanda(gm);
+							newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/icons8-mongrol-48.png")));
 							break;
 						case "dp":
 							newTile.animal = new DiabeticPanda(gm);
+							newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/icons8-marceline-48.png")));
 							break;
 						case "tp":
 							newTile.animal = new TiredPanda(gm);
+							newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/icons8-ice-king-48.png")));
 							break;
 						case "o":
 							newTile.animal = new Orangutan(g);
+							newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/icons8-jake-48.png")));
 							break;
 						case "w":
 							WeakTile new_WeakTile = new WeakTile();
@@ -137,6 +149,18 @@ public class GamePanel extends JPanel {
 						default:
 							System.out.println("Deafultra futott az Entity / Animal / Weak-Entry-Exit Tile beállítása");
 							break;
+						}
+						
+						// Entity, Animal -> View drawables
+						if(newTile.entity != null) {
+							v.addDrawable((IDrawable)newTile.entity);
+							newTile.entity.tile = newTile;
+							add(newTile.entity.imageholder);
+						}
+						else if(newTile.animal != null) {
+							v.addDrawable((IDrawable)newTile.animal);
+							newTile.animal.tile = newTile;
+							add(newTile.animal.imageholder);
 						}
 					}
 					

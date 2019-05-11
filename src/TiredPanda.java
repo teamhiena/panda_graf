@@ -27,4 +27,10 @@ public class TiredPanda extends Panda {
 		f.getTile().setAnimal(this);
 		this.setTile(f.getTile());
     }
+
+	@Override
+	public void drawSelf() {
+		// TODO ?
+		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
+	}
 }

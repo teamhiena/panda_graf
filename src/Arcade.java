@@ -14,4 +14,10 @@ public class Arcade extends NonEnterableEntity{
 			sp.affectedBy(this);
 	}
 
+	@Override
+	public void drawSelf() {
+		// más az ikonja ha csilingel mint amikor nem
+		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
+	}
+
 }

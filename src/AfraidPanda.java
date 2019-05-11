@@ -23,5 +23,11 @@ public class AfraidPanda extends Panda {
     public void affectedBy(Arcade a) {
 		release();
     }
+
+	@Override
+	public void drawSelf() {
+		// TODO áthelyezi az imageholderjét arra a Tile-ra ahol van, más az ikonja ha megijeds 
+		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
+	}
 }
  

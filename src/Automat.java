@@ -12,4 +12,9 @@ public class Automat extends NonEnterableEntity{
 		for(Panda sp: tile.getSubbedPandas())
 			sp.affectedBy(this);
 	}
+
+	@Override
+	public void drawSelf() {
+		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
+	}
 }

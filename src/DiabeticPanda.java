@@ -23,4 +23,10 @@ public class DiabeticPanda extends Panda {
     public void affectedBy(Automat a) {
 		//TODO
     }
+
+	@Override
+	public void drawSelf() {
+		// TODO áthelyezi magát,más ha épp megáll cukrozni
+		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
+	}
 }

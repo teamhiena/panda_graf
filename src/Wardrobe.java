@@ -70,4 +70,10 @@ public class Wardrobe extends Entity {
 
 	public Tile getPreviousExitTile(){ return previousExitTile; }
 	public Tile getEntrance(){ return entrance; }
+
+	@Override
+	public void drawSelf() {
+		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
+		
+	}
 }
