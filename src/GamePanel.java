@@ -18,6 +18,9 @@ import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
 	
+	GameMap gm;
+	Game g;
+	
 	private Dimension size=new Dimension(800,550);
 	
 	private int stepvalue=13;
@@ -33,8 +36,10 @@ public class GamePanel extends JPanel {
 		return tiles;
 	}
 	
-	public GamePanel() {
+	public GamePanel(GameMap gamemap, Game game) {
 		super();
+		gm = gamemap;
+		g = game;
 		setPreferredSize(size);
 		setBackground(Color.WHITE);
 		initTriangles();
@@ -86,9 +91,54 @@ public class GamePanel extends JPanel {
 					
 					//szomszédságok beállítása (iranyitas szempontjabol erdekes)
 				
-					//Entity / Animal beállítása
+					//Entity / Animal / Weak-Entry-Exit Tile beállítása
+					if(row_split.length>2) {
+						switch (row_split[2]) {
+						case "wa":
+							newTile.entity = new Wardrobe();
+							break;
+						case "j":
+							newTile.entity = new Arcade();
+							break;
+						case "cs":
+							newTile.entity = new Automat();
+							break;
+						case "f":
+							newTile.entity = new Fotel();
+							break;
+						case "ap":
+							newTile.animal = new AfraidPanda(gm);
+							break;
+						case "dp":
+							newTile.animal = new DiabeticPanda(gm);
+							break;
+						case "tp":
+							newTile.animal = new TiredPanda(gm);
+							break;
+						case "o":
+							newTile.animal = new Orangutan(g);
+							break;
+						case "w":
+							WeakTile new_WeakTile = new WeakTile();
+							new_WeakTile.setColor(newTile.getColor());
+							newTile = new_WeakTile;
+							break;
+						case "en":
+							EntryTile new_EntryTile = new EntryTile();
+							new_EntryTile.setColor(newTile.getColor());
+							newTile = new_EntryTile;
+							break;
+						case "ex":
+							ExitTile new_ExitTile = new ExitTile();
+							new_ExitTile.setColor(newTile.getColor());
+							newTile = new_ExitTile;
+							break;
 
-					//TODO
+						default:
+							System.out.println("Deafultra futott az Entity / Animal / Weak-Entry-Exit Tile beállítása");
+							break;
+						}
+					}
 					
 					
 					//triangles beállítása

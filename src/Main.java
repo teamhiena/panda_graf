@@ -8,9 +8,9 @@ public class Main {
 	public static void main(String[] args) {
 
 		Game game = new Game();
-		GameFrame gf = new GameFrame();
 		GameMap gameMap = new GameMap();
-
+		GameFrame gf = new GameFrame(gameMap, game);
+		
 		Menu menu = new Menu(game, gf);
 
 		/*
