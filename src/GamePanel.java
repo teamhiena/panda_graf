@@ -66,13 +66,8 @@ public class GamePanel extends JPanel {
 				else {
 					Tile newTile = new Tile();
 					String[] row_split = row.split(" ");
-					for (String string : row_split) {
-						//System.out.println(string);
-					}
-					//System.out.println(row);
 
 					//Hozzáadandó Tile színének beállítása
-					
 					switch (row_split[1]) {
 					case "k":
 						newTile.setColor(Color.BLUE);
@@ -88,6 +83,8 @@ public class GamePanel extends JPanel {
 						break;
 					default:	break;
 					}
+					
+					//szomszédságok beállítása (iranyitas szempontjabol erdekes)
 				
 					//Entity / Animal beállítása
 
@@ -108,11 +105,15 @@ public class GamePanel extends JPanel {
 							}	
 						}
 						else {
-							//HIBÁS, MERT NEM MINDIG 2 TRIANGLE VAN A BEMENTNEL
 							int index_lower = Integer.parseInt(trianglerow_split[2]) % 10;
 							int index_upper = Integer.parseInt(trianglerow_split[2]) / 10;
-							newTile.addTriangle(triangles[coln][rown][index_lower]);
-							newTile.addTriangle(triangles[coln][rown][index_upper]);
+							if(trianglerow_split[2].length()>1) {
+								newTile.addTriangle(triangles[coln][rown][index_lower]);
+								newTile.addTriangle(triangles[coln][rown][index_upper]);
+							}
+							else {
+								newTile.addTriangle(triangles[coln][rown][index_lower]);
+							}
 						}
 					}
 					

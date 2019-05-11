@@ -1,4 +1,4 @@
-# tn=n-tile k,z,p,s=color ---=entity ---=animal
+# tn=n-tile k,z,p,s=color wa,j,cs,f=entity p,o=animal w=weaktile en=entrytile ex=exittile
 # triangle colnum  triangle rownum  triangle index
 t1 k
 0 1 12
@@ -51,7 +51,7 @@ t7 z
 0 5 01
 1 5 03
 -
-t8 p
+t8 p en
 2 2 full
 2 3 full
 2 4 full
@@ -61,4 +61,197 @@ t8 p
 3 2 23
 1 4 01
 3 4 03
+-
+t9 z
+3 6 12
+3 7 03
+2 7 12
+-
+t10 p w
+4 6 full
+5 6 full
+4 5 12
+5 5 23
+4 7 01
+5 7 03
+-
+t11 k
+5 4 12
+6 4 23
+5 5 01
+6 5 03
+-
+t12 s wa
+4 7 23
+4 8 full
+-
+t13 p
+7 2 full
+7 3 full
+7 4 full
+6 3 full
+8 3 full
+6 2 12
+8 2 23
+6 4 01
+8 4 03
+-
+t14 z p
+7 1 full
+7 0 full
+6 0 12
+8 0 23
+6 1 01
+8 1 03
+-
+t15 k
+8 1 12
+9 1 23
+8 2 01
+9 2 03
+-
+t16 z p
+9 3 full
+9 2 12
+-
+t17 s j
+9 4 full
+10 5 full
+11 5 full
+10 6 full
+11 6 full
+12 4 full
+8 4 1
+10 4 23
+9 5 01
+11 4 12
+13 4 3
+12 5 03
+-
+t18 k
+10 2 23
+10 3 full
+11 3 full
+11 2 12
+10 4 01
+11 4 03
+-
+t19 z
+12 2 full
+12 3 full
+13 2 23
+13 3 03
+-
+t20 k
+13 3 12
+14 3 23
+13 4 01
+14 4 03
+-
+t21 z
+13 5 full
+13 4 2
+12 6 full
+12 5 12
+13 6 03
+-
+t22 k
+11 7 full
+12 7 03
+11 8 03
+-
+t23 z
+10 7 full
+10 8 full
+9 8 full
+9 7 12
+-
+t24 k
+8 5 full
+8 6 full
+9 6 full
+8 4 2
+9 5 23
+8 7 01
+9 7 03
+-
+t25 z p
+7 5 full
+7 6 full
+6 5 12
+6 6 01
+-
+t26 k
+6 6 23
+6 7 03
+5 7 12
+-
+t27 z
+5 8 full
+5 9 full
+4 9 12
+6 9 23
+-
+t28 p cs
+7 7 full
+7 8 full
+7 9 full
+6 8 full
+8 8 full
+6 7 12
+8 7 23
+6 9 01
+8 9 03
+-
+t31 z p
+12 10 full
+12 11 full
+12 12 full
+13 10 full
+13 11 full
+13 12 03
+-
+t32 p w
+12 8 full
+12 9 full
+13 8 full
+13 9 full
+12 7 12
+13 7 23
+11 8 12
+11 9 01
+-
+t36 s f
+14 10 full
+14 11 full
+15 10 full
+15 11 03
+16 10 03
+-
+t37 s wa
+16 6 12
+16 7 01
+17 6 23
+17 7 03
+-
+t38 p ex
+15 4 full
+15 5 full
+15 6 full
+14 5 full
+16 5 full
+14 4 12
+14 6 01
+16 4 23
+16 6 03
+-
+t39 z p
+15 3 full
+14 3 01
+-
+t42 k p
+16 3 full
+16 4 01
+17 3 23
+17 4 03
 -
