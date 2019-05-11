@@ -1,10 +1,11 @@
 # tn=n-tile k,z,p,s=color ---=entity ---=animal
 # triangle colnum  triangle rownum  triangle index
-t1 k 
+t1 k
 0 1 12
 1 1 23
 0 2 01
 1 2 03
+-
 t2 z
 2 0 full
 2 1 full
@@ -12,6 +13,7 @@ t2 z
 1 1 01
 3 0 23
 3 1 03
+-
 t3 k
 4 1 full
 4 2 full
@@ -21,3 +23,4 @@ t3 k
 3 2 01
 6 1 23
 6 2 03
+-

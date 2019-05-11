@@ -6,13 +6,13 @@ import java.util.Random;
 
 public class Tile implements Serializable{
     //A Tile-on all-e valamilyen entitas (arcade, automat stb). Null eseten nem talalhato ilyen.
-    protected transient Entity entity=null;
+    protected Entity entity=null;
     //A Tile-on all-e Orangutan/Panda, null eseten nincs rajta semmi.
-    protected transient Animal animal=null;
+    protected Animal animal=null;
     //A Tile szomszedos Tile-jait tarolo lista
-    private transient ArrayList<Tile> neighbors=new ArrayList<Tile>();
+    private ArrayList<Tile> neighbors=new ArrayList<Tile>();
     //A Tile-ra feliratkozott pandak.
-    private transient ArrayList<Panda> subbedPandas=new ArrayList<Panda>();
+    private ArrayList<Panda> subbedPandas=new ArrayList<Panda>();
 
     //A csempét alkotó háromszögek
 	private ArrayList<Triangle> triangles=new ArrayList<Triangle>();
@@ -25,6 +25,10 @@ public class Tile implements Serializable{
 	 */
 	public Tile() {
 		//AUTO
+	}
+	
+	public void setColor(Color c) {
+		color = c;
 	}
 	
 	public Color getColor() {

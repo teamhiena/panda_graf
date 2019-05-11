@@ -3,7 +3,11 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
@@ -35,36 +39,95 @@ public class GamePanel extends JPanel {
 		setBackground(Color.WHITE);
 		initTriangles();
 		
-		/**
-		 * ezt a sort kell kikommentezni, hogy eltûnjön a csúnya hiba.
-		 * **/
-		loadMap("testData");
+		
+		 //ezt a sort kell kikommentezni, hogy eltûnjön a csúnya hiba.
+
+		loadMap("pandaMap.txt");
 		
 		repaint();
 
 	}
 	public void loadMap(String filename) {
-		try
-        {
-            FileInputStream fis = new FileInputStream(filename);
-            ObjectInputStream ois = new ObjectInputStream(fis);
- 
-            tiles = (ArrayList<Tile>) ois.readObject();
- 
-            ois.close();
-            fis.close();
-        }
-        catch (IOException ioe)
-        {
-            ioe.printStackTrace();
-            return;
-        }
-        catch (ClassNotFoundException c)
-        {
-            System.out.println("Class not found");
-            c.printStackTrace();
-            return;
-        }
+		
+		try {
+			File file = new File("pandaMap.txt"); 
+			BufferedReader br = null;
+			br = new BufferedReader(new FileReader(file));
+			
+			String row; 
+			while ((row = br.readLine()) != null) {
+				String[] codes = {"t","#"};
+				
+				
+				//Elsõ kommentelt sorok olvasása
+				if(row.contains("#")) {
+					System.out.println("Comment: "+row);
+				}
+				else {
+					Tile newTile = new Tile();
+					String[] row_split = row.split(" ");
+					for (String string : row_split) {
+						//System.out.println(string);
+					}
+					//System.out.println(row);
+
+					//Hozzáadandó Tile színének beállítása
+					
+					switch (row_split[1]) {
+					case "k":
+						newTile.setColor(Color.BLUE);
+						break;
+					case "z":
+						newTile.setColor(Color.GREEN);
+						break;
+					case "p":
+						newTile.setColor(Color.RED);
+						break;
+					case "s":
+						newTile.setColor(Color.YELLOW);
+						break;
+					default:	break;
+					}
+				
+					//Entity / Animal beállítása
+
+					//TODO
+					
+					
+					//triangles beállítása
+					String trianglerow;
+					while (!(trianglerow = br.readLine()).equals("-")) {
+						String[] trianglerow_split = trianglerow.split(" ");
+						
+						int coln = Integer.parseInt(trianglerow_split[1]);
+						int rown = Integer.parseInt(trianglerow_split[0]);
+						if(trianglerow_split[2].equals("full")) {
+							for (int i = 0; i < 4; i++) {
+								
+								newTile.addTriangle(triangles[coln][rown][i]);
+							}	
+						}
+						else {
+							//HIBÁS, MERT NEM MINDIG 2 TRIANGLE VAN A BEMENTNEL
+							int index_lower = Integer.parseInt(trianglerow_split[2]) % 10;
+							int index_upper = Integer.parseInt(trianglerow_split[2]) / 10;
+							newTile.addTriangle(triangles[coln][rown][index_lower]);
+							newTile.addTriangle(triangles[coln][rown][index_upper]);
+						}
+					}
+					
+					tiles.add(newTile);
+				}
+			}
+		} 
+		catch (FileNotFoundException e) {
+			System.out.println("File was not found!");
+			e.printStackTrace();
+		} 
+		catch (IOException e) {
+			System.out.println("Other IOException!");
+			e.printStackTrace();
+		}
 	}
 	
 	
