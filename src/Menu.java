@@ -8,7 +8,10 @@ public class Menu extends JFrame{
 
 	boolean gameModePicked=false;
 	boolean nrOfPlayersPicked=false;
-	public Menu(Game g, GameFrame f) {
+	Timer timer;
+	public Menu(Game g, GameFrame f, Timer t) {
+
+		timer = t;
 
 		JButton bStart =new JButton("Start Game");
 		JButton bFinitTime = new JButton("Finit Time");
@@ -29,6 +32,7 @@ public class Menu extends JFrame{
 			public void actionPerformed(ActionEvent e){
 				setVisible(false);
 				f.setVisible(true);
+				timer.Tick();
 			}
 		});
 

@@ -11,7 +11,9 @@ public class Timer {
 	private View v;
 	
 	private boolean running = true;
-	
+
+	public void setRunning(boolean r){running = r;}
+
 	static public Timer instance() {
 		if (instance == null) instance = new Timer();
 		return instance;
@@ -24,8 +26,7 @@ public class Timer {
 	}
 
 	public void Tick() {
-		while(running) {
-
+		while(running){
 			System.out.println("Tick!");
 			for (IDrawable id : v.getDrawables()) {
 				id.drawSelf();
@@ -51,14 +52,12 @@ public class Timer {
 					e.makeEffect();
 				}
 			}
-
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				System.out.println("Timer Tick() failed");
 				e.printStackTrace();
 			}
-
 			elapsedTime++;
 		}
 	}
