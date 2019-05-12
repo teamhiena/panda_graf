@@ -5,6 +5,8 @@ public class Game{
 	private GameMode selectedMode;
 	private GameMap map;
 	private ArrayList<Orangutan> orangutans=new ArrayList<Orangutan>();
+	public int getNumberofplayers() {return numberofplayers;}
+	public void setNumberofplayers(int n) {numberofplayers=n;}
 
 	/**
 	 * A jatekmodok enumja.

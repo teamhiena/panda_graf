@@ -14,9 +14,9 @@ public class Orangutan extends Animal {
         game = g;
     }
 
-    /*public Orangutan() {
-
-    }*/
+    public Orangutan() {
+        //this.goToEntry();
+    }
 
     //METODUSOK
     /**
@@ -26,7 +26,7 @@ public class Orangutan extends Animal {
     @Override
     public boolean step(Tile t) {
         //ha elkap valakit akkor nem kell lepni a tobbi pandanak
-        //TODO a nexttile resetjén gondolkozni
+        //TODO a nexttile resetjï¿½n gondolkozni
         Tile temp=tile;
         boolean success = t.receiveAnimal(this);
 
