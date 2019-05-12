@@ -44,7 +44,7 @@ public class Game{
 		if (num >= 5)               //Ha tobb mint 5.
 			this.reward();
 		o.increaseScore(num);       //Noveli az orangutan pontjait.
-		o.goToEntry();               //A bejarathoz helyezi az orangutant.
+		//o.goToEntry();               //A bejarathoz helyezi az orangutant.
 	}
 
 	/**

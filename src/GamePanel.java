@@ -107,39 +107,54 @@ public class GamePanel extends JPanel {
                     switch (row_split[2]) {
                         case "wa":
                             newTile.entity = new Wardrobe();
-                            newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/icons8-black-blood-48.png")));
+                            newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/wardrobe.png")));
+                            //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
                             gm.addSpecificTile(newTile, GameMap.Key.Wardrobe);
                             break;
                         case "j":
                             newTile.entity = new Arcade();
-                            newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/icons8-hammerstein-48.png")));
+                            newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/arcade.png")));
+                            //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
+
                             gm.addSpecificTile(newTile, GameMap.Key.Arcade);
                             break;
                         case "cs":
                             newTile.entity = new Automat();
-                            newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/icons8-joe-pineapples-48.png")));
+                            newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/automat.png")));
+                            //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
+
                             gm.addSpecificTile(newTile, GameMap.Key.Automat);
                             break;
                         case "f":
                             newTile.entity = new Fotel();
-                            newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/icons8-mek-quake-48.png")));
+                            newTile.entity.setImageHolder(new JLabel(new ImageIcon("fotel.png")));
+                            //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
+
                             gm.addSpecificTile(newTile, GameMap.Key.Fotel);
                             break;
                         case "ap":
                             newTile.animal = new AfraidPanda(gm);
-                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/icons8-mongrol-48.png")));
+                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/brownpanda.png")));
+                            //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
+
                             break;
                         case "dp":
                             newTile.animal = new DiabeticPanda(gm);
-                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/icons8-marceline-48.png")));
+                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/blackpanda.png")));
+                            //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
+
                             break;
                         case "tp":
                             newTile.animal = new TiredPanda(gm);
-                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/icons8-ice-king-48.png")));
+                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/redpanda.png")));
+                            //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
+
                             break;
                         case "o":
                             newTile.animal = new Orangutan(g);
-                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/icons8-jake-48.png")));
+                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/orangutan.png")));
+                            //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
+
                             break;
                         case "w":
                             WeakTile new_WeakTile = new WeakTile();

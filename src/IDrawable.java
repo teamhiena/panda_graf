@@ -5,5 +5,5 @@ import javax.swing.*;
  */
 public abstract class IDrawable {
 	public abstract void drawSelf();
-	protected JLabel imageholder=new JLabel();
+	protected JLabel imageholder;
 }

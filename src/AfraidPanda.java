@@ -31,8 +31,8 @@ public class AfraidPanda extends Panda {
 	}
 	@Override
 	public void drawSelf() {
-		// TODO áthelyezi az imageholderjét arra a Tile-ra ahol van, más az ikonja ha megijedos.
-		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
+		// TODO ï¿½thelyezi az imageholderjï¿½t arra a Tile-ra ahol van, mï¿½s az ikonja ha megijedos.
+		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
 	}
 }
  

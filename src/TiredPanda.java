@@ -46,6 +46,6 @@ public class TiredPanda extends Panda {
 	@Override
 	public void drawSelf() {
 		// TODO ?
-		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
+		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
 	}
 }

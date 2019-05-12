@@ -21,7 +21,7 @@ public class Arcade extends NonEnterableEntity{
 	@Override
 	public void drawSelf() {
 		// más az ikonja ha csilingel mint amikor nem
-		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
+		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
 	}
 
 }

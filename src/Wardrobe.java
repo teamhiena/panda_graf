@@ -36,16 +36,16 @@ public class Wardrobe extends Entity {
 				exit = map.getRandomWardrobeExitTile();
 			}while(entrance==exit);
 
-			if(exit==null) //ha csak egy szekrény van, nem lehet belelepni
+			if(exit==null) //ha csak egy szekrï¿½ny van, nem lehet belelepni
 				return false;
 
 			success = o.step(exit);
-			/*if(success&&o.followedBy!=null) { //csak akkor áll át hogyha követik
+			/*if(success&&o.followedBy!=null) { //csak akkor ï¿½ll ï¿½t hogyha kï¿½vetik
 				previousExitTile=exit;
 			}*/
 
 		}while(!success);
-		return false; //ez azért false mert a hivo(receiveAnimal) atallit egy csomo sarsagot ha ez true
+		return false; //ez azï¿½rt false mert a hivo(receiveAnimal) atallit egy csomo sarsagot ha ez true
 	}
 
 
@@ -60,13 +60,13 @@ public class Wardrobe extends Entity {
 		boolean success=false;
 		Tile exit;
 		do {
-			if(!p.isFollowing()){ //tulajdonkepp mindegy aki beleõ ugyse followol
+			if(!p.isFollowing()){ //tulajdonkepp mindegy aki beleï¿½ ugyse followol
 
 				do{
 					exit = map.getRandomWardrobeExitTile();
 				}while(entrance==exit);
 
-				if(exit==null) //ha csak egy szekrény van, nem lehet belelepni
+				if(exit==null) //ha csak egy szekrï¿½ny van, nem lehet belelepni
 					return false;
 
 				success = p.step(exit);
@@ -79,7 +79,7 @@ public class Wardrobe extends Entity {
 				previousExitTile=null;*/
 
 		}while(!success);
-		return false; //ez azért false mert a hivo(receiveAnimal) atallit egy csomo sarsagot ha ez true
+		return false; //ez azï¿½rt false mert a hivo(receiveAnimal) atallit egy csomo sarsagot ha ez true
 	}
 
 	public void setEntrance(Tile t){entrance=t;}
@@ -87,7 +87,7 @@ public class Wardrobe extends Entity {
 
 	@Override
 	public void drawSelf() {
-		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
+		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
 		
 	}
 }

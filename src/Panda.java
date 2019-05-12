@@ -66,7 +66,7 @@ public abstract class Panda extends Animal{
 		if(!isFollowing()){
 			//80% valoszinuseggel leptet egy szomszedra
 			Random rng=new Random();
-			boolean doAStep =rng.nextInt()%10>1;
+			boolean doAStep =rng.nextInt(10)>1;
 			if(doAStep){
 				ret=step(tile.getNeighbors().get(rng.nextInt(tile.getNeighbors().size())));
 			}
