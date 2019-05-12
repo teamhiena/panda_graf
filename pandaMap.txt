@@ -1,12 +1,13 @@
 # tn=n-tile k,z,p,s=color wa,j,cs,f=entity ap,dp,tp,o=animal w=weaktile en=entrytile ex=exittile
 # triangle colnum  triangle rownum  triangle index
-t1 k
+# connections not explained
+t1 k x tr-t2 br-t8
 0 1 12
 1 1 23
 0 2 01
 1 2 03
 -
-t2 z
+t2 z x bl-t1 b-t8 br-t3
 2 0 full
 2 1 full
 1 0 12
@@ -14,7 +15,7 @@ t2 z
 3 0 23
 3 1 03
 -
-t3 k
+t3 k x bl-t8 b-t4 br-t13
 4 1 full
 4 2 full
 5 1 full
@@ -24,19 +25,19 @@ t3 k
 6 1 23
 6 2 03
 -
-t4 z
+t4 z x t-t3 l-t8 r-t13 bl-t5 br-t11
 4 3 full
 5 3 full
 4 4 01
 5 4 03
 -
-t5 s
+t5 s x tl-t8 tr-t4 bl-t6 br-t10
 3 4 12
 4 4 23
 3 5 01
 4 5 03
 -
-t6 k
+t6 k x t-t8 tl-t7 tr-t5 bl-t9
 2 5 full
 2 6 full
 1 5 12
@@ -45,13 +46,13 @@ t6 k
 1 6 01
 2 7 03
 -
-t7 z
+t7 z x tr-t8 br-t6
 0 4 12
 1 4 23
 0 5 01
 1 5 03
 -
-t8 p en
+t8 p en tl-t1 t-t2 tr-t3 r-t4 br-t5 b-t6 bl-t7
 2 2 full
 2 3 full
 2 4 full
@@ -62,12 +63,12 @@ t8 p en
 1 4 01
 3 4 03
 -
-t9 z
+t9 z x tl-t6 r-t10
 3 6 12
 3 7 03
 2 7 12
 -
-t10 p w
+t10 p w l-t9 tl-t5 tr-t11 r-t26 br-t26 bl-t12
 4 6 full
 5 6 full
 4 5 12
@@ -75,17 +76,17 @@ t10 p w
 4 7 01
 5 7 03
 -
-t11 k
+t11 k x tl-t4 tr-t13 bl-t10 br-t25
 5 4 12
 6 4 23
 5 5 01
 6 5 03
 -
-t12 s wa
+t12 s wa tr-t10 r-t27
 4 7 23
 4 8 full
 -
-t13 p
+t13 p x t-t14 tr-t15 r-t16 br-t24 b-t25 bl-t11 l-t4 tl-t3
 7 2 full
 7 3 full
 7 4 full
@@ -96,7 +97,7 @@ t13 p
 6 4 01
 8 4 03
 -
-t14 z ap
+t14 z ap bl-t3 b-t13 br-t15
 7 1 full
 7 0 full
 6 0 12
@@ -104,13 +105,13 @@ t14 z ap
 6 1 01
 8 1 03
 -
-t15 k
+t15 k x tl-t14 bl-t13 br-t16
 8 1 12
 9 1 23
 8 2 01
 9 2 03
 -
-t16 z dp
+t16 z dp tl-t15 l-t13 r-t18
 9 3 full
 9 2 12
 -
@@ -128,7 +129,7 @@ t17 s j
 13 4 3
 12 5 03
 -
-t18 k
+t18 k x l-t16 r-t19
 10 2 23
 10 3 full
 11 3 full
@@ -136,37 +137,37 @@ t18 k
 10 4 01
 11 4 03
 -
-t19 z
+t19 z x l-t18 tr-t40 br-t20
 12 2 full
 12 3 full
 13 2 23
 13 3 03
 -
-t20 k
+t20 k x tl-t19 tr-t39 br-t38 bl-t21
 13 3 12
 14 3 23
 13 4 01
 14 4 03
 -
-t21 z
+t21 z x
 13 5 full
 13 4 2
 12 6 full
 12 5 12
 13 6 03
 -
-t22 k
+t22 k x
 11 7 full
 12 7 03
 11 8 03
 -
-t23 z
+t23 z x
 10 7 full
 10 8 full
 9 8 full
 9 7 12
 -
-t24 k
+t24 k x
 8 5 full
 8 6 full
 9 6 full
@@ -181,12 +182,12 @@ t25 z tp
 6 5 12
 6 6 01
 -
-t26 k
+t26 k x
 6 6 23
 6 7 03
 5 7 12
 -
-t27 z
+t27 z x
 5 8 full
 5 9 full
 4 9 12
@@ -203,7 +204,7 @@ t28 p cs
 6 9 01
 8 9 03
 -
-t29 k
+t29 k x
 9 9 full
 9 10 full
 10 9 full
@@ -215,7 +216,7 @@ t29 k
 9 11 01
 10 11 03
 -
-t30 s
+t30 s x
 7 10 full
 7 11 full
 8 11 full
@@ -248,13 +249,13 @@ t32 p w
 11 8 12
 11 9 01
 -
-t33 s
+t33 s x
 13 6 12
 13 7 01
 14 6 23
 14 7 03
 -
-t34 k
+t34 k x
 15 7 full
 15 8 full
 14 7 12
@@ -262,7 +263,7 @@ t34 k
 16 7 23
 16 8 03
 -
-t35 z
+t35 z x
 14 9 full
 15 9 full
 16 9 full
@@ -297,14 +298,14 @@ t39 z dp
 15 3 full
 14 3 01
 -
-t40 k
+t40 k x
 14 2 full
 14 1 23
 13 1 12
 13 2 01
 15 2 23
 -
-t41 s
+t41 s x
 15 1 full
 14 1 01
 15 2 01

@@ -27,11 +27,10 @@ public class Timer {
 	public void Tick() {
 		while(running) {
 			
-			//TODO: Steppelés, (Make)Effectelés 
+			//TODO: Steppelï¿½s, (Make)Effectelï¿½s 
 			System.out.println("Tick!");
 			for (IDrawable id : v.getDrawables()) {
 				id.drawSelf();
-				System.out.println("drawself!");
 			}
 				
 			
