@@ -29,6 +29,9 @@ public class Tile{
     public HashMap<Game.Direction,Tile> getNeighborsMap(){
 	    return neighborsMap;
     }
+    public Tile getNeighborAt(Game.Direction key){
+	    return neighborsMap.get(key);
+    }
     
     //METODUSOK
 	/**

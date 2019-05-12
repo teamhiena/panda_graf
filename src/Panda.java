@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Panda extends Animal{
 	private ArrayList<Tile> subbedTiles=new ArrayList<Tile>();
@@ -46,6 +47,24 @@ public abstract class Panda extends Animal{
 			}
 		}
 		return success;
+	}
+
+	/**
+	 *  freeroamolo pandakat leptet random helyre
+	 * @return sikerult-e odalepni
+	 */
+	@Override
+	public boolean step(){
+		boolean ret=false;
+		if(!isFollowing()){
+			//80% valoszinuseggel leptet egy szomszedra
+			Random rng=new Random();
+			boolean doAStep =rng.nextInt()%10>1;
+			if(doAStep){
+				ret=step(tile.getNeighbors().get(rng.nextInt(tile.getNeighbors().size())));
+			}
+		}
+		return ret;
 	}
 
 	/**

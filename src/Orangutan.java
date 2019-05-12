@@ -100,6 +100,15 @@ public class Orangutan extends Animal {
 
 	//--------KEYBOARD-------
 
+    @Override
+    public boolean step(){
+        if(direction!=null)
+            return step(tile.getNeighborAt(direction));
+        else
+            return false;
+    }
+
+
     enum Controls{
         arrows,wasd
     }
@@ -110,23 +119,92 @@ public class Orangutan extends Animal {
     public Controls getControls() {return controls;}
 
     public class KeyListener implements java.awt.event.KeyListener{
-
-
         @Override
         public void keyTyped(KeyEvent e) {
 
         }
-
+        /**
+         *
+         * ha jobbra megy+fel -> jobbrafel
+         * ha balra megy+fel -> balrafel
+         * ha null+fel -> fel
+         *
+         * @param e keyevent
+         */
+        //TODO resetelodjon a direction step utan
         @Override
-        public void keyPressed(KeyEvent e) {
+        public void keyPressed(KeyEvent e)
+        {
             int keyCode=e.getKeyCode();
-            if(controls==Controls.wasd){
-                if(keyCode==KeyEvent.VK_W){
-
+            if(controls==Controls.wasd){ //ha wasd a kontrol
+                if(keyCode==KeyEvent.VK_W){ //w megnyomva
+                    if(direction== Game.Direction.Right){ //wd
+                        direction= Game.Direction.TopRight;
+                    }else if(direction== Game.Direction.Left){ //wa
+                        direction= Game.Direction.TopLeft;
+                    }else if(direction==null){ //w
+                        direction= Game.Direction.Top;
+                    }
+                }else if (keyCode==KeyEvent.VK_A) { //a megnyomva
+                    if(direction== Game.Direction.Top){ //wa
+                        direction= Game.Direction.TopLeft;
+                    }else if(direction== Game.Direction.Bottom){ //sa
+                        direction= Game.Direction.TopLeft;
+                    }else if(direction==null){ //a
+                        direction= Game.Direction.Left;
+                    }
+                }else if (keyCode==KeyEvent.VK_S) { //s megnyomva
+                    if(direction== Game.Direction.Right){ //sd
+                        direction= Game.Direction.BottomRight;
+                    }else if(direction== Game.Direction.Left){ //sa
+                        direction= Game.Direction.BottomLeft;
+                    }else if(direction==null){ //s
+                        direction= Game.Direction.Bottom;
+                    }
+                }else if (keyCode==KeyEvent.VK_D){ //d megnyomva
+                    if(direction== Game.Direction.Top){ //wd
+                        direction= Game.Direction.TopRight;
+                    }else if(direction== Game.Direction.Bottom){ //sd
+                        direction= Game.Direction.BottomLeft;
+                    }else if(direction==null){ //d
+                        direction= Game.Direction.Right;
+                    }
                 }
             }
             else if(controls==Controls.arrows){ //mas nem is lehet de latszodjon
-
+                if(keyCode==KeyEvent.VK_UP){ //w megnyomva
+                    if(direction== Game.Direction.Right){ //wd
+                        direction= Game.Direction.TopRight;
+                    }else if(direction== Game.Direction.Left){ //wa
+                        direction= Game.Direction.TopLeft;
+                    }else if(direction==null){ //w
+                        direction= Game.Direction.Top;
+                    }
+                }else if (keyCode==KeyEvent.VK_LEFT) { //a megnyomva
+                    if(direction== Game.Direction.Top){ //wa
+                        direction= Game.Direction.TopLeft;
+                    }else if(direction== Game.Direction.Bottom){ //sa
+                        direction= Game.Direction.TopLeft;
+                    }else if(direction==null){ //a
+                        direction= Game.Direction.Left;
+                    }
+                }else if (keyCode==KeyEvent.VK_DOWN) { //s megnyomva
+                    if(direction== Game.Direction.Right){ //sd
+                        direction= Game.Direction.BottomRight;
+                    }else if(direction== Game.Direction.Left){ //sa
+                        direction= Game.Direction.BottomLeft;
+                    }else if(direction==null){ //s
+                        direction= Game.Direction.Bottom;
+                    }
+                }else if (keyCode==KeyEvent.VK_RIGHT){ //d megnyomva
+                    if(direction== Game.Direction.Top){ //wd
+                        direction= Game.Direction.TopRight;
+                    }else if(direction== Game.Direction.Bottom){ //sd
+                        direction= Game.Direction.BottomLeft;
+                    }else if(direction==null){ //d
+                        direction= Game.Direction.Right;
+                    }
+                }
             }
         }
 
