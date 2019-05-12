@@ -17,6 +17,8 @@ public class Timer {
 		return instance;
 	}
 
+	//public void setGame(Game g) {game=g;}
+
 	public void finalize() {
 		instance = null;
 	}
@@ -31,7 +33,8 @@ public class Timer {
 
 			//Orangutanokat stepeljuk
 			for(Orangutan o : game.getOrangutans()){
-				o.step();
+				if (o!=null)
+					o.step();
 			}
 
 			//Pandaknal csak azokat leptetjuk akik nem kovetnek senkit.

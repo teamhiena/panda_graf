@@ -20,6 +20,7 @@ public class Main {
 		rp.setGf(gf);
 
 		Timer timer = Timer.instance();
+		timer.setGame(game);
 		timer.setView(view);
 		timer.Tick();
 
