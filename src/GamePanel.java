@@ -109,18 +109,22 @@ public class GamePanel extends JPanel {
                         case "wa":
                             newTile.entity = new Wardrobe();
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/icons8-black-blood-48.png")));
+                            gm.addSpecificTile(newTile, GameMap.Key.Wardrobe);
                             break;
                         case "j":
                             newTile.entity = new Arcade();
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/icons8-hammerstein-48.png")));
+                            gm.addSpecificTile(newTile, GameMap.Key.Arcade);
                             break;
                         case "cs":
                             newTile.entity = new Automat();
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/icons8-joe-pineapples-48.png")));
+                            gm.addSpecificTile(newTile, GameMap.Key.Automat);
                             break;
                         case "f":
                             newTile.entity = new Fotel();
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/icons8-mek-quake-48.png")));
+                            gm.addSpecificTile(newTile, GameMap.Key.Fotel);
                             break;
                         case "ap":
                             newTile.animal = new AfraidPanda(gm);
@@ -142,16 +146,19 @@ public class GamePanel extends JPanel {
                             WeakTile new_WeakTile = new WeakTile();
                             new_WeakTile.setColor(newTile.getColor());
                             newTile = new_WeakTile;
+                            gm.addSpecificTile(newTile, GameMap.Key.WeakTile);
                             break;
                         case "en":
                             Tile new_EntryTile = new Tile();
                             new_EntryTile.setColor(newTile.getColor());
                             newTile = new_EntryTile;
+                            gm.setEntry(newTile);
                             break;
                         case "ex":
                             ExitTile new_ExitTile = new ExitTile();
                             new_ExitTile.setColor(newTile.getColor());
                             newTile = new_ExitTile;
+                            gm.setExit(new_ExitTile);       //EZ LEHET HOGY ROSSZ?
                             break;
 
                         default:
