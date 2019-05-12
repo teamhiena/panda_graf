@@ -50,7 +50,6 @@ public class GamePanel extends JPanel {
         initTriangles();
 
         loadMap("pandaMap.txt");
-
         repaint();
 
     }
