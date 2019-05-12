@@ -17,9 +17,6 @@ public class GameFrame extends JFrame{
 	private String scoreboard;
 	private GamePanel gp;
 	private JLabel lab;
-	public GamePanel getGP() {
-		return gp;
-	}
 
 	public GameFrame(GameMap gamemap, Game game, View view) {
 		super();
