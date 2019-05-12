@@ -24,12 +24,12 @@ public class GameFrame extends JFrame{
 	}
 	public ResultPanel getRP(){return rp;}
 
-	public GameFrame(GameMap gamemap, Game game, View view) {
+	public GameFrame(GameMap gamemap, Game game, View view, Timer t) {
 		super();
 		gm = gamemap;
 		g = game;
 		v = view;
-		gp =new GamePanel(gm, g, v);
+		gp =new GamePanel(gm, g, v, t);
 		add(gp,BorderLayout.CENTER);
         JPanel jp = new JPanel();
         String scoreboard1 = "";

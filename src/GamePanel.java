@@ -1,3 +1,4 @@
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -24,6 +25,7 @@ public class GamePanel extends JPanel {
     View v;
     GameMap gm;
     Game g;
+    Timer timer;
 
     private Dimension size = new Dimension(800, 550);
 
@@ -40,11 +42,12 @@ public class GamePanel extends JPanel {
         return tiles;
     }
 
-    public GamePanel(GameMap gamemap, Game game, View view) {
+    public GamePanel(GameMap gamemap, Game game, View view, Timer t) {
         super();
         gm = gamemap;
         g = game;
         v = view;
+        timer = t;
         setPreferredSize(size);
         setBackground(Color.WHITE);
         initTriangles();
@@ -112,49 +115,56 @@ public class GamePanel extends JPanel {
                             gm.addSpecificTile(newTile, GameMap.Key.Wardrobe);
                             break;
                         case "j":
-                            newTile.entity = new Arcade();
+                            Arcade arcade = new Arcade();
+                            newTile.entity = arcade;
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/arcade.png")));
                             //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
-
+                            timer .addEntity(arcade);
                             gm.addSpecificTile(newTile, GameMap.Key.Arcade);
                             break;
                         case "cs":
-                            newTile.entity = new Automat();
+                            Automat automat = new Automat();
+                            newTile.entity = automat;
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/automat.png")));
                             //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
-
+                            timer.addEntity(automat);
                             gm.addSpecificTile(newTile, GameMap.Key.Automat);
                             break;
                         case "f":
-                            newTile.entity = new Fotel();
+                            Fotel fotel = new Fotel();
+                            newTile.entity = fotel;
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("fotel.png")));
                             //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
-
+                            timer.addEntity(fotel);
                             gm.addSpecificTile(newTile, GameMap.Key.Fotel);
                             break;
                         case "ap":
-                            newTile.animal = new AfraidPanda(gm);
+                            AfraidPanda afraidPanda = new AfraidPanda(gm);
+                            newTile.animal = afraidPanda;
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/brownpanda.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
-
+                            g.addPanda(afraidPanda);
                             break;
                         case "dp":
-                            newTile.animal = new DiabeticPanda(gm);
+                            DiabeticPanda diabeticPanda = new DiabeticPanda(gm);
+                            newTile.animal = diabeticPanda;
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/blackpanda.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
-
+                            g.addPanda(diabeticPanda);
                             break;
                         case "tp":
-                            newTile.animal = new TiredPanda(gm);
+                            TiredPanda tiredPanda = new TiredPanda(gm);
+                            newTile.animal = tiredPanda;
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/redpanda.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
-
+                            g.addPanda(tiredPanda);
                             break;
                         case "o":
-                            newTile.animal = new Orangutan(g);
+                            Orangutan orangutan = new Orangutan(g);
+                            newTile.animal = orangutan;
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/orangutan.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
-
+                            g.addOrangutan(orangutan);
                             break;
                         case "w":
                             WeakTile new_WeakTile = new WeakTile();

@@ -66,7 +66,7 @@ public class Timer {
 
 	public int getTime() { return elapsedTime; }
 
-	public void addEntity(NonEnterableEntity e) {
+	public void addEntity(MakeEffect e) {
 		Entities.add(e);
 	}
 

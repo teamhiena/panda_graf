@@ -11,7 +11,8 @@ public class Main {
 		View view = new View();
 		Game game = new Game();
 		GameMap gameMap = new GameMap();
-		GameFrame gf = new GameFrame(gameMap, game, view);
+		Timer timer = Timer.instance();
+		GameFrame gf = new GameFrame(gameMap, game, view, timer);
 		
 		Menu menu = new Menu(game, gf);
 		ResultPanel rp=new ResultPanel();
@@ -19,7 +20,6 @@ public class Main {
 		rp.setMenu(menu);
 		rp.setGf(gf);
 
-		Timer timer = Timer.instance();
 		timer.setGame(game);
 		timer.setView(view);
 		timer.Tick();

@@ -27,6 +27,7 @@ public class Game{
 
 
 	public void addOrangutan(Orangutan o) { orangutans.add(o); }
+	public void addPanda(Panda p) { pandas.add(p); }
 	public ArrayList<Orangutan> getOrangutans(){ return orangutans; }
 	public ArrayList<Panda> getPandas(){return pandas; }
 
