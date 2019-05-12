@@ -16,7 +16,6 @@ public class Wardrobe extends Entity {
 	}
 
 	public Wardrobe() {
-
 	}
 
 	/**
