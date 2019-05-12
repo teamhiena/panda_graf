@@ -140,28 +140,27 @@ public class GamePanel extends JPanel {
                             break;
                         case "ap":
                             AfraidPanda afraidPanda = new AfraidPanda(gm);
-                            newTile.animal = afraidPanda;
+                            afraidPanda.spawn(newTile);
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/brownpanda.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addPanda(afraidPanda);
                             break;
                         case "dp":
                             DiabeticPanda diabeticPanda = new DiabeticPanda(gm);
-                            newTile.animal = diabeticPanda;
-                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/blackpanda.png")));
+                            diabeticPanda.spawn(newTile);                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/blackpanda.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addPanda(diabeticPanda);
                             break;
                         case "tp":
                             TiredPanda tiredPanda = new TiredPanda(gm);
-                            newTile.animal = tiredPanda;
+                            tiredPanda.spawn(newTile);
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/redpanda.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addPanda(tiredPanda);
                             break;
                         case "o":
                             Orangutan orangutan = new Orangutan(g);
-                            newTile.animal = orangutan;
+                            orangutan.spawn(newTile);
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/orangutan.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addOrangutan(orangutan);

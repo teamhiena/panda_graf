@@ -19,7 +19,7 @@ public class Main {
 		GameFrame gf = new GameFrame(gameMap, game, view, timer);
 		Menu menu = new Menu(game, gf, timer);
 		ResultPanel rp=new ResultPanel();
-
+		timer.setGameFrame(gf);
 		gf.setRp(rp);
 		rp.setMenu(menu);
 		rp.setGf(gf);

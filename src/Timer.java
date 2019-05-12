@@ -9,6 +9,7 @@ public class Timer {
 	private GameMap gamemap;
 	//TODO a foteleket is decreselni kell
 	private View v;
+	private GameFrame gameFrame;
 	
 	private boolean running = true;
 
@@ -19,7 +20,7 @@ public class Timer {
 		return instance;
 	}
 
-	//public void setGame(Game g) {game=g;}
+	public void setGameFrame(GameFrame gf) {gameFrame=gf;}
 
 	public void finalize() {
 		instance = null;
@@ -58,7 +59,8 @@ public class Timer {
 				System.out.println("Timer Tick() failed");
 				e.printStackTrace();
 			}
-			elapsedTime++;
+			increaseTime(1);
+			gameFrame.repaint();
 		}
 	}
 

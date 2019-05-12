@@ -139,8 +139,11 @@ public class Tile{
 
     // Eltavolitja a Pandat a Tile szomszedos Tile-jainak feliratkozoi kozul
     public void removePandaFromNeighborSubbedPandas(Panda p) {
-        for(Tile nt:neighbors)
+        for(Tile nt:neighbors){
+
+            //if(nt!=null) //TODO EZ IS SZAR
             nt.removeSubbedPanda(p);
+        }
     }
     // Panda feliratkozasa a Tile-ra
     public void addSubbedPanda(Panda p) { subbedPandas.add(p); }
