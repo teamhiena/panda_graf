@@ -14,6 +14,16 @@ public class Game{
 		FinitTime
 	}
 
+	/**
+	 *
+	 * A directionök enumja
+	 */
+	enum Direction{
+		TopLeft, Top, TopRight, Right,
+		BottomRight, Bottom, BottomLeft, Left
+	}
+
+
 	public void addOrangutan(Orangutan o) { orangutans.add(o); }
 	public ArrayList<Orangutan> getOrangutans(){ return orangutans; }
 

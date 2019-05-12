@@ -5,7 +5,8 @@ import javax.swing.JLabel;
 /**
  * Egy entitast megvalosito absztrakt ososztaly.
  */
-public abstract class Entity implements IDrawable{
+public abstract class
+Entity extends IDrawable{
 	protected Tile tile;
 	public abstract boolean stepIn(Orangutan a);
 	public abstract boolean stepIn(Panda p);

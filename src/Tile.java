@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Tile{
@@ -9,7 +10,7 @@ public class Tile{
     protected Entity entity=null;
     //A Tile-on all-e Orangutan/Panda, null eseten nincs rajta semmi.
     protected Animal animal=null;
-    //A Tile szomszedos Tile-jait tarolo lista
+    //A Tile szomszedos Tile-jait tarolo lista //elhagyhato ha atirom az ettõl függõ dolgokat a hashmaptõl függõre
     private ArrayList<Tile> neighbors=new ArrayList<Tile>();
     //A Tile-ra feliratkozott pandak.
     private ArrayList<Panda> subbedPandas=new ArrayList<Panda>();
@@ -18,6 +19,16 @@ public class Tile{
 	private ArrayList<Triangle> triangles=new ArrayList<Triangle>();
 	//A csempe színe
 	private Color color;
+
+
+	//gombi vasarnap 13:50
+	private HashMap<Game.Direction,Tile> neighborsMap =new HashMap<Game.Direction,Tile>();
+	public void addToNeighborMap(Game.Direction dir,Tile t){
+	    neighborsMap.put(dir,t);
+    }
+    public HashMap<Game.Direction,Tile> getNeighborsMap(){
+	    return neighborsMap;
+    }
     
     //METODUSOK
 	/**

@@ -1,8 +1,12 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class Orangutan extends Animal {
     private int score = 0;
     private Game game;
+
+    private Game.Direction direction=null;
 
     public Orangutan(Game g) {
         g.addOrangutan(this);
@@ -93,4 +97,42 @@ public class Orangutan extends Animal {
 		// TODO multiplayerben esetleg megkulonboztetni a 2 jatekost ikonokkal
 		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
 	}
+
+	//--------KEYBOARD-------
+
+    enum Controls{
+        arrows,wasd
+    }
+
+    public Controls controls =Controls.wasd;
+
+    public void setControls(Controls controls) {this.controls = controls;}
+    public Controls getControls() {return controls;}
+
+    public class KeyListener implements java.awt.event.KeyListener{
+
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int keyCode=e.getKeyCode();
+            if(controls==Controls.wasd){
+                if(keyCode==KeyEvent.VK_W){
+
+                }
+            }
+            else if(controls==Controls.arrows){ //mas nem is lehet de latszodjon
+
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+        }
+    }
 }

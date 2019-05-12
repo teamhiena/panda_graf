@@ -2,13 +2,13 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 
-public abstract class Animal implements Steppable, IDrawable{
+public abstract class Animal extends IDrawable implements Steppable{
     protected Tile tile=null; //Ezen all az allat.
     protected Tile nextTile=null; //Ez lesz a kovetkezo mezo, amire lepni fog.
     protected Panda followedBy=null; //Ez az allat koveti.
     protected Animal following=null; //Ezt az allatot koveti.
     
-    JLabel imageholder;
+    //JLabel imageholder;
     
     //KONSTRUKTOROK
     public Animal(Tile t) {
