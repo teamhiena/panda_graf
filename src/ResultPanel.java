@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 class ResultPanel extends JPanel {
     private Dimension size=new Dimension(400,400);
-    private GridLayout grid=new GridLayout(4,2);
+    //private GridLayout grid=new GridLayout(4,2);
     private JButton bMainMenu=new JButton("Main menu");
     private GameFrame gf;
 

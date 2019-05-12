@@ -68,9 +68,9 @@ public class Orangutan extends Animal {
     /**
      * A bejarathoz helyezi az orangutant.
      */
-    public void goToEntry() {
-        this.step(GameMap.instance().getEntryTile());
-    }
+    /*public void goToEntry() {
+
+    }*/
 
     /**
      * A score adattag getter fuggvenye.
