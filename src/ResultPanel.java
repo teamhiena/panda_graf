@@ -6,8 +6,13 @@ import java.util.ArrayList;
 
 class ResultPanel extends JPanel {
     private Dimension size=new Dimension(400,400);
-    GridLayout grid=new GridLayout(4,2);
-    JButton bMainMenu=new JButton("Main menu");
+    private GridLayout grid=new GridLayout(4,2);
+    private JButton bMainMenu=new JButton("Main menu");
+    private GameFrame gf;
+
+    public void setGf(GameFrame gf) {
+        this.gf = gf;
+    }
 
     Menu menu;
 
@@ -18,14 +23,14 @@ class ResultPanel extends JPanel {
     public ResultPanel(){
         setPreferredSize(size);
         for(int i=0;i<6;i++)
-            labels.add(new JLabel());
+            labels.add(new JLabel("asd"));
 
         add(bMainMenu);
 
         bMainMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                gf.setVisible(false);
                 menu.setVisible(true);
             }
         });

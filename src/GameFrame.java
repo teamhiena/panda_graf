@@ -17,6 +17,12 @@ public class GameFrame extends JFrame{
 	private String scoreboard;
 	private GamePanel gp;
 	private JLabel lab;
+	private ResultPanel rp;
+
+	public void setRp(ResultPanel r){
+		rp=r;
+	}
+	public ResultPanel getRP(){return rp;}
 
 	public GameFrame(GameMap gamemap, Game game, View view) {
 		super();

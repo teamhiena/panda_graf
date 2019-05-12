@@ -14,6 +14,10 @@ public class Main {
 		GameFrame gf = new GameFrame(gameMap, game, view);
 		
 		Menu menu = new Menu(game, gf);
+		ResultPanel rp=new ResultPanel();
+		gf.setRp(rp);
+		rp.setMenu(menu);
+		rp.setGf(gf);
 
 		Timer timer = Timer.instance();
 		timer.setView(view);
