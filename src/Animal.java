@@ -29,6 +29,14 @@ public abstract class Animal extends IDrawable implements Steppable{
         this.setTile(null);
 
     }
+    public boolean spawn(Tile t){
+        if (t.getAnimal()!=null || t.getEntity()!= null)
+            return false;
+
+        t.setAnimal(this);
+        setTile(t);
+        return true;
+    }
     /**
      * Tile adattag getter/setter fuggvenye.
      */
