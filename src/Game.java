@@ -5,6 +5,7 @@ public class Game{
 	private GameMode selectedMode;
 	private GameMap map;
 	private ArrayList<Orangutan> orangutans=new ArrayList<Orangutan>();
+	private ArrayList<Panda> pandas  = new ArrayList<Panda>();
 	public int getNumberofplayers() {return numberofplayers;}
 	public void setNumberofplayers(int n) {numberofplayers=n;}
 
@@ -27,6 +28,7 @@ public class Game{
 
 	public void addOrangutan(Orangutan o) { orangutans.add(o); }
 	public ArrayList<Orangutan> getOrangutans(){ return orangutans; }
+	public ArrayList<Panda> getPandas(){return pandas; }
 
 	/**
 	 * Jelenleg nincsen funkcioja.

@@ -2,14 +2,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Timer {
-	ArrayList<NonEnterableEntity> Entities = new ArrayList<>();
-	ArrayList<Steppable> Steppable = new ArrayList<>();
+	ArrayList<MakeEffect> Entities = new ArrayList<MakeEffect>();
 	private static Timer instance = null;
 	private int elapsedTime = 0;
 	private Game game;
 	private GameMap gamemap;
-	Random random = new Random();
-	int vel = random.nextInt(100);
 	//TODO a foteleket is decreselni kell
 	private View v;
 	
@@ -26,34 +23,45 @@ public class Timer {
 
 	public void Tick() {
 		while(running) {
-			
-			//TODO: Steppel�s, (Make)Effectel�s 
+
 			System.out.println("Tick!");
 			for (IDrawable id : v.getDrawables()) {
 				id.drawSelf();
 			}
-				
-			
+
+			//Orangutanokat stepeljuk
+			for(Orangutan o : game.getOrangutans()){
+				o.step();
+			}
+
+			//Pandaknal csak azokat leptetjuk akik nem kovetnek senkit.
+			for(Panda p : game.getPandas()){
+				if(!p.isFollowing()){
+					p.step();
+				}
+			}
+
+			//10% esellyel makeEffectelunk
+			for(MakeEffect e : Entities){
+				Random rng = new Random();
+				if(rng.nextInt(10)%10>9){
+					e.makeEffect();
+				}
+			}
+
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				System.out.println("Timer Tick() failed");
 				e.printStackTrace();
 			}
-			
+
 			elapsedTime++;
 		}
 	}
 
+
 	public int getTime() { return elapsedTime; }
-
-	public void addSteppable(Steppable s) {
-		Steppable.add(s);
-	}
-
-	public void removeSteppable(Steppable s) {
-		Steppable.remove(s);
-	}
 
 	public void addEntity(NonEnterableEntity e) {
 		Entities.add(e);
@@ -91,14 +99,9 @@ public class Timer {
 	}
 
 
-	//Visszaadja a NonEnterableEntity interfeszu entitasokat
-	public ArrayList<NonEnterableEntity> getEntities() {
+	//Visszaadja a MakeEffect interfeszu entitasokat
+	public ArrayList<MakeEffect> getEntities() {
 		return Entities;
-	}
-
-	//Visszaadja a steppable interfeszu entitasokat
-	public ArrayList<Steppable> getSteppables() {
-		return Steppable;
 	}
 
 	/**
