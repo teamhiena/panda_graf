@@ -1,7 +1,0 @@
-new tile empty t1
-new tile empty t2
-new panda tired p1 t1
-new panda tired p2 t2
-step panda p1 t2
-stat panda p1
-stat panda p2

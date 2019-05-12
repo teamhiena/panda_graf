@@ -1,6 +1,0 @@
-new tile empty t1
-new tile empty t2
-new panda tired p1 t1
-new entity automat a t2
-step panda p1 t2
-stat panda p1

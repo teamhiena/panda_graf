@@ -1,7 +1,0 @@
-new tile empty t1
-new tile empty t2
-new orangutan o1 t1
-new orangutan o2 t2
-step orangutan o1 t2
-stat orangutan o1
-stat orangutan o2

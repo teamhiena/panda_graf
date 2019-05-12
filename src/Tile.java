@@ -10,7 +10,7 @@ public class Tile{
     protected Entity entity=null;
     //A Tile-on all-e Orangutan/Panda, null eseten nincs rajta semmi.
     protected Animal animal=null;
-    //A Tile szomszedos Tile-jait tarolo lista //elhagyhato ha atirom az ettõl függõ dolgokat a hashmaptõl függõre
+    //A Tile szomszedos Tile-jait tarolo lista
     private ArrayList<Tile> neighbors=new ArrayList<Tile>();
     //A Tile-ra feliratkozott pandak.
     private ArrayList<Panda> subbedPandas=new ArrayList<Panda>();
@@ -94,10 +94,9 @@ public class Tile{
             success = entity.stepIn(p);
         }
         if (success) {
-            if(p.followedBy!=null)
-                p.followedBy.setNextTile(p.tile);
             this.setAnimal(p);
-            p.getTile().setAnimal(null);
+            if(p.getTile().getAnimal()==p)
+                p.getTile().setAnimal(null);//lehet hogy elkap egy orangutan es akkor az mar ott van, nem kell kinullazni
             p.setTile(this);
         }
         return success;
@@ -119,25 +118,22 @@ public class Tile{
         boolean success=true;
         if(entity != null)//Ha van ott entiy akk megprobalok belelepni. (ami nem fotel az return false)
             success = entity.stepIn(o);
-        else if(animal != null) {
-            success=animal.getCaughtBy(o);
+        else if(animal != null && o.getStepCounter() >= 4) {
+            success = animal.getCaughtBy(o);
         }
-        //ez az else if ez itt mi
+
         if(success) {
-            if (o.followedBy!=null){
-                o.followedBy.setNextTile(this);
-                o.followedBy.setTile(o.getTile());
-            }
-
             this.setAnimal(o);
-            o.getTile().setAnimal(o.followedBy);
+            //o.getTile().setAnimal(o.followedBy); GOMBA szombat 12:18 szerintem ez kurja el a stepeket
+            o.getTile().setAnimal(null); //GOMBA szombat 12:24 ez a fix
             o.setTile(this);
-            }
-
-            //Nincs ott allat de olyan entity van amibe (most) nem lehet belelepni
-            //pl nonenterableentity vagy egy hasznalatban levo fotel
-            return success;
         }
+
+        //Nincs ott allat de olyan entity van amibe (most) nem lehet belelepni
+        //pl nonenterableentity vagy egy hasznalatban levo fotel
+        return success;
+    }
+
     // Eltavolitja a Pandat a Tile szomszedos Tile-jainak feliratkozoi kozul
     public void removePandaFromNeighborSubbedPandas(Panda p) {
         for(Tile nt:neighbors)
@@ -166,13 +162,14 @@ public class Tile{
         return ret;
     }
     //Visszadja a szomszedokat.
-    public String writeNeighbors(){
+    public String writeNeighbors() {
         String ret = "";
-        for(int i = 0; i < neighbors.size(); i++) {
+        for (int i = 0; i < neighbors.size(); i++) {
             ret += neighbors.get(i).toString() + " ";
         }
         return ret;
     }
+
     //Visszaadja a Tile közepét
     public int[] getCenter() {
 		int[] center=new int[2];

@@ -1,6 +1,0 @@
-new tile empty t1
-new tile empty t2
-new orangutan o t1
-new entity arcade a t2
-step orangutan o t2
-stat orangutan o

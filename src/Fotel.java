@@ -24,12 +24,8 @@ public class Fotel extends Entity implements MakeEffect{
 	 * @return
 	 */
 	public boolean stepIn(Panda p) {
-		if (tile.getAnimal()!= null) return false; //Nem valoszinu, hogy szukseges. DE biztonsaagos.
-		enteredFrom = p.getTile();
-		tile.setAnimal(p); //hát a faszomat
-		resetTimeLeft();
-		p.affectedBy(this);
-		return true;		
+		if (tile.getAnimal()!= null) return false; //ha pl ul valaki benne es bele akar ulni megegy
+		return p.affectedBy(this);
 	}
 
 	/**
@@ -38,7 +34,9 @@ public class Fotel extends Entity implements MakeEffect{
 	public boolean isEmpty() {
 		return (tile.getAnimal() == null);
 	}
-
+	public  void setEnteredFrom(Tile t){
+		enteredFrom=t;
+	}
 	/**
 	 * Csokkenti a hatra levo idot.
 	 */
@@ -51,9 +49,9 @@ public class Fotel extends Entity implements MakeEffect{
 		if(timeLeft<=0) {
 			boolean success;
 			do {
-				success=tile.getAnimal().step(enteredFrom);				
+				success=tile.getAnimal().step(enteredFrom);
 			} while(!success);
-			
+			enteredFrom=null;
 		}
 	}
 	/**
@@ -64,18 +62,19 @@ public class Fotel extends Entity implements MakeEffect{
 	 * Visszater egy random pandaval. Azert jo, mert lehet hogy
 	 * tobb panda van egyszerre fotel mellett, ilyenkor az egyik ul csak bele.
 	 */
-    public Panda getRandomSubbedPanda(){
-    	int a = tile.getSubbedPandas().size();
-    	Random vel = new Random();
-    	Panda ret  = tile.getSubbedPandas().get(vel.nextInt(tile.getSubbedPandas().size()));
-    	return ret;
-    }
+	public Panda getRandomSubbedPanda(){
+		int a = tile.getSubbedPandas().size();
+		Random vel = new Random();
+		Panda ret  = tile.getSubbedPandas().get(a);
+		return ret;
+	}
 
 	@Override
 	public void makeEffect() {
 		Panda p = getRandomSubbedPanda();
 		p.step(tile);
 	}
+
 	public Tile getEnteredFrom(){ return enteredFrom; }
 	public long getTimeLeft() { return timeLeft; }
 

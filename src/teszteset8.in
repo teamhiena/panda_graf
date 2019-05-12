@@ -1,8 +1,0 @@
-new tile empty t1
-new tile empty t2
-set neighbor t1 t2
-new panda tired p1 t1
-new orangutan o t2
-step orangutan o t1
-stat orangutan o
-stat panda p1

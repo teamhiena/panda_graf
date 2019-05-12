@@ -1,8 +1,0 @@
-new tile empty t1
-new tile empty t2
-set neighbor t1 t2
-new panda diabetic p1 t1
-step panda p1 t2
-stat panda p1
-stat tile strong t1
-stat tile strong t2

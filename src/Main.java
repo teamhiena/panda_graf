@@ -18,19 +18,6 @@ public class Main {
 		Timer timer = Timer.instance();
 		timer.setView(view);
 		timer.Tick();
-		
-		/*
-		 * Scanner scanner = new Scanner(System.in);
-		 * 
-		 * // EZEKNEK SINGLETONNAK KELLENE LENNI CSAK NEM TOM AZT HOGY KELL SORRY
-		 * InputLanguage inlang = new InputLanguage(game, gameMap);
-		 * 
-		 * String input = scanner.nextLine();
-		 * 
-		 * while (!input.equals("exit")) { inlang.compile(input.split(" ")); input =
-		 * scanner.nextLine(); }
-		 * 
-		 * scanner.close(); System.out.println("Viszlat!!");
-		 */
+
 	}
 }

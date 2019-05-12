@@ -10,8 +10,12 @@ public class Arcade extends NonEnterableEntity{
 	 */
 	@Override
 	public void makeEffect() {
-		for(Panda sp: tile.getSubbedPandas())
-			sp.affectedBy(this);
+		ArrayList<Tile> al = this.getTile().getNeighbors();
+		for (int i = 0; i < al.size(); i++) {
+			Animal p = al.get(i).getAnimal();
+			if (al.get(i).getAnimal() != null)
+				p.affectedBy(this);
+		}
 	}
 
 	@Override

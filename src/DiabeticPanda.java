@@ -20,9 +20,14 @@ public class DiabeticPanda extends Panda {
 	/**
 	 * A pandat megijeszti egy csokiautomata.
 	 */
-    public void affectedBy(Automat a) {
-		//TODO
-    }
+	public void affectedBy(Automat a) {
+		if(map.getSpecificTiles(GameMap.Key.WeakTile).contains(this.getTile())){
+			WeakTile t = (WeakTile)this.getTile();
+			for(int i =0; i < 10; i++)
+				t.reduceNumOfSteps();
+			if(t.isBroken()) t.getAnimal().die();
+		}
+	}
 
 	@Override
 	public void drawSelf() {
