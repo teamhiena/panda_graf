@@ -69,6 +69,7 @@ public abstract class Panda extends Animal{
 			boolean doAStep =rng.nextInt(10)>1;
 			if(doAStep){
 				int bound=tile.getNeighbors().size();
+				System.out.println("bound :"+bound);
 				ret=step(tile.getNeighbors().get(rng.nextInt(bound)));
 			}
 		}

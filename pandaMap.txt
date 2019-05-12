@@ -149,25 +149,25 @@ t20 k x tl-t19 tr-t39 br-t38 bl-t21
 13 4 01
 14 4 03
 -
-t21 z x
+t21 z x tl-17 l-17 tr-20 r-38 br-33 b-22
 13 5 full
 13 4 2
 12 6 full
 12 5 12
 13 6 03
 -
-t22 k x
+t22 k x t-21 br-32 l-23
 11 7 full
 12 7 03
 11 8 03
 -
-t23 z x
+t23 z x t-17 r-22 b-29 l-28 tl-24
 10 7 full
 10 8 full
 9 8 full
 9 7 12
 -
-t24 k x
+t24 k x r-17 tr-17 tl-13 l-25 bl-28 br-23
 8 5 full
 8 6 full
 9 6 full
@@ -176,24 +176,24 @@ t24 k x
 8 7 01
 9 7 03
 -
-t25 z tp
+t25 z tp r-24 t-13 tl-11 bl-26 b-28
 7 5 full
 7 6 full
 6 5 12
 6 6 01
 -
-t26 k x
+t26 k x tr-25 l-10 tl-10 b-27 br-28
 6 6 23
 6 7 03
 5 7 12
 -
-t27 z x
+t27 z x t-26 r-28 l-12 tr-28
 5 8 full
 5 9 full
 4 9 12
 6 9 23
 -
-t28 p cs
+t28 p cs l-27 tl-26 t-25 tr-24 r-23 br-29 b-30
 7 7 full
 7 8 full
 7 9 full
@@ -204,7 +204,7 @@ t28 p cs
 6 9 01
 8 9 03
 -
-t29 k x
+t29 k x t-23 tr-32 br-30 bl-30 tl-28
 9 9 full
 9 10 full
 10 9 full
@@ -216,7 +216,7 @@ t29 k x
 9 11 01
 10 11 03
 -
-t30 s x
+t30 s x tr-29 tl-29 r-31
 7 10 full
 7 11 full
 8 11 full
@@ -231,7 +231,7 @@ t30 s x
 11 11 full
 11 10 12
 -
-t31 z ap
+t31 z ap t-32 r-36 l-30
 12 10 full
 12 11 full
 12 12 full
@@ -239,7 +239,7 @@ t31 z ap
 13 11 full
 13 12 03
 -
-t32 p w
+t32 p w b-31 r-35 tr-33 tl-22 bl-29
 12 8 full
 12 9 full
 13 8 full
@@ -249,13 +249,13 @@ t32 p w
 11 8 12
 11 9 01
 -
-t33 s x
+t33 s x tr-38 tl-21 bl-32 bl-34
 13 6 12
 13 7 01
 14 6 23
 14 7 03
 -
-t34 k x
+t34 k x t-38 tr-37 tl-33 b-35
 15 7 full
 15 8 full
 14 7 12
@@ -263,27 +263,27 @@ t34 k x
 16 7 23
 16 8 03
 -
-t35 z x
+t35 z x b-36 t-34 l-32
 14 9 full
 15 9 full
 16 9 full
 14 8 23
 16 8 12
 -
-t36 s f
+t36 s f t-35 l-31
 14 10 full
 14 11 full
 15 10 full
 15 11 03
 16 10 03
 -
-t37 s wa
+t37 s wa bl-34 tl-38
 16 6 12
 16 7 01
 17 6 23
 17 7 03
 -
-t38 p ex
+t38 p ex t-39 tr-42 br-37 b-34 bl-33 l-21 tl-20
 15 4 full
 15 5 full
 15 6 full
@@ -294,25 +294,25 @@ t38 p ex
 16 4 23
 16 6 03
 -
-t39 z dp
+t39 z dp t-40r-42 b-38 bl-20
 15 3 full
 14 3 01
 -
-t40 k x
+t40 k x bl-19 b-39 tr-41
 14 2 full
 14 1 23
 13 1 12
 13 2 01
 15 2 23
 -
-t41 s x
+t41 s x bl-40 b-42
 15 1 full
 14 1 01
 15 2 01
 16 1 23
 16 2 full
 -
-t42 k tp
+t42 k tp bl-38 l-39 t-41
 16 3 full
 16 4 01
 17 3 23
