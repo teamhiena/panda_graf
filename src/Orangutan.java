@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Orangutan extends Animal {
     private int score = 0;
+    private int stepCounter = 4;
     private Game game;
 
     private Game.Direction direction=null;
@@ -25,12 +26,16 @@ public class Orangutan extends Animal {
     @Override
     public boolean step(Tile t) {
         //ha elkap valakit akkor nem kell lepni a tobbi pandanak
-        boolean success=t.receiveAnimal(this);
-        /*if(success)
-        {
-        	if(followedBy!=null)
-        		followedBy.setNextTile(tile);
-        }*/
+        //TODO a nexttile resetjén gondolkozni
+        Tile temp=tile;
+        boolean success = t.receiveAnimal(this);
+
+        if(success){
+            stepCounter++;
+            if(isFollowedBy()){
+                followedBy.step(temp);
+            }
+        }
         return success;
     }
 
@@ -48,10 +53,16 @@ public class Orangutan extends Animal {
     }
 
     public int getPandaNum() {
-        //return mindfuck recursive fuggveny(?) nem hinnem hogy szukseg van most ra (M)
-        //TODO
-        int ret = 0;
-        return ret;
+        Panda a = this.followedBy;
+        int num = 1;
+        if (a != null) {
+            while (a.followedBy != null) {
+                num++;
+                a = a.followedBy;
+            }
+            return num;
+        }
+        else return 0;
     }
 
     /**
@@ -70,8 +81,26 @@ public class Orangutan extends Animal {
      * Ertelemszeruen, egy orangutan nem kaphat el egy masik orangutant.
      */
     @Override
-    public boolean getCaughtBy(Orangutan o) {
-        return false;
+    public boolean getCaughtBy(Orangutan o)
+    {
+        if(o.getFollowedBy() != null || followedBy == null) return false; //Ha az elkaponak vannak pandai vagy nekunk nincsenek pandaink --> nem tortenik semmi
+
+        //Az orangutanok helyet cserelnek.
+        Tile temp = tile; //Az aktualis orangutan Tile-ja megy a temp-be.
+        tile = o.getTile();
+        o.setTile(temp);
+        o.getTile().setAnimal(o);
+        tile.setAnimal(this);
+
+        //Atadjuk a pandakat.
+        o.setFollowedBy(followedBy);
+        followedBy.setFollowing(o);
+        followedBy = null;
+
+        //Nullaznunk kell a lepesszamlalot.
+        stepCounter = 0;
+
+        return false; //Ha eddig eljutottunk, mindenkeppen sikeres a belepes.
     }
 
     /**
@@ -91,6 +120,8 @@ public class Orangutan extends Animal {
             followedBy = null;
         }
     }
+    public int getStepCounter(){return stepCounter;}
+    public void increaseCounter(){stepCounter++;}
 
 	@Override
 	public void drawSelf() {
@@ -120,11 +151,8 @@ public class Orangutan extends Animal {
 
     public class KeyListener implements java.awt.event.KeyListener{
         @Override
-        public void keyTyped(KeyEvent e) {
-
-        }
+        public void keyTyped(KeyEvent e) {}
         /**
-         *
          * ha jobbra megy+fel -> jobbrafel
          * ha balra megy+fel -> balrafel
          * ha null+fel -> fel
@@ -209,8 +237,6 @@ public class Orangutan extends Animal {
         }
 
         @Override
-        public void keyReleased(KeyEvent e) {
-
-        }
+        public void keyReleased(KeyEvent e) {}
     }
 }

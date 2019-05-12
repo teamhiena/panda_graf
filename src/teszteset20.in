@@ -1,9 +1,0 @@
-new tile empty ft
-new tile empty pt
-new entity fotel f ft
-new panda diabetic p pt
-step panda p ft
-stat entity fotel f
-set fotelTimeLeft 0
-stat entity fotel f
-stat panda p

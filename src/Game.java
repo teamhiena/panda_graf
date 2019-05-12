@@ -13,7 +13,6 @@ public class Game{
 		FinitPanda,
 		FinitTime
 	}
-
 	/**
 	 *
 	 * A directionök enumja

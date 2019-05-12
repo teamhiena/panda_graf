@@ -1,23 +1,25 @@
 import java.util.ArrayList;
-
 import javax.swing.JLabel;
 
 public abstract class Animal extends IDrawable implements Steppable{
-    protected Tile tile=null; //Ezen all az allat.
-    protected Tile nextTile=null; //Ez lesz a kovetkezo mezo, amire lepni fog.
+    protected Tile tile; //Ezen all az allat.
     protected Panda followedBy=null; //Ez az allat koveti.
     protected Animal following=null; //Ezt az allatot koveti.
     
     //JLabel imageholder;
-    
+
     //KONSTRUKTOROK
     public Animal(Tile t) {
-    	tile=t;
+        tile=t;
     }
     public Animal() {
-    	tile=null;
+        tile=null;
     }
-        
+
+    //METODUSOKK
+    /**
+     * Ez a metodus hivodik meg, amikor az allat "meghal".
+     */
     //METODUSOKK
     /**
      * Ez a metodus hivodik meg, amikor az allat "meghal".
@@ -41,8 +43,7 @@ public abstract class Animal extends IDrawable implements Steppable{
      * isFollowing adattag getter/setter fuggvenye.
      */
     public boolean isFollowing() {
-        if(following != null) return true;
-        return false;
+        return following != null;
     }
     /**
      * FollowedBy adattag setter fuggvenye.
@@ -53,15 +54,12 @@ public abstract class Animal extends IDrawable implements Steppable{
      * isFollowedBy adattag getter/setter fuggvenye.
      */
     public boolean isFollowedBy() {
-        if(followedBy!=null) return true;
-    	return false;
+        return followedBy != null;
     }
-    /**
-     *
-     */
-    public void releaseFollowerRecursively() {
-        //TODO}
-    }
+
+    public void affectedBy(Arcade a){ } //gombi szombat 22:52
+    public void affectedBy(Automat a) { } //gombi szombat 22:52
+
     /**
      * Az allatot elkapja egy Panda. Valojaban lehetetlen esemeny, de muszaj megvalositani.
      * @param p
@@ -74,7 +72,6 @@ public abstract class Animal extends IDrawable implements Steppable{
      * Az allatot elkapja egy orangutan. Leszarmazottakban felulirando.
      */
     public abstract boolean getCaughtBy(Orangutan o);
-    public Tile getNextTile(){ return nextTile; }
     public Panda getFollowedBy(){ return followedBy; }
     public Animal getFollowing() { return following; }
     public void setImageHolder(JLabel l) {imageholder = l;}

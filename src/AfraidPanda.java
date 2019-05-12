@@ -13,20 +13,25 @@ public class AfraidPanda extends Panda {
 	}
 
     /*public AfraidPanda() {
-
     }*/
 
-    //METODUSOK
+	//METODUSOK
 	/**
 	 * A pandat megijeszti egy jatekgep.
 	 */
-    public void affectedBy(Arcade a) {
+	public void affectedBy(Arcade a) {
+		Panda p = this.followedBy;
+		this.getFollowing().setFollowedBy(null);
 		release();
-    }
-
+		while(p != null){
+			Panda b = p.followedBy;
+			p.release();
+			p = b;
+		}
+	}
 	@Override
 	public void drawSelf() {
-		// TODO áthelyezi az imageholderjét arra a Tile-ra ahol van, más az ikonja ha megijeds 
+		// TODO áthelyezi az imageholderjét arra a Tile-ra ahol van, más az ikonja ha megijedos.
 		imageholder.setBounds(tile.getCenter()[0], tile.getCenter()[1], 30, 30);
 	}
 }

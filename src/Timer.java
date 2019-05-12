@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Timer {
 	ArrayList<NonEnterableEntity> Entities = new ArrayList<>();
@@ -7,6 +8,9 @@ public class Timer {
 	private int elapsedTime = 0;
 	private Game game;
 	private GameMap gamemap;
+	Random random = new Random();
+	int vel = random.nextInt(100);
+	//TODO a foteleket is decreselni kell
 	private View v;
 	
 	private boolean running = true;
@@ -77,7 +81,7 @@ public class Timer {
 				scores[0]=game.getOrangutans().get(0).getScore() ;
 				scores[1]=game.getOrangutans().get(1).getScore() ;
 
-				game.SaveHighScore(scores[0]>scores[1]? scores[0] : scores[1]);
+				game.SaveHighScore(scores[0]>scores[1] ? scores[0] : scores[1]);
 			} else {
 				game.SaveHighScore(game.getOrangutans().get(0).getScore());
 			}
@@ -86,6 +90,7 @@ public class Timer {
 			game.gameOver();
 		}
 	}
+
 
 	//Visszaadja a NonEnterableEntity interfeszu entitasokat
 	public ArrayList<NonEnterableEntity> getEntities() {

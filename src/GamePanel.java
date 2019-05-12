@@ -136,7 +136,7 @@ public class GamePanel extends JPanel {
 							newTile = new_WeakTile;
 							break;
 						case "en":
-							EntryTile new_EntryTile = new EntryTile();
+							Tile new_EntryTile = new Tile();
 							new_EntryTile.setColor(newTile.getColor());
 							newTile = new_EntryTile;
 							break;

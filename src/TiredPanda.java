@@ -20,13 +20,28 @@ public class TiredPanda extends Panda {
 	/**
 	 * A Panda egy f Fotel hatasa ala kerul.
 	 */
-    public void affectedBy(Fotel f) {
-    	//TODO
-		//El kell helyeznie a sajat magat a mezon.
-		tile.setAnimal(null);
-		f.getTile().setAnimal(this);
-		this.setTile(f.getTile());
-    }
+	public boolean affectedBy(Fotel f) {
+		//TODO mi van ha followoljak???
+
+		//f.getTile().setAnimal(this);
+		//tile.setAnimal(this);
+		//tile=f.getTile();
+
+		if (isFollowing()){
+			Panda p = this.followedBy;
+			this.getFollowing().setFollowedBy(null);
+			release();
+			while(p != null){
+				Panda b = p.followedBy;
+				p.release();
+				p = b;
+			}
+		}
+
+		f.resetTimeLeft();
+		f.setEnteredFrom(tile);
+		return true;
+	}
 
 	@Override
 	public void drawSelf() {

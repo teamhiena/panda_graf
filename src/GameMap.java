@@ -8,16 +8,16 @@ import java.util.HashMap;
 public class GameMap {
 	private static GameMap instance = null;
 	private HashMap<GameMap.Key,ArrayList<Tile>> listGetterMap=new HashMap<GameMap.Key,ArrayList<Tile>>();
-	private EntryTile entry = new EntryTile();
+	private Tile entry = new Tile();
 	private ExitTile exit = new ExitTile();
 
 	//KONSTRUKTOROK
 	public GameMap() {
-		listGetterMap.put(Key.WeakTile, new ArrayList<Tile>()); //TODO kiszedni a weakTile-t külön
+		listGetterMap.put(Key.WeakTile, new ArrayList<Tile>());
 		listGetterMap.put(Key.Arcade, new ArrayList<Tile>());
 		listGetterMap.put(Key.Automat, new ArrayList<Tile>());
 		listGetterMap.put(Key.Fotel, new ArrayList<Tile>());
-		
+
 		listGetterMap.put(Key.Wardrobe, new ArrayList<Tile>());
 		listGetterMap.put(Key.WardrobeExit, new ArrayList<Tile>());
 		//listGetterMap.put(Key.Orangutan, new ArrayList<>()); //TODO kiszedni orangutanos Tile-okat
@@ -50,9 +50,14 @@ public class GameMap {
 	 * Visszater egy veletlenszeruen kivalasztott szekreny kijarattal.
 	 */
 	public Tile getRandomWardrobeExitTile() {
-		Random vel = new Random();
-		Tile t = listGetterMap.get(Key.WardrobeExit).get(vel.nextInt(listGetterMap.get(Key.WardrobeExit).size()));
-		return t;
+		Random rng = new Random();
+		ArrayList<Tile> exits=getSpecificTiles(Key.WardrobeExit);
+		if (exits.size()<2)
+			return null;
+		Integer idx=rng.nextInt(exits.size());
+		Tile ret=exits.get(idx);
+		//System.out.println(idx);
+		return ret;
 	}
 
 	/**
@@ -76,17 +81,12 @@ public class GameMap {
 	public void addSpecificTile(Tile t,Key key) {
 		listGetterMap.get(key).add(t);
 	}
-	/**
-	 * Visszaadja a gyenge csempeket.
-	 */
-	public ArrayList<WeakTile> getWeakTiles(){
-		//TODO
-		return new ArrayList<WeakTile>();
-	}
+
 	/**
 	 * EntryTile adattag setter fuggvenye
 	 */
-	public void setEntry(EntryTile e){
+	public void setEntry(Tile e){
 		entry = e;
 	}
+	public void setExit(ExitTile e) {exit=e;}
 }
