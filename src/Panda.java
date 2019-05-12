@@ -11,7 +11,7 @@ public abstract class Panda extends Animal{
     //public void affectedBy(Automat a) { }
 
 	/**
-	 * stepIn hivja meg, és a timer, a timer azert,
+	 * stepIn hivja meg, ï¿½s a timer, a timer azert,
 	 * ha esetleg ketto tiredpanda egyszerre van a szomszedban, ekkor random
 	 * @param f fotel amibe beleul
 	 * @return sikeult-e belelepnie
@@ -68,7 +68,8 @@ public abstract class Panda extends Animal{
 			Random rng=new Random();
 			boolean doAStep =rng.nextInt(10)>1;
 			if(doAStep){
-				ret=step(tile.getNeighbors().get(rng.nextInt(tile.getNeighbors().size())));
+				int bound=tile.getNeighbors().size();
+				ret=step(tile.getNeighbors().get(rng.nextInt(bound)));
 			}
 		}
 		return ret;
