@@ -1,3 +1,7 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
 public class Orangutan extends Animal {
     private int score = 0;
     private int stepCounter = 4;
@@ -9,41 +13,22 @@ public class Orangutan extends Animal {
         game = g;
     }
 
+    public Game getGame(){ return  game;}
+
     public Orangutan() {
         //this.goToEntry();
     }
 
+    //METODUSOK
+    /**
+     *  szeretnenk leptetni az orangutant.
+     * @return Megadja, hogy sikerult-e a muvelet.
+     */
     @Override
     public void die(){
-        //gf.gm.getEntryTile().setAnimal(this);
-        //this.setTile(gf.gm.getEntryTile());
-        boolean success=false;
-        tile.setAnimal(null);
-        releasePandas();
-
-        while(!success){
-            success=spawn(gf.gm.getEntryTile());
-        }
+        gf.gm.getEntryTile().setAnimal(this);
+        this.setTile(gf.gm.getEntryTile());
     }
-
-    public void dieWithFollowers(){
-        tile.setAnimal(null);
-
-        Panda a = followedBy;
-        while (a != null) {
-            Panda b = a.followedBy;
-            a.setFollowing(null);
-            a.setFollowedBy(null);
-            a.die();
-            a = b;
-        }
-        followedBy=null;
-        boolean success=false;
-        while(!success){
-            success=spawn(gf.gm.getEntryTile());
-        }
-    }
-
     @Override
     public boolean step(Tile t) {
         //ha elkap valakit akkor nem kell lepni a tobbi pandanak
@@ -66,7 +51,7 @@ public class Orangutan extends Animal {
     public void increaseScore(int p) {
         score += p;
         //Minden novelesnel megnezzuk, hogy elertuk-e a gyozelem szukseges pandaszamot.
-        if(score >= 25 && game.getSelectedMode() == Game.GameMode.FinitPanda){
+        if(score >= 70 && game.getSelectedMode() == Game.GameMode.FinitPanda){
             //Ha elertuk, szolunk a jateknak hogy vege.
             game.gameOver();
         }
@@ -132,14 +117,14 @@ public class Orangutan extends Animal {
     /**
      * Elengedi az ot koveto pandak kezet.
      */
-    /*public void releasePandas()
+    public void releasePandas()
     {
         if(followedBy!=null)
         {
-            followedBy.releasePandas();
+            followedBy.release();
             followedBy = null;
         }
-    }*/
+    }
     public int getStepCounter(){return stepCounter;}
     public void increaseCounter(){stepCounter++;}
 

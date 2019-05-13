@@ -63,10 +63,8 @@ public class Timer {
 				for (IDrawable id : v.getDrawables()) {
 					id.drawSelf();
 				}
-
-
-				increaseTime(1);
 				gameFrame.repaint();
+				increaseTime(1);
 			}
 			try {
 				Thread.sleep(1000);

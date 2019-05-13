@@ -26,10 +26,32 @@ public abstract class Animal extends IDrawable implements Steppable{
     /**
      * Ez a metodus hivodik meg, amikor az allat "meghal".
      */
+    public void die(){
+        if(gf.getG().getSelectedMode() == Game.GameMode.FinitTime) {
+            boolean success = false;
+            while (!success) {
+                Random rng = new Random();
+                Integer idx = rng.nextInt(gf.gp.getTiles().size());
+                if (gf.gp.getTiles().get(idx).getAnimal() == null && gf.gp.getTiles().get(idx).getEntity() == null) {
+                    success = spawn(gf.gp.getTiles().get(idx));
+                    break;
+                }
+            }
+        }
+        else{
+            gf.getG().getPandas().remove(this);
+            gf.getV().getDrawables().remove(this);
+        }
 
-    /**
-     * Elengedi az ot koveto ill. annak a pandanak a kezet akit o kovet.
-     */
+    }
+    public boolean spawn(Tile t){
+        if (t.getAnimal()!=null || t.getEntity()!= null)
+            return false;
+
+        t.setAnimal(this);
+        setTile(t);
+        return true;
+    }
     public void releasePandas()
     {
         if(isFollowing())
@@ -42,17 +64,6 @@ public abstract class Animal extends IDrawable implements Steppable{
             followedBy.releasePandas();
         }
 
-    }
-
-    public abstract void die();
-
-    public boolean spawn(Tile t){
-        if (t.getAnimal()!=null || t.getEntity()!= null)
-            return false;
-
-        t.setAnimal(this);
-        setTile(t);
-        return true;
     }
     /**
      * Tile adattag getter/setter fuggvenye.
