@@ -136,8 +136,10 @@ public class Orangutan extends Animal {
         System.out.println(direction);
         if(direction!=null&&tile.getNeighborAt(direction)!=null)
             success= step(tile.getNeighborAt(direction));
-        else
+        else {
+            direction=null;
             return false;
+        }
         direction=null;
         return success;
     }

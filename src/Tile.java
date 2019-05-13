@@ -141,7 +141,7 @@ public class Tile{
     public void removePandaFromNeighborSubbedPandas(Panda p) {
         for(Tile nt:neighbors){
 
-            //if(nt!=null) //TODO EZ IS SZAR
+            if(nt!=null)
             nt.removeSubbedPanda(p);
         }
     }
