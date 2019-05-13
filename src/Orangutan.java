@@ -154,7 +154,7 @@ public class Orangutan extends Animal {
     @Override
     public boolean step(){
         boolean success=false;
-        System.out.println(direction);
+        //System.out.println(direction);
         if(direction!=null&&tile.getNeighborAt(direction)!=null)
             success= step(tile.getNeighborAt(direction));
         else {

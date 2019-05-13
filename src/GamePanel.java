@@ -171,11 +171,15 @@ public class GamePanel extends JPanel {
                             Orangutan orangutan = new Orangutan(g);
                             orangutan.setGameFrame(gf);
                             orangutan.spawn(newTile);
-                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/orangutan.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addOrangutan(orangutan);
-                            if(g.getOrangutans().size()>1)
+                            if(g.getOrangutans().size()>1) {
                                 orangutan.setControls(Orangutan.Controls.arrows);
+                                newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/orangutan2.png")));
+
+                            }else
+                                newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/orangutan.png")));
+
                             break;
                         case "w":
                             WeakTile new_WeakTile = new WeakTile();
