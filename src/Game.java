@@ -18,7 +18,6 @@ public class Game{
 	 * A jatekmodok enumja.
 	 */
 	enum GameMode{
-		FinitPanda,
 		FinitTime
 	}
 	/**
@@ -55,8 +54,6 @@ public class Game{
 		this.weakTilesAddlife(); 				  //Noveli a gyenge csempek eleterejet.
 
 		//Jatekmodtol fuggoen vagy csokkenti, vagy noveli az idot.
-		if(selectedMode == GameMode.FinitPanda)
-			Timer.instance().decreaseTime(5);
 		if(selectedMode == GameMode.FinitTime)
 			Timer.instance().increaseTime(5);
 	}
@@ -68,14 +65,13 @@ public class Game{
         //ResultPanel resultPanel = new ResultPanel(gameFrame, this);
 		JOptionPane jop = new JOptionPane();
 		if(numberofplayers == 1) {
-			if(selectedMode == GameMode.FinitTime){
 			jop.showMessageDialog(gameFrame,
 					"Player1: " +
 							gameFrame.g.getOrangutans().get(0).getScore(),
 					"Game Over!",
 					JOptionPane.PLAIN_MESSAGE
 			);
-			}
+		}
 			else {
 				jop.showMessageDialog(gameFrame,
 						"Player1: " +
@@ -84,32 +80,7 @@ public class Game{
 						JOptionPane.PLAIN_MESSAGE
 				);
 			}
-		}
-		else {
-			if(selectedMode == GameMode.FinitTime){
-				jop.showMessageDialog(gameFrame,
-						"Player1: " +
-								gameFrame.g.getOrangutans().get(0).getScore() + "\n" +
-								 "Player2: " +
-								gameFrame.g.getOrangutans().get(1).getScore() ,
-						"Game Over!",
-						JOptionPane.PLAIN_MESSAGE
-				);
-			}
-			else {
-				if(selectedMode == GameMode.FinitPanda){
-					jop.showMessageDialog(gameFrame,
-							"Player1: " +
-									gameFrame.timer.getTime() + "\n" +
-									 "Player2: " +
-									gameFrame.timer.getTime() ,
-							"Game Over!",
-							JOptionPane.PLAIN_MESSAGE);
-			}
-		}
 
-
-		}
 		gameFrame.add(jop);
 		System.exit(0);
 	}

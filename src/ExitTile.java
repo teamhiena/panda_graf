@@ -29,20 +29,6 @@ public class ExitTile extends Tile {
                 //mi tortenik
                 return false;
             }
-            else if(o.getGame().getSelectedMode() == Game.GameMode.FinitPanda && exitedPandas < 7){
-                o.die();
-                Panda a = o.followedBy;
-                if (a != null) {
-                    while (a != null) {
-                        Panda b = a.followedBy;
-                        a.setFollowing(null);
-                        a.die();
-                        a = b;
-                    }
-                }
-                o.releasePandas();
-                return false;
-            }
             else{
                 o.getGame().gameOver();
                 return false;

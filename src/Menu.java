@@ -15,15 +15,15 @@ public class Menu extends JFrame{
 
 		JButton bStart =new JButton("Start Game");
 		JButton bFinitTime = new JButton("Finit Time");
-		JButton bFinitPanda =new JButton("Finit Panda");
+		//JButton bFinitPanda =new JButton("Finit Panda");
 		JButton b1Player=new JButton("1 Player");
 		JButton b2Players=new JButton("2 Players");
 
 		bStart.setEnabled(false);
 
-		bStart.setBounds(150,80,100, 60);
-		bFinitTime.setBounds(80,180,100, 60);
-		bFinitPanda.setBounds(210,180,100, 60);
+		bStart.setBounds(145,80,100, 60);
+		bFinitTime.setBounds(145,180,100, 60);
+		//bFinitPanda.setBounds(210,180,100, 60);
 		b1Player.setBounds(80,280, 100, 60);
 		b2Players.setBounds(210,280,100,60);
 
@@ -41,14 +41,14 @@ public class Menu extends JFrame{
 			public void actionPerformed(ActionEvent e){
 				g.setSelectedMode(Game.GameMode.FinitTime);
 				bFinitTime.setEnabled(false);
-				bFinitPanda.setEnabled(true);
+				//bFinitPanda.setEnabled(true);
 				gameModePicked=true;
 				if(nrOfPlayersPicked)
 					bStart.setEnabled(true);
 			}
 		});
 
-		bFinitPanda.addActionListener(new ActionListener(){
+		/*bFinitPanda.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
 				g.setSelectedMode(Game.GameMode.FinitPanda);
@@ -58,7 +58,7 @@ public class Menu extends JFrame{
 				if(nrOfPlayersPicked)
 					bStart.setEnabled(true);
 			}
-		});
+		});*/
 
 		b1Player.addActionListener(new ActionListener() {
 			@Override
@@ -86,7 +86,7 @@ public class Menu extends JFrame{
 
 		add(bStart);
 		add(bFinitTime);
-		add(bFinitPanda);
+		//add(bFinitPanda);
 		add(b1Player);
 		add(b2Players);
 		setSize(400,400);
