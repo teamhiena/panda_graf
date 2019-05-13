@@ -23,6 +23,11 @@ public class Orangutan extends Animal {
      * @return Megadja, hogy sikerult-e a muvelet.
      */
     @Override
+    public void die(){
+        gf.gm.getEntryTile().setAnimal(this);
+        this.setTile(gf.gm.getEntryTile());
+    }
+    @Override
     public boolean step(Tile t) {
         //ha elkap valakit akkor nem kell lepni a tobbi pandanak
         //TODO a nexttile resetj�n gondolkozni

@@ -12,7 +12,7 @@ public class ExitTile extends Tile {
             //o.followedBy.getTile().setAnimal(null);
             o.die();
             //nincs kezelve grafikusan hogy mi a bre van ha meghalnak
-           /* Panda a = o.followedBy;
+            Panda a = o.followedBy;
             if (a != null) {
                 while (a != null) {
                     Panda b = a.followedBy;
@@ -20,7 +20,7 @@ public class ExitTile extends Tile {
                     a.die();
                     a = b;
                 }
-            }*/
+            }
             o.releasePandas();
             //mi tortenik
             return false;

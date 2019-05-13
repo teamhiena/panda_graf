@@ -16,7 +16,7 @@ public class GameFrame extends JFrame{
 	private Game g;
 	private View v;
 	private ScorePanel scorePanel;
-	private GamePanel gp;
+	protected GamePanel gp;
 	private JLabel lab;
 	private ResultPanel rp;
 

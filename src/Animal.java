@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import javax.swing.JLabel;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -7,7 +8,7 @@ public abstract class Animal extends IDrawable implements Steppable{
     protected Tile tile; //Ezen all az allat.
     protected Panda followedBy=null; //Ez az allat koveti.
     protected Animal following=null; //Ezt az allatot koveti.
-    private GameFrame gf;
+    protected GameFrame gf;
     @Override
     public void setGameFrame(GameFrame g) {gf=g;}
     
@@ -30,8 +31,14 @@ public abstract class Animal extends IDrawable implements Steppable{
      * Ez a metodus hivodik meg, amikor az allat "meghal".
      */
     public void die(){
-        gf.gm.getEntryTile().setAnimal(this);
-        this.setTile(gf.gm.getEntryTile());
+        boolean success = false;
+        while(!success){
+            Random rng = new Random();
+            Integer idx =rng.nextInt(gf.gp.getTiles().size());
+            if(gf.gp.getTiles().get(idx).getAnimal() == null && gf.gp.getTiles().get(idx).getEntity() == null) {
+                success = spawn(gf.gp.getTiles().get(idx)); break;
+            }
+        }
 
     }
     public boolean spawn(Tile t){
