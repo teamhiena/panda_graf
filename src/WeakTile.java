@@ -62,10 +62,7 @@ public class WeakTile extends Tile{
 	@Override
 	public boolean receiveAnimal(Panda p) {
 		reduceNumOfSteps();
-		if(isBroken()) {
-
-
-			p.die();
+		if(isBroken()) {p.die();
 			setAnimal(null);
 			return false;
 		}

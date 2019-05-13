@@ -6,7 +6,7 @@ public class Timer {
 	private static Timer instance = null;
 	private int elapsedTime = 0;
 	private Game game;
-	int maxTime=200;
+	int maxTime=100;
 	private GameMap gamemap;
 	//TODO a foteleket is decreselni kell
 	private View v;
@@ -110,9 +110,9 @@ public class Timer {
 				scores[0]=game.getOrangutans().get(0).getScore() ;
 				scores[1]=game.getOrangutans().get(1).getScore() ;
 
-				game.SaveHighScore(scores[0]>scores[1] ? scores[0] : scores[1]);
+				//game.SaveHighScore(scores[0]>scores[1] ? scores[0] : scores[1]);
 			} else {
-				game.SaveHighScore(game.getOrangutans().get(0).getScore());
+				//game.SaveHighScore(game.getOrangutans().get(0).getScore());
 			}
 
 			System.out.println("Time is up");
