@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -51,6 +52,7 @@ public class Fotel extends Entity implements MakeEffect{
 			do {
 				success=tile.getAnimal().step(enteredFrom);
 			} while(!success);
+
 			enteredFrom=null;
 		}
 	}

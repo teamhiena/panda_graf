@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -37,7 +38,6 @@ public class TiredPanda extends Panda {
 				p = b;
 			}
 		}
-
 		f.resetTimeLeft();
 		f.setEnteredFrom(tile);
 		return true;
