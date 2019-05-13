@@ -29,10 +29,10 @@ public class AfraidPanda extends Panda {
 			p = b;
 		}
 	}
-	@Override
+	/*@Override felraktam pandaba
 	public void drawSelf() {
 		// TODO �thelyezi az imageholderj�t arra a Tile-ra ahol van, m�s az ikonja ha megijedos.
 		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
-	}
+	}*/
 }
  

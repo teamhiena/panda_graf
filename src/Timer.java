@@ -33,9 +33,9 @@ public class Timer {
 			public void run() {
 				while(running){
 					System.out.println("Tick!");
-					for (IDrawable id : v.getDrawables()) {
+					/*for (IDrawable id : v.getDrawables()) {
 						id.drawSelf();
-					}
+					}*/
 
 					//Orangutanokat stepeljuk
 					for(Orangutan o : game.getOrangutans()){
@@ -57,14 +57,23 @@ public class Timer {
 							e.makeEffect();
 						}
 					}
+
+					for (IDrawable id : v.getDrawables()) {
+						id.drawSelf();
+					}
+
+
+					increaseTime(1);
+					gameFrame.repaint();
+
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						System.out.println("Timer Tick() failed");
 						e.printStackTrace();
 					}
-					increaseTime(1);
-					gameFrame.repaint();
+					/*increaseTime(1);
+					gameFrame.repaint();*/
 				}
 			}
 		});

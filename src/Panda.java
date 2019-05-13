@@ -39,7 +39,7 @@ public abstract class Panda extends Animal{
 	 */
 	@Override
 	public boolean step(Tile newTile) {
-		//if(newTile==null) return false;
+		if(newTile==null) return false;
 		Tile temp=tile;
 
 		boolean success = newTile.receiveAnimal(this); //NULLPTR
@@ -52,9 +52,11 @@ public abstract class Panda extends Animal{
 					newTileNeighbor.addSubbedPanda(this); //Az uj helyen szomszedokra feliratkozasok
 				}
 			}
+			//animate(temp,newTile);
 			if(isFollowedBy())
 				followedBy.step(temp);
 		}
+
 		return success;
 	}
 
@@ -71,8 +73,8 @@ public abstract class Panda extends Animal{
 			boolean doAStep =rng.nextInt(10)>1;
 			if(doAStep){
 				int bound=tile.getNeighbors().size();
-				System.out.println("bound :"+bound);
-				System.out.println("ez lett a bound: "+rng.nextInt(bound));
+				//System.out.println("bound :"+bound);
+				//System.out.println("ez lett a bound: "+rng.nextInt(bound));
 				ret=step(tile.getNeighbors().get(rng.nextInt(bound)));
 			}
 		}
@@ -110,5 +112,14 @@ public abstract class Panda extends Animal{
 			followedBy.release();
 		}
 		followedBy = null;
+	}
+
+
+
+	@Override
+	public void drawSelf() {
+		// TODO ?
+		if(tile!=null) //nullexc volt
+		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
 	}
 }

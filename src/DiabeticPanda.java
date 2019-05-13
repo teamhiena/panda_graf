@@ -29,9 +29,9 @@ public class DiabeticPanda extends Panda {
 		}
 	}
 
-	@Override
+	/*@Override felraktam pandaba
 	public void drawSelf() {
-		// TODO �thelyezi mag�t,m�s ha �pp meg�ll cukrozni
+		// TODO �thelyezi az imageholderj�t arra a Tile-ra ahol van, m�s az ikonja ha megijedos.
 		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
-	}
+	}*/
 }
