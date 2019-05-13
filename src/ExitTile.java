@@ -4,26 +4,49 @@ import java.util.ArrayList;
  * A "kilepo" csempe.
  */
 public class ExitTile extends Tile {
+    public int exitedPandas = 0;
     @Override
     public boolean receiveAnimal(Orangutan o) {
         if(o.followedBy != null) {
+            int numOfPandas = o.getPandaNum();
             o.increaseScore(10*o.getPandaNum());
+            exitedPandas += numOfPandas;
             //  ha ez egyaltalan meg lesz csinalva
             //o.followedBy.getTile().setAnimal(null);
-            o.die();
-            //nincs kezelve grafikusan hogy mi a bre van ha meghalnak
-            Panda a = o.followedBy;
-            if (a != null) {
-                while (a != null) {
-                    Panda b = a.followedBy;
-                    a.setFollowing(null);
-                    a.die();
-                    a = b;
+            if(o.getGame().getSelectedMode() == Game.GameMode.FinitTime){
+                o.die();
+                //nincs kezelve grafikusan hogy mi a bre van ha meghalnak
+                Panda a = o.followedBy;
+                if (a != null) {
+                    while (a != null) {
+                        Panda b = a.followedBy;
+                        a.setFollowing(null);
+                        a.die();
+                        a = b;
+                    }
                 }
+                o.releasePandas();
+                //mi tortenik
+                return false;
             }
-            o.releasePandas();
-            //mi tortenik
-            return false;
+            else if(o.getGame().getSelectedMode() == Game.GameMode.FinitPanda && exitedPandas < 7){
+                o.die();
+                Panda a = o.followedBy;
+                if (a != null) {
+                    while (a != null) {
+                        Panda b = a.followedBy;
+                        a.setFollowing(null);
+                        a.die();
+                        a = b;
+                    }
+                }
+                o.releasePandas();
+                return false;
+            }
+            else{
+                o.getGame().gameOver();
+                return false;
+            }
         }
         boolean success=true;
         if(entity != null)//Ha van ott entiy akk megprobalok belelepni. (ami nem fotel az return false)

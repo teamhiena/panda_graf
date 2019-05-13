@@ -57,10 +57,8 @@ public class Timer {
 				for (IDrawable id : v.getDrawables()) {
 					id.drawSelf();
 				}
-
-
-				increaseTime(1);
 				gameFrame.repaint();
+				increaseTime(1);
 			}
 			try {
 				Thread.sleep(1000);
@@ -93,7 +91,7 @@ public class Timer {
 		elapsedTime += t;
 
 		//Minden eltelt Tick-re pollingoljuk, hogy lejart-e az ido hogy nyert-e az Orangutan
-		if (elapsedTime >= 2 && game.getSelectedMode() == Game.GameMode.FinitTime) {
+		if (elapsedTime >= 60 && game.getSelectedMode() == Game.GameMode.FinitTime) {
 			if (game.getOrangutans().size()>1) {
 				int[] scores = new int[2];
 				scores[0] = game.getOrangutans().get(0).getScore();

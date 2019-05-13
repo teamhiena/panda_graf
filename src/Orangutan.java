@@ -13,13 +13,15 @@ public class Orangutan extends Animal {
         game = g;
     }
 
+    public Game getGame(){ return  game;}
+
     public Orangutan() {
         //this.goToEntry();
     }
 
     //METODUSOK
     /**
-     * @param t(Tile): Errre a mezore szeretnenk leptetni az orangutant.
+     *  szeretnenk leptetni az orangutant.
      * @return Megadja, hogy sikerult-e a muvelet.
      */
     @Override
@@ -49,7 +51,7 @@ public class Orangutan extends Animal {
     public void increaseScore(int p) {
         score += p;
         //Minden novelesnel megnezzuk, hogy elertuk-e a gyozelem szukseges pandaszamot.
-        if(score >= 25 && game.getSelectedMode() == Game.GameMode.FinitPanda){
+        if(score >= 70 && game.getSelectedMode() == Game.GameMode.FinitPanda){
             //Ha elertuk, szolunk a jateknak hogy vege.
             game.gameOver();
         }
