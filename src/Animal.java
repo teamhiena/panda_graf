@@ -1,10 +1,15 @@
 import java.util.ArrayList;
 import javax.swing.JLabel;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public abstract class Animal extends IDrawable implements Steppable{
     protected Tile tile; //Ezen all az allat.
     protected Panda followedBy=null; //Ez az allat koveti.
     protected Animal following=null; //Ezt az allatot koveti.
+    private GameFrame gf;
+    @Override
+    public void setGameFrame(GameFrame g) {gf=g;}
     
     //JLabel imageholder;
 
@@ -83,4 +88,20 @@ public abstract class Animal extends IDrawable implements Steppable{
     public Panda getFollowedBy(){ return followedBy; }
     public Animal getFollowing() { return following; }
     public void setImageHolder(JLabel l) {imageholder = l;}
+
+
+    @Override
+    public void animate(Tile from, Tile to){
+        if(gf==null) return;
+        int distx=from.getCenter()[0]-to.getCenter()[0];
+        int disty=from.getCenter()[1]-to.getCenter()[1];
+        int stepnr=10;
+        double stepx=distx/stepnr;
+        double stepy=disty/stepnr;
+        //System.out.println("animate");
+        for(int i=1;i<stepnr;i++){
+            imageholder.setBounds(tile.getCenter()[0]-24+(int)stepx*i, tile.getCenter()[1]-24+(int)stepy*i, 48, 48);
+            gf.repaint();
+        }
+    }
 }

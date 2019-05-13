@@ -76,7 +76,7 @@ t10 p w l-t9 tl-t5 tr-t11 r-t26 br-t26 bl-t12
 4 7 01
 5 7 03
 -
-t11 k x tl-t4 tr-t13 bl-t10 br-t25
+t11 k o tl-t4 tr-t13 bl-t10 br-t25
 5 4 12
 6 4 23
 5 5 01

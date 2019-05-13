@@ -26,6 +26,8 @@ public class GamePanel extends JPanel {
     GameMap gm;
     Game g;
     Timer timer;
+    GameFrame gf;
+    public void setGameFrame(GameFrame g) {gf=g;}
 
     private Dimension size = new Dimension(800, 550);
 
@@ -42,12 +44,13 @@ public class GamePanel extends JPanel {
         return tiles;
     }
 
-    public GamePanel(GameMap gamemap, Game game, View view, Timer t) {
+    public GamePanel(GameMap gamemap, Game game, View view, Timer t, GameFrame pgf) {
         super();
         gm = gamemap;
         g = game;
         v = view;
         timer = t;
+        gf=pgf;
         setPreferredSize(size);
         setBackground(Color.WHITE);
         initTriangles();
@@ -140,6 +143,7 @@ public class GamePanel extends JPanel {
                             break;
                         case "ap":
                             AfraidPanda afraidPanda = new AfraidPanda(gm);
+                            afraidPanda.setGameFrame(gf);
                             afraidPanda.spawn(newTile);
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/brownpanda.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
@@ -148,13 +152,16 @@ public class GamePanel extends JPanel {
                             break;
                         case "dp":
                             DiabeticPanda diabeticPanda = new DiabeticPanda(gm);
-                            diabeticPanda.spawn(newTile);                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/blackpanda.png")));
+                            diabeticPanda.setGameFrame(gf);
+                            diabeticPanda.spawn(newTile);
+                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/blackpanda.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addPanda(diabeticPanda);
                             diabeticPanda.map = gm;
                             break;
                         case "tp":
                             TiredPanda tiredPanda = new TiredPanda(gm);
+                            tiredPanda.setGameFrame(gf);
                             tiredPanda.spawn(newTile);
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/redpanda.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
@@ -163,6 +170,7 @@ public class GamePanel extends JPanel {
                             break;
                         case "o":
                             Orangutan orangutan = new Orangutan(g);
+                            orangutan.setGameFrame(gf);
                             orangutan.spawn(newTile);
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/orangutan.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
