@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Game{
@@ -63,9 +64,53 @@ public class Game{
 	 * A jatek vege, visszalep a fomenube.
 	 */
 	public void gameOver() {
-        ResultPanel resultPanel = new ResultPanel(gameFrame, this);
-        gameFrame.add(resultPanel);
-        resultPanel.setVisible(true);
+        //ResultPanel resultPanel = new ResultPanel(gameFrame, this);
+		JOptionPane jop = new JOptionPane();
+		if(numberofplayers == 1) {
+			if(selectedMode == GameMode.FinitTime){
+			jop.showMessageDialog(gameFrame,
+					"Player1: " +
+							gameFrame.g.getOrangutans().get(0).getScore(),
+					"Game Over!",
+					JOptionPane.PLAIN_MESSAGE
+			);
+			}
+			else {
+				jop.showMessageDialog(gameFrame,
+						"Player1: " +
+								gameFrame.timer.getTime() + "s",
+						"Game Over!",
+						JOptionPane.PLAIN_MESSAGE
+				);
+			}
+		}
+		else {
+			if(selectedMode == GameMode.FinitTime){
+				jop.showMessageDialog(gameFrame,
+						"Player1: " +
+								gameFrame.g.getOrangutans().get(0).getScore() + "\n" +
+								 "Player2: " +
+								gameFrame.g.getOrangutans().get(1).getScore() ,
+						"Game Over!",
+						JOptionPane.PLAIN_MESSAGE
+				);
+			}
+			else {
+				if(selectedMode == GameMode.FinitPanda){
+					jop.showMessageDialog(gameFrame,
+							"Player1: " +
+									gameFrame.timer.getTime() + "\n" +
+									 "Player2: " +
+									gameFrame.timer.getTime() ,
+							"Game Over!",
+							JOptionPane.PLAIN_MESSAGE);
+			}
+		}
+
+
+		}
+		gameFrame.add(jop);
+		System.exit(0);
 	}
 
 	/**

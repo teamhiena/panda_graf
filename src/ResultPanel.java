@@ -22,6 +22,8 @@ class ResultPanel extends JPanel {
         add(firstPlayerScore);
         firstPlayerScore.setVisible(true);
 
+        setPreferredSize(new Dimension(600,600));
+
         if(game.getNumberofplayers() == 1) {
             JLabel secondPlayerScore = new JLabel("0");
             add(secondPlayerScore);

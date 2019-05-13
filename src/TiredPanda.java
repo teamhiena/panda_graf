@@ -1,6 +1,3 @@
-import javax.swing.*;
-import java.util.ArrayList;
-
 /**
  * A faradekony pandat(TiredPanda) megvalosito osztaly.
  */
@@ -31,10 +28,10 @@ public class TiredPanda extends Panda {
 		if (isFollowing()){
 			Panda p = this.followedBy;
 			this.getFollowing().setFollowedBy(null);
-			release();
+			releasePandas();
 			while(p != null){
 				Panda b = p.followedBy;
-				p.release();
+				p.releasePandas();
 				p = b;
 			}
 		}
