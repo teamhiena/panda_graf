@@ -2,14 +2,16 @@ import java.util.ArrayList;
 
 public class Game{
 	private int numberofplayers = 1;
+
 	private GameMode selectedMode;
 	private GameMap map;
+	private GameFrame gameFrame;
+
 	private ArrayList<Orangutan> orangutans=new ArrayList<Orangutan>();
 	private ArrayList<Panda> pandas  = new ArrayList<Panda>();
 	public int getNumberofplayers() {return numberofplayers;}
 	public void setNumberofplayers(int n) {numberofplayers=n;}
 	private ResultPanel resultPanel;
-
 
 	/**
 	 * A jatekmodok enumja.
@@ -32,14 +34,6 @@ public class Game{
 	public void addPanda(Panda p) { pandas.add(p); }
 	public ArrayList<Orangutan> getOrangutans(){ return orangutans; }
 	public ArrayList<Panda> getPandas(){return pandas; }
-
-	/**
-	 * Jelenleg nincsen funkcioja.
-	 */
-	public void main() {
-		//TODO
-	}
-
 	/**
 	 * Kezeli az orangutan kilepeset.
 	 */
@@ -66,27 +60,12 @@ public class Game{
 	}
 
 	/**
-	 * Az elert pontszamot menti el.
-	 */
-	public void SaveHighScore(int s) {
-		//Itt meg csak kiirja a pontszamot.
-		System.out.println("Current score: " + s);
-	}
-
-	/**
 	 * A jatek vege, visszalep a fomenube.
 	 */
 	public void gameOver() {
-		//Eltuntetunk minden pandat/orangutant a jatekterrol
-		for(Orangutan o : orangutans){
-			o.die();
-		}
-		for (Panda p : pandas ){
-			p.die();
-		}
-
-		//Letrehozzuk az eredmenyeket megjelenito panelt
-        resultPanel.write();
+        ResultPanel resultPanel = new ResultPanel(gameFrame, this);
+        gameFrame.add(resultPanel);
+        resultPanel.setVisible(true);
 	}
 
 	/**
@@ -100,13 +79,9 @@ public class Game{
 
 	}
 
-	/**
-	 * Visszaadja a valasztott jatekmodot. A selectedMode adattag gettter fuggvenye.
-	 */
-	public GameMode getSelectedMode() { return selectedMode; }
-
-	/**
-	 * Beallitja a valaszott jatekmodot. A selectedMode adattag setter fuggvenye.
-	 */
-	public void setSelectedMode(GameMode selectedMode) { this.selectedMode = selectedMode; }
+	//Getter/Setter fuggvenyek
+    public GameMode getSelectedMode() { return selectedMode; }
+    public void setSelectedMode(GameMode selectedMode) { this.selectedMode = selectedMode; }
+    public void setResultPanel(ResultPanel rp){resultPanel = rp;}
+    public void setGameFrame(GameFrame gf){gameFrame = gf;}
 }

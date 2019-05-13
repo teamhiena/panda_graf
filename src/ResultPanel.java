@@ -3,15 +3,11 @@ import java.awt.*;
 
 class ResultPanel extends JPanel {
     GridLayout gridLayout = new GridLayout(3, 3);
-    private GameFrame gf;
-    private Game game;
 
-    public void setGf(GameFrame gf) {
-        this.gf = gf;
-    }
-    public void setGame(Game g){ game = g; }
+    public ResultPanel(GameFrame gf, Game game){
+        gf.getTimer().setRunning(false);
+        gf.remove(gf.gp);
 
-    public void write(){
         this.setLayout(gridLayout);
 
         JLabel firstPlayerPanel = new JLabel("1. Player");
@@ -62,8 +58,5 @@ class ResultPanel extends JPanel {
                 secondPlayerWon.setVisible(true);
             }
         }
-
-        gf.add(this);
-        setVisible(true);
     }
 }

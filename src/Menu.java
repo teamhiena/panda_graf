@@ -32,7 +32,7 @@ public class Menu extends JFrame{
 			public void actionPerformed(ActionEvent e){
 				setVisible(false);
 				f.setVisible(true);
-				timer.Tick();
+				timer.setRunning(true);
 			}
 		});
 

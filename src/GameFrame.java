@@ -15,28 +15,33 @@ public class GameFrame extends JFrame{
 	protected GameMap gm;
 	private Game g;
 	private View v;
-	private ScorePanel scorePanel;
+	//private ScorePanel scorePanel;
 	protected GamePanel gp;
 	private JLabel lab;
 	private ResultPanel rp;
+	Timer timer;
 
-	public void setRp(ResultPanel r){
-		rp=r;
-		r.setGame(g);
-	}
+	public void setRp(ResultPanel r){ rp = r; }
 	public ResultPanel getRP(){return rp;}
+	public Timer getTimer() { return timer; }
+	public GamePanel getGp(){return gp; }
 
 	public GameFrame(GameMap gamemap, Game game, View view, Timer t) {
 		super();
 		gm = gamemap;
 		g = game;
 		v = view;
+		timer = t;
+
 		gp =new GamePanel(gm, g, v, t,this);
 		add(gp,BorderLayout.CENTER);
-   		scorePanel = new ScorePanel(gm,g,v,t);
+
+   		/*scorePanel = new ScorePanel(gm,g,v,t);
         add(scorePanel, BorderLayout.NORTH);
-        scorePanel.setVisible(true);
+        scorePanel.setVisible(true);*/
+
 		gp.setVisible(true);
+
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		//setVisible(true);
 

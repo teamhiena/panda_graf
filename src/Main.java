@@ -17,11 +17,11 @@ public class Main {
         timer.setView(view);
 
         GameFrame gf = new GameFrame(gameMap, game, view, timer);
-        Menu menu = new Menu(game, gf, timer);
-        ResultPanel rp=new ResultPanel();
         timer.setGameFrame(gf);
-        gf.setRp(rp);
-        rp.setGf(gf);
+        game.setGameFrame(gf);
 
+        Menu menu = new Menu(game, gf, timer);
+
+        timer.Tick();
 	}
 }
