@@ -25,11 +25,6 @@ public class GameFrame extends JFrame{
 	public ResultPanel getRP(){return rp;}
 	public Timer getTimer() { return timer; }
 	public GamePanel getGp(){return gp; }
-	public Game getG(){return g; }
-
-	public View getV() {
-		return v;
-	}
 
 	public GameFrame(GameMap gamemap, Game game, View view, Timer t) {
 		super();
