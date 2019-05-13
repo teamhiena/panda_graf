@@ -9,6 +9,7 @@ public class Game{
 	public int getNumberofplayers() {return numberofplayers;}
 	public void setNumberofplayers(int n) {numberofplayers=n;}
 
+
 	/**
 	 * A jatekmodok enumja.
 	 */

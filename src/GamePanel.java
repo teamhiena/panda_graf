@@ -1,9 +1,8 @@
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -354,6 +353,18 @@ public class GamePanel extends JPanel {
 
         for (Tile t : tiles)
             t.fill(g);
+
+        for(Panda p:this.g.getPandas()){
+            if(p.isFollowing()){
+                Graphics2D g2=(Graphics2D) g;
+
+                g2.setStroke(new BasicStroke(6));
+                Line2D line=new Line2D.Float((float)p.getTile().getCenter()[0],(float)p.getTile().getCenter()[1],
+                        (float)p.getFollowing().getTile().getCenter()[0],(float)p.getFollowing().getTile().getCenter()[1]);
+                g2.setColor(Color.BLACK);
+                g2.draw(line);
+            }
+        }
     }
 }
 

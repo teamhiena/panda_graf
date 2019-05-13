@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -123,5 +124,6 @@ public abstract class Panda extends Animal{
 		// TODO ?
 		if(tile!=null) //nullexc volt
 		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
+
 	}
 }
