@@ -8,9 +8,9 @@ public class ExitTile extends Tile {
     public boolean receiveAnimal(Orangutan o) {
         if(o.followedBy != null) {
             o.increaseScore(10*o.getPandaNum());
-            //o.goToEntry();//  ha ez egyaltalan meg lesz csinalva
-
-            Panda a = o.followedBy;
+            //o.setTile();//  ha ez egyaltalan meg lesz csinalva
+            //nincs kezelve grafikusan hogy mi a bre van ha meghalnak
+           /* Panda a = o.followedBy;
             if (a != null) {
                 while (a != null) {
                     Panda b = a.followedBy;
@@ -18,7 +18,7 @@ public class ExitTile extends Tile {
                     a.die();
                     a = b;
                 }
-            }
+            }*/
             o.releasePandas();
             //mi tortenik
             return false;
@@ -44,7 +44,7 @@ public class ExitTile extends Tile {
     @Override
     public boolean receiveAnimal(Panda p) {
         if(p.following != null) {
-            p.die();
+           // p.die();
             p.release();
             return false;
         }

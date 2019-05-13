@@ -6,7 +6,6 @@ public class Orangutan extends Animal {
     private int score = 0;
     private int stepCounter = 4;
     private Game game;
-
     private Game.Direction direction=null;
 
     public Orangutan(Game g) {
@@ -68,9 +67,9 @@ public class Orangutan extends Animal {
     /**
      * A bejarathoz helyezi az orangutant.
      */
-    /*public void goToEntry() {
+    public void goToEntry() {
 
-    }*/
+    }
 
     /**
      * A score adattag getter fuggvenye.
