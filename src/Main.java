@@ -7,22 +7,21 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 
-		//TODO legyen singleton amit tud
-		View view = new View();
-		Game game = new Game();
-		GameMap gameMap = new GameMap();
+        //TODO legyen singleton amit tud
+        View view = new View();
+        Game game = new Game();
+        GameMap gameMap = new GameMap();
 
-		Timer timer = Timer.instance();
-		timer.setGame(game);
-		timer.setView(view);
+        Timer timer = Timer.instance();
+        timer.setGame(game);
+        timer.setView(view);
 
-		GameFrame gf = new GameFrame(gameMap, game, view, timer);
-		Menu menu = new Menu(game, gf, timer);
-		ResultPanel rp=new ResultPanel();
-		timer.setGameFrame(gf);
-		gf.setRp(rp);
-		rp.setMenu(menu);
-		rp.setGf(gf);
+        GameFrame gf = new GameFrame(gameMap, game, view, timer);
+        Menu menu = new Menu(game, gf, timer);
+        ResultPanel rp=new ResultPanel();
+        timer.setGameFrame(gf);
+        gf.setRp(rp);
+        rp.setGf(gf);
 
 	}
 }

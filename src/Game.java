@@ -8,6 +8,7 @@ public class Game{
 	private ArrayList<Panda> pandas  = new ArrayList<Panda>();
 	public int getNumberofplayers() {return numberofplayers;}
 	public void setNumberofplayers(int n) {numberofplayers=n;}
+	private ResultPanel resultPanel;
 
 
 	/**
@@ -76,7 +77,16 @@ public class Game{
 	 * A jatek vege, visszalep a fomenube.
 	 */
 	public void gameOver() {
-		//TODO
+		//Eltuntetunk minden pandat/orangutant a jatekterrol
+		for(Orangutan o : orangutans){
+			o.die();
+		}
+		for (Panda p : pandas ){
+			p.die();
+		}
+
+		//Letrehozzuk az eredmenyeket megjelenito panelt
+        resultPanel.write();
 	}
 
 	/**

@@ -1,42 +1,69 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 class ResultPanel extends JPanel {
-    private Dimension size=new Dimension(400,400);
-    //private GridLayout grid=new GridLayout(4,2);
-    private JButton bMainMenu=new JButton("Main menu");
+    GridLayout gridLayout = new GridLayout(3, 3);
     private GameFrame gf;
+    private Game game;
 
     public void setGf(GameFrame gf) {
         this.gf = gf;
     }
+    public void setGame(Game g){ game = g; }
 
-    Menu menu;
+    public void write(){
+        this.setLayout(gridLayout);
 
-    private ArrayList<JLabel> labels = new ArrayList<JLabel>();
+        JLabel firstPlayerPanel = new JLabel("1. Player");
+        add(firstPlayerPanel);
+        firstPlayerPanel.setVisible(true);
 
-    void setMenu(Menu m){menu=m;}
+        JLabel secondPlayerLabel = new JLabel("2. Player");
+        add(secondPlayerLabel);
+        secondPlayerLabel.setVisible(true);
 
-    public ResultPanel(){
-        setPreferredSize(size);
-        for(int i=0;i<6;i++)
-            labels.add(new JLabel("asd"));
+        JLabel firstPlayerScore = new JLabel(Integer.toString(game.getOrangutans().get(0).getScore()));
+        add(firstPlayerScore);
+        firstPlayerScore.setVisible(true);
 
-        add(bMainMenu);
+        if(game.getNumberofplayers() == 1) {
+            JLabel secondPlayerScore = new JLabel("0");
+            add(secondPlayerScore);
+            secondPlayerScore.setVisible(true);
 
-        bMainMenu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gf.setVisible(false);
-                menu.setVisible(true);
+            JLabel firsPlayerWon = new JLabel("-");
+            add(firsPlayerWon);
+            firsPlayerWon.setVisible(true);
+
+            JLabel secondPlayerWon = new JLabel("-");
+            add(secondPlayerWon);
+            secondPlayerWon.setVisible(true);
+        }
+        else{
+            JLabel secondPlayerScore = new JLabel(Integer.toString(game.getOrangutans().get(1).getScore()));
+            add(secondPlayerScore);
+            secondPlayerScore.setVisible(true);
+            if(game.getOrangutans().get(0).getScore() > game.getOrangutans().get(1).getScore() ){
+                JLabel firsPlayerWon = new JLabel("You won!");
+                add(firsPlayerWon);
+                firsPlayerWon.setVisible(true);
+
+                JLabel secondPlayerWon = new JLabel("-");
+                add(secondPlayerWon);
+                secondPlayerWon.setVisible(true);
             }
-        });
-    }
+            else{
+                JLabel firsPlayerWon = new JLabel("-");
+                add(firsPlayerWon);
+                firsPlayerWon.setVisible(true);
 
-    public JLabel getLabel(int n){
-        return labels.get(n);
+                JLabel secondPlayerWon = new JLabel("You won!");
+                add(secondPlayerWon);
+                secondPlayerWon.setVisible(true);
+            }
+        }
+
+        gf.add(this);
+        setVisible(true);
     }
 }
