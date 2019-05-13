@@ -27,41 +27,48 @@ public class Timer {
 	}
 
 	public void Tick() {
-		while(running){
-			System.out.println("Tick!");
-			for (IDrawable id : v.getDrawables()) {
-				id.drawSelf();
-			}
+		Thread asyncThreadForLoop = new Thread(new Runnable() {
 
-			//Orangutanokat stepeljuk
-			for(Orangutan o : game.getOrangutans()){
-				if (o!=null)
-					o.step();
-			}
+			@Override
+			public void run() {
+				while(running){
+					System.out.println("Tick!");
+					for (IDrawable id : v.getDrawables()) {
+						id.drawSelf();
+					}
 
-			//Pandaknal csak azokat leptetjuk akik nem kovetnek senkit.
-			for(Panda p : game.getPandas()){
-				if(!p.isFollowing()){
-					p.step();
+					//Orangutanokat stepeljuk
+					for(Orangutan o : game.getOrangutans()){
+						if (o!=null)
+						    o.step();
+					}
+
+					//Pandaknal csak azokat leptetjuk akik nem kovetnek senkit.
+					for(Panda p : game.getPandas()){
+						if(!p.isFollowing()){
+							p.step();
+						}
+					}
+
+					//10% esellyel makeEffectelunk
+					for(MakeEffect e : Entities){
+						Random rng = new Random();
+						if(rng.nextInt(10)%10>9){
+							e.makeEffect();
+						}
+					}
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						System.out.println("Timer Tick() failed");
+						e.printStackTrace();
+					}
+					increaseTime(1);
+					gameFrame.repaint();
 				}
 			}
-
-			//10% esellyel makeEffectelunk
-			for(MakeEffect e : Entities){
-				Random rng = new Random();
-				if(rng.nextInt(10)%10>9){
-					e.makeEffect();
-				}
-			}
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				System.out.println("Timer Tick() failed");
-				e.printStackTrace();
-			}
-			increaseTime(1);
-			gameFrame.repaint();
-		}
+		});
+		asyncThreadForLoop.start();
 	}
 
 

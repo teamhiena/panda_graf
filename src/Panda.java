@@ -3,7 +3,7 @@ import java.util.Random;
 
 public abstract class Panda extends Animal{
 	private ArrayList<Tile> subbedTiles=new ArrayList<Tile>();
-	protected GameMap map; //TODO:inicializalni
+	protected GameMap map;
 	protected GameMap.Key hatesEntity;
 
 	//METODUSOK
@@ -39,8 +39,9 @@ public abstract class Panda extends Animal{
 	 */
 	@Override
 	public boolean step(Tile newTile) {
-		//if(newTile==null) return false; //TODO EZ ITT SZAR NULLPTR
+		//if(newTile==null) return false;
 		Tile temp=tile;
+
 		boolean success = newTile.receiveAnimal(this); //NULLPTR
 		if(success) {
 			tile.removePandaFromNeighborSubbedPandas(this); //Panda eltavolitasa a szomszedokrol.
@@ -71,6 +72,7 @@ public abstract class Panda extends Animal{
 			if(doAStep){
 				int bound=tile.getNeighbors().size();
 				System.out.println("bound :"+bound);
+				System.out.println("ez lett a bound: "+rng.nextInt(bound));
 				ret=step(tile.getNeighbors().get(rng.nextInt(bound)));
 			}
 		}

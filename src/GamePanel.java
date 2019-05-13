@@ -144,12 +144,14 @@ public class GamePanel extends JPanel {
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/brownpanda.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addPanda(afraidPanda);
+                            afraidPanda.map = gm;
                             break;
                         case "dp":
                             DiabeticPanda diabeticPanda = new DiabeticPanda(gm);
                             diabeticPanda.spawn(newTile);                            newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/blackpanda.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addPanda(diabeticPanda);
+                            diabeticPanda.map = gm;
                             break;
                         case "tp":
                             TiredPanda tiredPanda = new TiredPanda(gm);
@@ -157,6 +159,7 @@ public class GamePanel extends JPanel {
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/redpanda.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addPanda(tiredPanda);
+                            tiredPanda.map = gm;
                             break;
                         case "o":
                             Orangutan orangutan = new Orangutan(g);
@@ -181,7 +184,7 @@ public class GamePanel extends JPanel {
                             ExitTile new_ExitTile = new ExitTile();
                             new_ExitTile.setColor(newTile.getColor());
                             newTile = new_ExitTile;
-                            gm.setExit(new_ExitTile);       //EZ LEHET HOGY ROSSZ?
+                            gm.setExit(new_ExitTile);
                             break;
 
                         default:
@@ -244,7 +247,6 @@ public class GamePanel extends JPanel {
                         int rown = Integer.parseInt(trianglerow_split[0]);
                         if (trianglerow_split[2].equals("full")) {
                             for (int i = 0; i < 4; i++) {
-
                                 newTile.addTriangle(triangles[coln][rown][i]);
                             }
                         } else {
@@ -263,6 +265,7 @@ public class GamePanel extends JPanel {
                     tiles.add(newTile);
                 }
             }
+
 
             //Connections beallitasa
             for (String code : tilecodes.keySet()) {
@@ -344,6 +347,5 @@ public class GamePanel extends JPanel {
         for (Tile t : tiles)
             t.fill(g);
     }
-
 }
 
