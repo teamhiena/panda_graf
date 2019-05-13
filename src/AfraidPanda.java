@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Az ijedos pandat(AfraidPanda) megvalosito osztaly. Megijed a jatekgep csilingelsesetol es elengedi a mogotte allo
  * pandak mancsat, igy felbomlik a sor.
@@ -22,10 +20,10 @@ public class AfraidPanda extends Panda {
 	public void affectedBy(Arcade a) {
 		Panda p = this.followedBy;
 		this.getFollowing().setFollowedBy(null);
-		release();
+		releasePandas();
 		while(p != null){
 			Panda b = p.followedBy;
-			p.release();
+			p.releasePandas();
 			p = b;
 		}
 	}

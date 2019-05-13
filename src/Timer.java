@@ -6,6 +6,7 @@ public class Timer {
 	private static Timer instance = null;
 	private int elapsedTime = 0;
 	private Game game;
+	int maxTime=200;
 	private GameMap gamemap;
 	//TODO a foteleket is decreselni kell
 	private View v;
@@ -102,7 +103,7 @@ public class Timer {
 		elapsedTime += t;
 
 		//Minden eltelt Tick-re pollingoljuk, hogy lejart-e az ido hogy nyert-e az Orangutan
-		if (elapsedTime >= 60 && game.getSelectedMode() == Game.GameMode.FinitTime) {
+		if (elapsedTime >= maxTime && game.getSelectedMode() == Game.GameMode.FinitTime) {
 			if (game.getOrangutans().size()>1){
 
 				int[] scores=new int[2];
@@ -114,6 +115,7 @@ public class Timer {
 				game.SaveHighScore(game.getOrangutans().get(0).getScore());
 			}
 
+			System.out.println("Time is up");
 			//Es vegul lejart az ido, game-over.
 			game.gameOver();
 		}

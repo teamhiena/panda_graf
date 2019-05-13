@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -61,6 +60,22 @@ public abstract class Panda extends Animal{
 		return success;
 	}
 
+	//ezt hivja az orangutan diewithfollowers /belelep a lyukba
+	public void die(){
+		boolean success = false;
+		tile.setAnimal(null);
+		releasePandas();
+
+		while(!success){
+			Random rng = new Random();
+			Integer idx =rng.nextInt(gf.gp.getTiles().size());
+			if(gf.gp.getTiles().get(idx).getAnimal() == null && gf.gp.getTiles().get(idx).getEntity() == null) {
+				success = spawn(gf.gp.getTiles().get(idx)); break;
+			}
+		}
+	}
+
+
 	/**
 	 *  freeroamolo pandakat leptet random helyre
 	 * @return sikerult-e odalepni
@@ -103,19 +118,7 @@ public abstract class Panda extends Animal{
 		o.setFollowedBy(this);
 		return true;
 	}
-	/**
-	 * Elengedi az ot koveto ill. annak a pandanak a kezet akit o kovet.
-	 */
-	public void release()
-	{
-		following = null;
 
-		//nextTile = null;
-		if(followedBy != null){
-			followedBy.release();
-		}
-		followedBy = null;
-	}
 
 
 

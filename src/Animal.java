@@ -26,21 +26,26 @@ public abstract class Animal extends IDrawable implements Steppable{
     /**
      * Ez a metodus hivodik meg, amikor az allat "meghal".
      */
-    //METODUSOKK
+
     /**
-     * Ez a metodus hivodik meg, amikor az allat "meghal".
+     * Elengedi az ot koveto ill. annak a pandanak a kezet akit o kovet.
      */
-    public void die(){
-        boolean success = false;
-        while(!success){
-            Random rng = new Random();
-            Integer idx =rng.nextInt(gf.gp.getTiles().size());
-            if(gf.gp.getTiles().get(idx).getAnimal() == null && gf.gp.getTiles().get(idx).getEntity() == null) {
-                success = spawn(gf.gp.getTiles().get(idx)); break;
-            }
+    public void releasePandas()
+    {
+        if(isFollowing())
+            following.setFollowedBy(null);
+
+        following = null;
+
+        //nextTile = null;
+        if(isFollowedBy()){
+            followedBy.releasePandas();
         }
 
     }
+
+    public abstract void die();
+
     public boolean spawn(Tile t){
         if (t.getAnimal()!=null || t.getEntity()!= null)
             return false;

@@ -1,14 +1,17 @@
+import java.awt.*;
 import java.util.ArrayList;
 
 public class WeakTile extends Tile{
-	private int numOfSteps=20;
+	private int numOfSteps=5;
 	private boolean isBroken=false;
 
 	//METODUSOK:
 	public void reduceNumOfSteps() {
 		numOfSteps--;
-		if(numOfSteps<=0)
+		if(numOfSteps<=0){
 			isBroken=true;
+			setColor(Color.WHITE);
+		}
 	}
 
 	public void setNumOfSteps(int s){
@@ -26,6 +29,7 @@ public class WeakTile extends Tile{
 		reduceNumOfSteps();
 		if(isBroken()) {
 			o.die();
+			setAnimal(null);
 			return false;
 		}
 
@@ -59,7 +63,10 @@ public class WeakTile extends Tile{
 	public boolean receiveAnimal(Panda p) {
 		reduceNumOfSteps();
 		if(isBroken()) {
+
+
 			p.die();
+			setAnimal(null);
 			return false;
 		}
 		boolean success=true;
