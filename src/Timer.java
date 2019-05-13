@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Random;
 
 public class Timer {
@@ -7,6 +8,7 @@ public class Timer {
 	private int elapsedTime = 0;
 	private Game game;
 	private GameMap gamemap;
+	private int maxTime=60;
 	//TODO a foteleket is decreselni kell
 	private View v;
 	private GameFrame gameFrame;
@@ -40,10 +42,14 @@ public class Timer {
 				}
 
 				//Pandaknal csak azokat leptetjuk akik nem kovetnek senkit.
-				for (Panda p : game.getPandas()) {
-					if (!p.isFollowing()) {
-						p.step();
+				try{
+					for (Panda p : game.getPandas()) {
+						if (!p.isFollowing()) {
+							p.step();
+						}
 					}
+				} catch (ConcurrentModificationException e){
+					System.out.println("budget hibakezeles lol");
 				}
 
 				//10% esellyel makeEffectelunk
@@ -93,7 +99,7 @@ public class Timer {
 		elapsedTime += t;
 
 		//Minden eltelt Tick-re pollingoljuk, hogy lejart-e az ido hogy nyert-e az Orangutan
-		if (elapsedTime >= 2 && game.getSelectedMode() == Game.GameMode.FinitTime) {
+		if (elapsedTime >= maxTime && game.getSelectedMode() == Game.GameMode.FinitTime) {
 			if (game.getOrangutans().size()>1) {
 				int[] scores = new int[2];
 				scores[0] = game.getOrangutans().get(0).getScore();

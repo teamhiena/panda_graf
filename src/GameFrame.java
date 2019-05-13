@@ -150,7 +150,7 @@ public class GameFrame extends JFrame{
 			Orangutan o=game.getOrangutans().get(0);
 			setOrangutanDirection(o,e.getKeyCode());
 
-			if(false&&game.getOrangutans().size()>1){
+			if(game.getOrangutans().size()>1){
 				o=game.getOrangutans().get(1);
 				setOrangutanDirection(o,e.getKeyCode());
 			}

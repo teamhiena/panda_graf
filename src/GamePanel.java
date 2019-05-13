@@ -133,7 +133,7 @@ public class GamePanel extends JPanel {
                             gm.addSpecificTile(newTile, GameMap.Key.Automat);
                             break;
                         case "f":
-                            Fotel fotel = new Fotel();
+                            Fotel fotel = new Fotel(g);
                             newTile.entity = fotel;
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/fotel.png")));
                             //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
@@ -174,6 +174,8 @@ public class GamePanel extends JPanel {
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/orangutan.png")));
                             //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addOrangutan(orangutan);
+                            if(g.getOrangutans().size()>1)
+                                orangutan.setControls(Orangutan.Controls.arrows);
                             break;
                         case "w":
                             WeakTile new_WeakTile = new WeakTile();

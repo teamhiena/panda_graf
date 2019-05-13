@@ -5,7 +5,7 @@ public class Orangutan extends Animal {
     private Game.Direction direction=null;
 
     public Orangutan(Game g) {
-        g.addOrangutan(this);
+        //g.addOrangutan(this);
         game = g;
     }
 
