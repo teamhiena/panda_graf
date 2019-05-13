@@ -136,7 +136,7 @@ public class GamePanel extends JPanel {
                         case "f":
                             Fotel fotel = new Fotel();
                             newTile.entity = fotel;
-                            newTile.entity.setImageHolder(new JLabel(new ImageIcon("fotel.png")));
+                            newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/fotel.png")));
                             //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
                             timer.addEntity(fotel);
                             gm.addSpecificTile(newTile, GameMap.Key.Fotel);

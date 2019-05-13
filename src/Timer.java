@@ -72,6 +72,7 @@ public class Timer {
 						System.out.println("Timer Tick() failed");
 						e.printStackTrace();
 					}
+					System.out.println(gameFrame.gm.getExitTile().getNeighbors().size());
 					/*increaseTime(1);
 					gameFrame.repaint();*/
 				}
