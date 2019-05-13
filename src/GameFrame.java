@@ -67,7 +67,7 @@ public class GameFrame extends JFrame{
 						direction= Game.Direction.TopRight;
 					}else if(direction== Game.Direction.Left){ //wa
 						direction= Game.Direction.TopLeft;
-					}else{ //w
+					}else if(direction!= Game.Direction.TopRight&&direction!= Game.Direction.TopLeft){ //w
 						direction= Game.Direction.Top;
 					}
 				}else if (keyCode==KeyEvent.VK_A) { //a megnyomva
@@ -75,7 +75,7 @@ public class GameFrame extends JFrame{
 						direction= Game.Direction.TopLeft;
 					}else if(direction== Game.Direction.Bottom){ //sa
 						direction= Game.Direction.BottomLeft;
-					}else{ //a
+					}else if(direction!= Game.Direction.BottomLeft&&direction!= Game.Direction.TopLeft){ //a
 						direction= Game.Direction.Left;
 					}
 				}else if (keyCode==KeyEvent.VK_S) { //s megnyomva
@@ -83,7 +83,7 @@ public class GameFrame extends JFrame{
 						direction= Game.Direction.BottomRight;
 					}else if(direction== Game.Direction.Left){ //sa
 						direction= Game.Direction.BottomLeft;
-					}else{ //s
+					}else if(direction!= Game.Direction.BottomLeft&&direction!= Game.Direction.BottomRight){ //s
 						direction= Game.Direction.Bottom;
 					}
 				}else if (keyCode==KeyEvent.VK_D){ //d megnyomva
@@ -91,7 +91,7 @@ public class GameFrame extends JFrame{
 						direction= Game.Direction.TopRight;
 					}else if(direction== Game.Direction.Bottom){ //sd
 						direction= Game.Direction.BottomRight;
-					}else{ //d
+					}else if(direction!= Game.Direction.TopRight&&direction!= Game.Direction.BottomRight){ //d
 						direction= Game.Direction.Right;
 					}
 				}
@@ -102,7 +102,7 @@ public class GameFrame extends JFrame{
 						direction= Game.Direction.TopRight;
 					}else if(direction== Game.Direction.Left){ //wa
 						direction= Game.Direction.TopLeft;
-					}else{ //w
+					}else if(direction!= Game.Direction.TopRight&&direction!= Game.Direction.TopLeft){ //w
 						direction= Game.Direction.Top;
 					}
 				}else if (keyCode==KeyEvent.VK_LEFT) { //a megnyomva
@@ -110,7 +110,7 @@ public class GameFrame extends JFrame{
 						direction= Game.Direction.TopLeft;
 					}else if(direction== Game.Direction.Bottom){ //sa
 						direction= Game.Direction.BottomLeft;
-					}else{ //a
+					}else if(direction!= Game.Direction.BottomLeft&&direction!= Game.Direction.TopLeft){ //a
 						direction= Game.Direction.Left;
 					}
 				}else if (keyCode==KeyEvent.VK_DOWN) { //s megnyomva
@@ -118,7 +118,7 @@ public class GameFrame extends JFrame{
 						direction= Game.Direction.BottomRight;
 					}else if(direction== Game.Direction.Left){ //sa
 						direction= Game.Direction.BottomLeft;
-					}else{ //s
+					}else if(direction!= Game.Direction.BottomLeft&&direction!= Game.Direction.TopLeft){ //s
 						direction= Game.Direction.Bottom;
 					}
 				}else if (keyCode==KeyEvent.VK_RIGHT){ //d megnyomva
@@ -126,7 +126,7 @@ public class GameFrame extends JFrame{
 						direction= Game.Direction.TopRight;
 					}else if(direction== Game.Direction.Bottom){ //sd
 						direction= Game.Direction.BottomRight;
-					}else { //d
+					}else if(direction!= Game.Direction.TopRight&&direction!= Game.Direction.BottomRight){ //d
 						direction= Game.Direction.Right;
 					}
 				}

@@ -15,7 +15,7 @@ t2 z x bl-t1 b-t8 br-t3
 3 0 23
 3 1 03
 -
-t3 k x bl-t8 b-t4 br-t13 tl-t2 tr-14
+t3 k x bl-t8 b-t4 br-t13 tl-t2 tr-t14
 4 1 full
 4 2 full
 5 1 full
