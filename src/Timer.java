@@ -6,13 +6,12 @@ public class Timer {
 	private static Timer instance = null;
 	private int elapsedTime = 0;
 	private Game game;
-	int maxTime=100;
 	private GameMap gamemap;
 	//TODO a foteleket is decreselni kell
 	private View v;
 	private GameFrame gameFrame;
 	
-	private boolean running = true;
+	private boolean running = false;
 
 	public void setRunning(boolean r){running = r;}
 
@@ -28,58 +27,49 @@ public class Timer {
 	}
 
 	public void Tick() {
-		Thread asyncThreadForLoop = new Thread(new Runnable() {
+			if(running) {
+				System.out.println("Tick!");
+				/*for (IDrawable id : v.getDrawables()) {
+					id.drawSelf();
+				}*/
 
-			@Override
-			public void run() {
-				while(running){
-					System.out.println("Tick!");
-					/*for (IDrawable id : v.getDrawables()) {
-						id.drawSelf();
-					}*/
-
-					//Orangutanokat stepeljuk
-					for(Orangutan o : game.getOrangutans()){
-						if (o!=null)
-						    o.step();
-					}
-
-					//Pandaknal csak azokat leptetjuk akik nem kovetnek senkit.
-					for(Panda p : game.getPandas()){
-						if(!p.isFollowing()){
-							p.step();
-						}
-					}
-
-					//10% esellyel makeEffectelunk
-					for(MakeEffect e : Entities){
-						Random rng = new Random();
-						if(rng.nextInt(10)%10>9){
-							e.makeEffect();
-						}
-					}
-
-					for (IDrawable id : v.getDrawables()) {
-						id.drawSelf();
-					}
-
-
-					increaseTime(1);
-					gameFrame.repaint();
-
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						System.out.println("Timer Tick() failed");
-						e.printStackTrace();
-					}
-					System.out.println(gameFrame.gm.getExitTile().getNeighbors().size());
-					/*increaseTime(1);
-					gameFrame.repaint();*/
+				//Orangutanokat stepeljuk
+				for (Orangutan o : game.getOrangutans()) {
+					if (o != null)
+						o.step();
 				}
+
+				//Pandaknal csak azokat leptetjuk akik nem kovetnek senkit.
+				for (Panda p : game.getPandas()) {
+					if (!p.isFollowing()) {
+						p.step();
+					}
+				}
+
+				//10% esellyel makeEffectelunk
+				for (MakeEffect e : Entities) {
+					Random rng = new Random();
+					if (rng.nextInt(10) % 10 > 9) {
+						e.makeEffect();
+					}
+				}
+
+				for (IDrawable id : v.getDrawables()) {
+					id.drawSelf();
+				}
+
+
+				increaseTime(1);
+				gameFrame.repaint();
 			}
-		});
-		asyncThreadForLoop.start();
+			try {
+				Thread.sleep(1000);
+				Tick();
+			} catch (InterruptedException e) {
+				System.out.println("Timer Tick() failed");
+				e.printStackTrace();
+			}
+			System.out.println(gameFrame.gm.getExitTile().getNeighbors().size());
 	}
 
 
@@ -103,19 +93,12 @@ public class Timer {
 		elapsedTime += t;
 
 		//Minden eltelt Tick-re pollingoljuk, hogy lejart-e az ido hogy nyert-e az Orangutan
-		if (elapsedTime >= maxTime && game.getSelectedMode() == Game.GameMode.FinitTime) {
-			if (game.getOrangutans().size()>1){
-
-				int[] scores=new int[2];
-				scores[0]=game.getOrangutans().get(0).getScore() ;
-				scores[1]=game.getOrangutans().get(1).getScore() ;
-
-				//game.SaveHighScore(scores[0]>scores[1] ? scores[0] : scores[1]);
-			} else {
-				//game.SaveHighScore(game.getOrangutans().get(0).getScore());
+		if (elapsedTime >= 2 && game.getSelectedMode() == Game.GameMode.FinitTime) {
+			if (game.getOrangutans().size()>1) {
+				int[] scores = new int[2];
+				scores[0] = game.getOrangutans().get(0).getScore();
+				scores[1] = game.getOrangutans().get(1).getScore();
 			}
-
-			System.out.println("Time is up");
 			//Es vegul lejart az ido, game-over.
 			game.gameOver();
 		}
