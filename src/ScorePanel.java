@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ScorePanel extends JPanel {
     private GameMap gm;
@@ -7,7 +9,7 @@ public class ScorePanel extends JPanel {
     private View v;
     private Timer timer;
     protected JLabel time1ab;
-    public ScorePanel(GameMap gamemap, Game game, View view, Timer t){
+    public ScorePanel(GameMap gamemap, Game game, View view, Timer t) {
         super();
         gm = gamemap;
         g = game;
@@ -20,7 +22,7 @@ public class ScorePanel extends JPanel {
             scoreboard2 += "Player2: "; // + g.getOrangutans().get(1).getScore();*/
         JLabel score2 = new JLabel("");
         score2.setPreferredSize(new Dimension(300, 50));
-        String time = "" + timer.getTime() ; //kene valami idő getter
+        String time = "" + timer.getTime(); //kene valami idő getter
         JLabel time1ab = new JLabel("ido");
         time1ab.setPreferredSize(new Dimension(300, 50));
         setLayout(new BorderLayout());
@@ -30,6 +32,7 @@ public class ScorePanel extends JPanel {
         add(score1, BorderLayout.WEST);
         add(score2, BorderLayout.EAST);
         add(time1ab, BorderLayout.CENTER);
+        //nem updatel valaki help pls
 
         repaint();
     }
