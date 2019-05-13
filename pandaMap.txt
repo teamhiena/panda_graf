@@ -15,7 +15,7 @@ t2 z x bl-t1 b-t8 br-t3
 3 0 23
 3 1 03
 -
-t3 k x bl-t8 b-t4 br-t13
+t3 k x bl-t8 b-t4 br-t13 tl-t2 tr-14
 4 1 full
 4 2 full
 5 1 full
@@ -37,7 +37,7 @@ t5 s x tl-t8 tr-t4 bl-t6 br-t10
 3 5 01
 4 5 03
 -
-t6 k x t-t8 tl-t7 tr-t5 bl-t9
+t6 k x t-t8 tl-t7 tr-t5 br-t9
 2 5 full
 2 6 full
 1 5 12
@@ -111,11 +111,11 @@ t15 k x tl-t14 bl-t13 br-t16
 8 2 01
 9 2 03
 -
-t16 z dp tl-t15 l-t13 r-t18
+t16 z dp tl-t15 l-t13 r-t18 b-t17
 9 3 full
 9 2 12
 -
-t17 s j
+t17 s j tr-t20 br-t21 b-t22 bl-24 tl-t13 t-t16
 9 4 full
 10 5 full
 11 5 full
@@ -129,7 +129,7 @@ t17 s j
 13 4 3
 12 5 03
 -
-t18 k x l-t16 r-t19
+t18 k x l-t16 r-t19 bl-t17
 10 2 23
 10 3 full
 11 3 full
@@ -216,7 +216,7 @@ t29 k x t-t23 tr-t32 br-t30 bl-t30 tl-t28
 9 11 01
 10 11 03
 -
-t30 s x tr-t29 tl-t29 r-t31
+t30 s x tr-t29 tl-t29 r-t31 t-t28
 7 10 full
 7 11 full
 8 11 full
@@ -249,13 +249,13 @@ t32 p w b-t31 r-t35 tr-t33 tl-t22 bl-t29
 11 8 12
 11 9 01
 -
-t33 s x tr-t38 tl-t21 bl-t32 bl-t34
+t33 s x tr-t38 tl-t21 bl-t32 br-t34
 13 6 12
 13 7 01
 14 6 23
 14 7 03
 -
-t34 k x t-t38 tr-t37 tl-t33 b-t35
+t34 k x t-t38 tr-t37 tl-t33 b-t35 bl-t35 br-t35
 15 7 full
 15 8 full
 14 7 12
@@ -263,7 +263,7 @@ t34 k x t-t38 tr-t37 tl-t33 b-t35
 16 7 23
 16 8 03
 -
-t35 z x b-t36 t-t34 l-t32
+t35 z x b-t36 t-t34 l-t32 tl-t35 tr-t35
 14 9 full
 15 9 full
 16 9 full
@@ -277,7 +277,7 @@ t36 s f t-t35 l-t31
 15 11 03
 16 10 03
 -
-t37 s wa bl-t34 tl-t38
+t37 s wa bl-t34 tl-t38 b-t36
 16 6 12
 16 7 01
 17 6 23
