@@ -52,6 +52,19 @@ public abstract class Animal extends IDrawable implements Steppable{
         setTile(t);
         return true;
     }
+    public void releasePandas()
+    {
+        if(isFollowing())
+            following.setFollowedBy(null);
+
+        following = null;
+
+        //nextTile = null;
+        if(isFollowedBy()){
+            followedBy.releasePandas();
+        }
+
+    }
     /**
      * Tile adattag getter/setter fuggvenye.
      */
