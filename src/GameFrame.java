@@ -12,7 +12,7 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonListener;
 
 public class GameFrame extends JFrame{
-	private GameMap gm;
+	protected GameMap gm;
 	private Game g;
 	private View v;
 	private ScorePanel scorePanel;

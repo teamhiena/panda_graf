@@ -30,8 +30,8 @@ public abstract class Animal extends IDrawable implements Steppable{
      * Ez a metodus hivodik meg, amikor az allat "meghal".
      */
     public void die(){
-        this.getTile().setAnimal(null);
-        this.setTile(null);
+        gf.gm.getEntryTile().setAnimal(this);
+        this.setTile(gf.gm.getEntryTile());
 
     }
     public boolean spawn(Tile t){

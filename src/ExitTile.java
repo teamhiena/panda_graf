@@ -8,7 +8,9 @@ public class ExitTile extends Tile {
     public boolean receiveAnimal(Orangutan o) {
         if(o.followedBy != null) {
             o.increaseScore(10*o.getPandaNum());
-            //o.setTile();//  ha ez egyaltalan meg lesz csinalva
+            //  ha ez egyaltalan meg lesz csinalva
+            //o.followedBy.getTile().setAnimal(null);
+            o.die();
             //nincs kezelve grafikusan hogy mi a bre van ha meghalnak
            /* Panda a = o.followedBy;
             if (a != null) {

@@ -72,7 +72,7 @@ public abstract class Panda extends Animal{
 			Random rng=new Random();
 			boolean doAStep =rng.nextInt(10)>1;
 			if(doAStep){
-				if(tile.getNeighbors().size() != 0){
+				if(tile != null){
 				int bound=tile.getNeighbors().size();
 				//System.out.println("bound :"+bound);
 				//System.out.println("ez lett a bound: "+rng.nextInt(bound));
