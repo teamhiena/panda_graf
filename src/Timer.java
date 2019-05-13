@@ -93,7 +93,7 @@ public class Timer {
 		elapsedTime += t;
 
 		//Minden eltelt Tick-re pollingoljuk, hogy lejart-e az ido hogy nyert-e az Orangutan
-		if (elapsedTime >= 2 && game.getSelectedMode() == Game.GameMode.FinitTime) {
+		if (elapsedTime >= 60 && game.getSelectedMode() == Game.GameMode.FinitTime) {
 			if (game.getOrangutans().size()>1) {
 				int[] scores = new int[2];
 				scores[0] = game.getOrangutans().get(0).getScore();

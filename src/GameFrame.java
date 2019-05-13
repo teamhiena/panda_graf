@@ -13,7 +13,7 @@ import javax.swing.plaf.basic.BasicButtonListener;
 
 public class GameFrame extends JFrame{
 	protected GameMap gm;
-	private Game g;
+	protected Game g;
 	private View v;
 	//private ScorePanel scorePanel;
 	protected GamePanel gp;
