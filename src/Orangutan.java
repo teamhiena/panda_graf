@@ -51,7 +51,6 @@ public class Orangutan extends Animal {
         //Minden novelesnel megnezzuk, hogy elertuk-e a gyozelem szukseges pandaszamot.
         if(score >= 25 && game.getSelectedMode() == Game.GameMode.FinitPanda){
             //Ha elertuk, szolunk a jateknak hogy vege.
-            game.SaveHighScore(score);
             game.gameOver();
         }
     }
