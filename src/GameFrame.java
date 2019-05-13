@@ -22,6 +22,7 @@ public class GameFrame extends JFrame{
 
 	public void setRp(ResultPanel r){
 		rp=r;
+		r.setGame(g);
 	}
 	public ResultPanel getRP(){return rp;}
 

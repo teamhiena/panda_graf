@@ -8,6 +8,7 @@ public class Game{
 	private ArrayList<Panda> pandas  = new ArrayList<Panda>();
 	public int getNumberofplayers() {return numberofplayers;}
 	public void setNumberofplayers(int n) {numberofplayers=n;}
+	private ResultPanel resultPanel;
 
 	/**
 	 * A jatekmodok enumja.
@@ -84,7 +85,7 @@ public class Game{
 		}
 
 		//Letrehozzuk az eredmenyeket megjelenito panelt
-		ResultPanel resultPanel = new ResultPanel();
+        resultPanel.write();
 	}
 
 	/**

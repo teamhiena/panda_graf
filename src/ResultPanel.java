@@ -1,5 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.String;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,7 +11,7 @@ class ResultPanel extends JPanel {
     }
     public void setGame(Game g){ game = g; }
 
-    public ResultPanel(){
+    public void write(){
         this.setLayout(gridLayout);
 
         JLabel firstPlayerPanel = new JLabel("1. Player");
@@ -67,6 +65,5 @@ class ResultPanel extends JPanel {
 
         gf.add(this);
         setVisible(true);
-
     }
 }
