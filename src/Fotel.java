@@ -94,7 +94,8 @@ public class Fotel extends Entity implements MakeEffect{
 	@Override
 	public void makeEffect() {
 		Panda p = getRandomSubbedPanda();
-		p.step(tile);
+		if(p!=null)
+			p.step(tile);
 	}
 
 	public Tile getEnteredFrom(){ return enteredFrom; }
