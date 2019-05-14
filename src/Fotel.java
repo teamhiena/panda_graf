@@ -94,7 +94,7 @@ public class Fotel extends Entity implements MakeEffect{
 
 	@Override
 	public void drawSelf() {
-		// m�s az ikon ha �lnek benne
+		// mas az ikon ha ulnek benne
 		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
 	}
 }

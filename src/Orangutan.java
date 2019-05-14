@@ -22,7 +22,7 @@ public class Orangutan extends Animal {
         releasePandas();
 
         while(!success){
-            success=spawn(gf.gm.getEntryTile());
+            success = spawn(gf.gm.getEntryTile());
         }
     }
 

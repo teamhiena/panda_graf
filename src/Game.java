@@ -67,7 +67,7 @@ public class Game{
 			else {
 				jop.showMessageDialog(gameFrame,
 						"Player1: " +
-								gameFrame.timer.getTime() + "s",
+								gameFrame.getTimer().getTime() + "s",
 						"Game Over!",
 						JOptionPane.PLAIN_MESSAGE
 				);

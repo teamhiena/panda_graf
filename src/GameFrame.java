@@ -19,7 +19,7 @@ public class GameFrame extends JFrame{
 	protected GamePanel gp;
 	private JLabel lab;
 	private ResultPanel rp;
-	Timer timer;
+	private Timer timer;
 
 	public void setRp(ResultPanel r){ rp = r; }
 	public ResultPanel getRP(){return rp;}

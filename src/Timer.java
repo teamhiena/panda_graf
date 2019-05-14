@@ -55,7 +55,7 @@ public class Timer {
 				//10% esellyel makeEffectelunk
 				for (MakeEffect e : Entities) {
 					Random rng = new Random();
-					if (rng.nextInt(10) % 10 > 9) {
+					if (rng.nextInt(10) % 10 > 7) {
 						e.makeEffect();
 					}
 				}

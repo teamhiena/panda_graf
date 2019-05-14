@@ -6,7 +6,6 @@ public abstract class Panda extends Animal{
 	protected GameMap map;
 	protected GameMap.Key hatesEntity;
 
-	//METODUSOK
 	//public void affectedBy(Arcade a){ }
     //public void affectedBy(Automat a) { }
 
