@@ -4,7 +4,6 @@ import java.util.ArrayList;
 public class Game{
 	private int numberofplayers = 1;
 
-	private GameMode selectedMode;
 	private GameMap map;
 	private GameFrame gameFrame;
 
@@ -14,12 +13,6 @@ public class Game{
 	public void setNumberofplayers(int n) {numberofplayers=n;}
 	private ResultPanel resultPanel;
 
-	/**
-	 * A jatekmodok enumja.
-	 */
-	enum GameMode{
-		FinitTime
-	}
 	/**
 	 *
 	 * A directionök enumja
@@ -54,8 +47,7 @@ public class Game{
 		this.weakTilesAddlife(); 				  //Noveli a gyenge csempek eleterejet.
 
 		//Jatekmodtol fuggoen vagy csokkenti, vagy noveli az idot.
-		if(selectedMode == GameMode.FinitTime)
-			Timer.instance().increaseTime(5);
+		Timer.instance().increaseTime(5);
 	}
 
 	/**
@@ -97,8 +89,6 @@ public class Game{
 	}
 
 	//Getter/Setter fuggvenyek
-    public GameMode getSelectedMode() { return selectedMode; }
-    public void setSelectedMode(GameMode selectedMode) { this.selectedMode = selectedMode; }
     public void setResultPanel(ResultPanel rp){resultPanel = rp;}
     public void setGameFrame(GameFrame gf){gameFrame = gf;}
 }
