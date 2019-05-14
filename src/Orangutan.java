@@ -65,11 +65,6 @@ public class Orangutan extends Animal {
      */
     public void increaseScore(int p) {
         score += p;
-        //Minden novelesnel megnezzuk, hogy elertuk-e a gyozelem szukseges pandaszamot.
-        if(score >= 25 && game.getSelectedMode() == Game.GameMode.FinitPanda){
-            //Ha elertuk, szolunk a jateknak hogy vege.
-            game.gameOver();
-        }
     }
 
     public int getPandaNum() {
