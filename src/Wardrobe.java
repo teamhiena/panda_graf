@@ -63,6 +63,7 @@ public class Wardrobe extends Entity {
 			if(!p.isFollowing()){ //tulajdonkepp mindegy aki bele� ugyse followol
 
 				do{
+					System.out.println("WardRobe stepin getrandomexitile: " +map.getRandomWardrobeExitTile());
 					exit = map.getRandomWardrobeExitTile();
 				}while(entrance==exit);
 
