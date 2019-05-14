@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Timer {
 	ArrayList<MakeEffect> Entities = new ArrayList<MakeEffect>();
+	ArrayList<StepAttempt> stepAttempts=new ArrayList<StepAttempt>();
 	private static Timer instance = null;
 	private int elapsedTime = 0;
 	private Game game;
@@ -16,6 +17,7 @@ public class Timer {
 	private boolean running = false;
 
 	public void setRunning(boolean r){running = r;}
+	public void addStepAttempt(StepAttempt attempt){stepAttempts.add(attempt);}
 
 	static public Timer instance() {
 		if (instance == null) instance = new Timer();
@@ -35,16 +37,28 @@ public class Timer {
 					id.drawSelf();
 				}*/
 
+				try {
+					for (StepAttempt attempt : stepAttempts) {
+						boolean success = attempt.tryToStep();
+						if (success)
+							stepAttempts.remove(attempt);
+					}
+				}catch (ConcurrentModificationException e){
+					System.out.println("budget hibakezeles lol");
+				}
+
+
 				//Orangutanokat stepeljuk
 				for (Orangutan o : game.getOrangutans()) {
-					if (o != null)
+					if (o != null && !stepAttempts.contains(new StepAttempt(o,new Tile())))
 						o.step();
 				}
 
 				//Pandaknal csak azokat leptetjuk akik nem kovetnek senkit.
 				try{
 					for (Panda p : game.getPandas()) {
-						if (!p.isFollowing()) {
+						//mindjart csinalok parameternelkuli konstruktort
+						if (!p.isFollowing()&&!stepAttempts.contains(new StepAttempt(p,new Tile()))) { //vagy a listabol kiszedi
 							p.step();
 						}
 					}

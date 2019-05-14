@@ -101,4 +101,5 @@ public class Game{
     public void setSelectedMode(GameMode selectedMode) { this.selectedMode = selectedMode; }
     public void setResultPanel(ResultPanel rp){resultPanel = rp;}
     public void setGameFrame(GameFrame gf){gameFrame = gf;}
+    public GameFrame getGameFrame(){return gameFrame;}
 }

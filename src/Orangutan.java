@@ -2,7 +2,7 @@ public class Orangutan extends Animal {
     private int score = 0;
     private int stepCounter = 4;
     private Game game;
-    private Game.Direction direction=null;
+    public Game getGame() {return game;}
 
     public Orangutan(Game g) {
         //g.addOrangutan(this);
@@ -21,9 +21,14 @@ public class Orangutan extends Animal {
         tile.setAnimal(null);
         releasePandas();
 
-        while(!success){
+        /*while(!success){
+            System.out.println("vegtelenciklus");
             success=spawn(gf.gm.getEntryTile());
-        }
+        }*/
+        success=spawn(gf.gm.getEntryTile());
+
+        if(!success)
+            gf.getTimer().addStepAttempt(new StepAttempt(this,gf.gm.getEntryTile()));
     }
 
     public void dieWithFollowers(){
@@ -39,9 +44,10 @@ public class Orangutan extends Animal {
         }
         followedBy=null;
         boolean success=false;
-        while(!success){
-            success=spawn(gf.gm.getEntryTile());
-        }
+        success=spawn(gf.gm.getEntryTile());
+
+        if(!success)
+            gf.getTimer().addStepAttempt(new StepAttempt(this,gf.gm.getEntryTile()));
     }
 
     @Override
@@ -66,10 +72,10 @@ public class Orangutan extends Animal {
     public void increaseScore(int p) {
         score += p;
         //Minden novelesnel megnezzuk, hogy elertuk-e a gyozelem szukseges pandaszamot.
-        if(score >= 25 && game.getSelectedMode() == Game.GameMode.FinitPanda){
+        /*if(score >= 25 && game.getSelectedMode() == Game.GameMode.FinitPanda){
             //Ha elertuk, szolunk a jateknak hogy vege.
             game.gameOver();
-        }
+        }*/
     }
 
     public int getPandaNum() {
@@ -147,6 +153,7 @@ public class Orangutan extends Animal {
 	public void drawSelf() {
 		// TODO multiplayerben esetleg megkulonboztetni a 2 jatekost ikonokkal
 		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
+		System.out.println("draworangutan");
 	}
 
 	//--------KEYBOARD-------
@@ -170,12 +177,10 @@ public class Orangutan extends Animal {
         arrows,wasd
     }
 
-    public Controls controls =Controls.wasd;
+    public Controls controls =Controls.wasd; //wasd a default
 
     public void setControls(Controls controls) {this.controls = controls;}
     public Controls getControls() {return controls;}
-    public void setDirection(Game.Direction dir){direction=dir;}
-    public Game.Direction getDirection(){return direction;}
 
    //itt volt a keylist
 }

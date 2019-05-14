@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class Fotel extends Entity implements MakeEffect{
 	private Tile enteredFrom=null; //Errol a mezorol lehet belepni a fotelre.
-	private long timeLeft=100; //Ennyi ido van meg hatra.(eddig ul meg ott a panda)
+	private long timeLeft=8; //Ennyi ido van meg hatra.(eddig ul meg ott a panda)
 	private Game game;
 
 	public void setGame(Game g){game=g;}
@@ -59,10 +59,13 @@ public class Fotel extends Entity implements MakeEffect{
 		if(!isEmpty()) timeLeft--;
 		if(timeLeft<=0) {
 			Panda p=(Panda) tile.getAnimal();
-			boolean success;
-			do {
+			boolean success=tile.getAnimal().step(enteredFrom);
+
+			if(!success)
+				p.getGameFrame().getTimer().addStepAttempt(new StepAttempt(p,tile));
+			/*do {
 				success=tile.getAnimal().step(enteredFrom);
-			} while(!success);
+			} while(!success);*/
 			if(!game.getPandas().contains(p))
 				game.addPanda(p);
 			enteredFrom=null;

@@ -9,6 +9,14 @@ public abstract class Animal extends IDrawable implements Steppable{
     protected Panda followedBy=null; //Ez az allat koveti.
     protected Animal following=null; //Ezt az allatot koveti.
     protected GameFrame gf;
+
+    public GameFrame getGameFrame(){return gf;}
+
+    protected Game.Direction direction=null;
+
+    public void setDirection(Game.Direction dir){direction=dir;}
+    public Game.Direction getDirection(){return direction;}
+
     @Override
     public void setGameFrame(GameFrame g) {gf=g;}
     

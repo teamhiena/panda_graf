@@ -19,6 +19,7 @@ public class Tile{
 	private ArrayList<Triangle> triangles=new ArrayList<Triangle>();
 	//A csempe színe
 	private Color color;
+	//private Game game;
 
 
 	//gombi vasarnap 13:50
@@ -37,9 +38,10 @@ public class Tile{
 	/**
 	 * Újonnan berakott
 	 */
-	public Tile() {
-		//AUTO
+	public Tile(/*Game g*/) {
+        //game=g;
 	}
+	//public Game getGame(){return game;}
 	
 	public void setColor(Color c) {
 		color = c;
