@@ -27,7 +27,6 @@ public class GameFrame extends JFrame{
 		g = game;
 		v = view;
 		timer = t;
-
 		gp = new GamePanel(gm, g, v, t,this);
 		add(gp,BorderLayout.CENTER);
 

@@ -349,10 +349,10 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         //Minden triangle korvonalat megrajzol, majd filleli a kesz tileokat.
         super.paintComponent(g);
-        for (Triangle[][] t3 : triangles)
+        /*for (Triangle[][] t3 : triangles)
             for (Triangle[] t2 : t3)
                 for (Triangle t : t2)
-                    t.draw(g);
+                    t.draw(g);*/
 
         for (Tile t : tiles)
             t.fill(g);

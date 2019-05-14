@@ -1,8 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
  * A jatekhoz tartozo menut megvalosito osztaly.
@@ -15,6 +14,8 @@ public class Menu extends JFrame{
 	public Menu(Game g, GameFrame f, Timer t) {
 
 		timer = t;
+		setContentPane(new JLabel(new ImageIcon("png/veryredpanda.png")));
+		getContentPane().setBounds(0,0,400,400);
 
 		JButton bStart =new JButton("Start Game");
 		JButton bFinitTime = new JButton("Finit Time");
@@ -24,11 +25,17 @@ public class Menu extends JFrame{
 
 		bStart.setEnabled(false);
 
-		bStart.setBounds(145,80,100, 60);
+		/*bStart.setBounds(145,80,100, 60);
 		bFinitTime.setBounds(145,180,100, 60);
 		//bFinitPanda.setBounds(210,180,100, 60);
 		b1Player.setBounds(80,280, 100, 60);
-		b2Players.setBounds(210,280,100,60);
+		b2Players.setBounds(210,280,100,60);*/
+
+		bStart.setBounds(150,80,100, 40);
+		bFinitTime.setBounds(20,20,100, 40);
+		//bFinitPanda.setBounds(210,180,100, 60);
+		b1Player.setBounds(150,20, 100, 40);
+		b2Players.setBounds(280,20,100,40);
 
 
 		bStart.addActionListener(new ActionListener(){
