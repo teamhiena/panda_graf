@@ -29,20 +29,22 @@ public class Wardrobe extends Entity {
 		}
 		boolean success;
 		Tile exit;
+		//do{
 		do{
-			do{
-				exit = map.getRandomWardrobeExitTile();
-			}while(entrance==exit);
+			exit = map.getRandomWardrobeExitTile();
+		}while(entrance==exit);
 
-			if(exit==null) //ha csak egy szekr�ny van, nem lehet belelepni
-				return false;
+		if(exit==null) //ha csak egy szekr�ny van, nem lehet belelepni
+			return false;
 
-			success = o.step(exit);
-			/*if(success&&o.followedBy!=null) { //csak akkor �ll �t hogyha k�vetik
-				previousExitTile=exit;
-			}*/
+		success = o.step(exit);
+		/*if(success&&o.followedBy!=null) { //csak akkor �ll �t hogyha k�vetik
+			previousExitTile=exit;
+		}*/
+		if(!success)
+			o.getGame().getGameFrame().getTimer().addStepAttempt(new StepAttempt(o,tile));
 
-		}while(!success);
+		//}while(!success);
 		return false; //ez az�rt false mert a hivo(receiveAnimal) atallit egy csomo sarsagot ha ez true
 	}
 
@@ -57,27 +59,20 @@ public class Wardrobe extends Entity {
 		}
 		boolean success=false;
 		Tile exit;
-		do {
-			if(!p.isFollowing()){ //tulajdonkepp mindegy aki bele� ugyse followol
+		// {
+		if(!p.isFollowing()){ //tulajdonkepp mindegy aki bele� ugyse followol
+			do{
+				exit = map.getRandomWardrobeExitTile();
+			}while(entrance==exit);
 
-				do{
-					System.out.println("WardRobe stepin getrandomexitile: " +map.getRandomWardrobeExitTile());
-					exit = map.getRandomWardrobeExitTile();
-				}while(entrance==exit);
+			if(exit==null) //ha csak egy szekr�ny van, nem lehet belelepni
+				return false;
 
-				if(exit==null) //ha csak egy szekr�ny van, nem lehet belelepni
-					return false;
+			success = p.step(exit);
+			if(!success)
+				p.getGameFrame().getTimer().addStepAttempt(new StepAttempt(p,tile));
 
-				success = p.step(exit);
-			}
-
-			/*else {
-				success = p.step(previousExitTile);
-			}
-			if(!p.isFollowedBy())
-				previousExitTile=null;*/
-
-		}while(!success);
+		}
 		return false; //ez az�rt false mert a hivo(receiveAnimal) atallit egy csomo sarsagot ha ez true
 	}
 

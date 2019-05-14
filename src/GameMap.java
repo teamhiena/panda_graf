@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class GameMap {
 	private static GameMap instance = null;
 	private HashMap<GameMap.Key,ArrayList<Tile>> listGetterMap=new HashMap<GameMap.Key,ArrayList<Tile>>();
-	private Tile entry = new Tile();
+	private Tile entry /*= new Tile()*/;
 	private ExitTile exit = new ExitTile();
 
 	//KONSTRUKTOROK
