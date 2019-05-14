@@ -15,20 +15,12 @@ public class GameFrame extends JFrame{
 	protected GameMap gm;
 	protected Game g;
 	private View v;
-	//private ScorePanel scorePanel;
 	protected GamePanel gp;
 	private JLabel lab;
 	private ResultPanel rp;
 	private Timer timer;
 
-	public void setRp(ResultPanel r){ rp = r; }
-	public ResultPanel getRP(){return rp;}
-	public Timer getTimer() { return timer; }
-	public GamePanel getGp(){return gp; }
 
-	public View getV() {
-		return v;
-	}
 	public GameFrame(GameMap gamemap, Game game, View view, Timer t) {
 		super();
 		gm = gamemap;
@@ -39,34 +31,46 @@ public class GameFrame extends JFrame{
 		gp = new GamePanel(gm, g, v, t,this);
 		add(gp,BorderLayout.CENTER);
 
-   		/*scorePanel = new ScorePanel(gm,g,v,t);
-        add(scorePanel, BorderLayout.NORTH);
-        scorePanel.setVisible(true);*/
-
 		gp.setVisible(true);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		//setVisible(true);
 
 		Dimension dim=new Dimension(max(0,gp.getSize().width+10),gp.getSize().height+80);
-		//Dimension dim = gp.getSize();
 		setSize(dim);
 
 		addKeyListener(new OrangutanKeyListener(game));
 	}
-	
+
+	//Egyszeru maximumkereses
 	int max(int a, int b) {
 		if (a>b) return a;
 		return b;
 	}
 
+	//Getter/setter fuggvenyek
+	public void setRp(ResultPanel r){ rp = r; }
+	public ResultPanel getRP(){return rp;}
+	public Timer getTimer() { return timer; }
+	public GamePanel getGp(){return gp; }
+	public View getV() {
+		return v;
+	}
 
+	/**
+	 * Ez az osztaly kezeli a nyomogombokat
+	 */
 	public class OrangutanKeyListener implements java.awt.event.KeyListener{
+		private Game game;
+
+		//KONSTRUKTOR
+		public OrangutanKeyListener(Game g){game=g;}
+
 		@Override
 		public void keyTyped(KeyEvent e) {}
 
-		//TODO resetelodjon a direction step utan
-
+		/**
+		 * Az atadott gombtol fuggoen atallitja az orangutan iranyat / elengedi a pandakat
+		 */
 		private void setOrangutanDirection(Orangutan o,int keyCode){
 			Orangutan.Controls controls=o.getControls();
 			Game.Direction direction=o.getDirection();
@@ -150,11 +154,10 @@ public class GameFrame extends JFrame{
 			}
 			o.setDirection(direction);
 		}
-		private Game game;
 
-		public OrangutanKeyListener(Game g){game=g;}
-
-
+		/**
+		 * Ebbol hivunk at az iranyokat allito fuggvenybe
+		 */
 		@Override
 		public void keyPressed(KeyEvent e)
 		{

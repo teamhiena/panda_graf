@@ -4,11 +4,14 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * A jatekban hasznalt terkepet megvalosito osztaly.
+ */
 
 public class GameMap {
 	private static GameMap instance = null;
 	private HashMap<GameMap.Key,ArrayList<Tile>> listGetterMap=new HashMap<GameMap.Key,ArrayList<Tile>>();
-	private Tile entry /*= new Tile()*/;
+	private Tile entry;
 	private ExitTile exit = new ExitTile();
 
 	//KONSTRUKTOROK
@@ -17,16 +20,11 @@ public class GameMap {
 		listGetterMap.put(Key.Arcade, new ArrayList<Tile>());
 		listGetterMap.put(Key.Automat, new ArrayList<Tile>());
 		listGetterMap.put(Key.Fotel, new ArrayList<Tile>());
-
 		listGetterMap.put(Key.Wardrobe, new ArrayList<Tile>());
 		listGetterMap.put(Key.WardrobeExit, new ArrayList<Tile>());
-		//listGetterMap.put(Key.Orangutan, new ArrayList<>()); //TODO kiszedni orangutanos Tile-okat
-
-		//Ideiglenes, orangutan won-hoz egy Orangutant felolvas!
-		//Tile t = new Tile(); t. setAnimal(new Orangutan(new Game()));
-		//listGetterMap.get(Key.Orangutan).add(t);
 	}
 
+	//Singleton miatt szukseges
 	static public GameMap instance() {
 		if (instance == null) instance = new GameMap();
 		return instance;
@@ -36,6 +34,7 @@ public class GameMap {
 		instance = null;
 	}
 
+	//A mapban tarolt elemek azonositasara hasznalt kulcsok enumja
 	enum Key{
 		WeakTile,
 		Arcade,
@@ -43,7 +42,6 @@ public class GameMap {
 		Fotel,
 		Wardrobe,
 		WardrobeExit,
-		//Orangutan
 	}
 
 	/**
@@ -56,19 +54,8 @@ public class GameMap {
 			return null;
 		Integer idx=rng.nextInt(exits.size());
 		Tile ret=exits.get(idx);
-		//System.out.println(idx);
 		return ret;
 	}
-
-	/**
-	 * Visszaadja az exit csempet.
-	 */
-	public Tile getExitTile() { return exit; }
-
-	/**
-	 * Visszaadja a bejarat csempet
-	 */
-	public Tile getEntryTile() { return entry; }
 
 	/**
 	 * Visszaadja az parameterkent kapott tipusu csempeket.
@@ -78,15 +65,18 @@ public class GameMap {
 		return ret;
 	}
 
+	//Hozzaad egy specialis dolgot a maphoz
 	public void addSpecificTile(Tile t,Key key) {
 		listGetterMap.get(key).add(t);
 	}
 
 	/**
-	 * EntryTile adattag setter fuggvenye
+	 * Getter/setter fuggvenyek
 	 */
 	public void setEntry(Tile e){
 		entry = e;
 	}
 	public void setExit(ExitTile e) {exit=e;}
+	public Tile getExitTile() { return exit; }
+	public Tile getEntryTile() { return entry; }
 }

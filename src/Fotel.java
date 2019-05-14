@@ -25,7 +25,7 @@ public class Fotel extends Entity implements MakeEffect{
 	}
 
 	/**
-	 * Egy panda megprobal belepni a fotelbe. Implementacios okobol neki kell elvegezni a "magara helyezest".
+	 * Egy panda megprobal belepni a fotelbe.
 	 * @param p
 	 * @return
 	 */
@@ -43,16 +43,9 @@ public class Fotel extends Entity implements MakeEffect{
 	public boolean isEmpty() {
 		return (tile.getAnimal() == null);
 	}
-	public  void setEnteredFrom(Tile t){
-		enteredFrom=t;
-	}
 	/**
 	 * Csokkenti a hatra levo idot.
 	 */
-	public void setTimeLeft(int n){
-		timeLeft=n;
-	}
-
 	public void decrTimeLeft() {
 		if(!isEmpty()) timeLeft--;
 		if(timeLeft<=0) {
@@ -61,9 +54,6 @@ public class Fotel extends Entity implements MakeEffect{
 
 			if(!success)
 				p.getGameFrame().getTimer().addStepAttempt(new StepAttempt(p,tile));
-			/*do {
-				success=tile.getAnimal().step(enteredFrom);
-			} while(!success);*/
 			if(!game.getPandas().contains(p))
 				game.addPanda(p);
 			enteredFrom=null;
@@ -73,6 +63,7 @@ public class Fotel extends Entity implements MakeEffect{
 	 * Ujrainditja az ido szamlalojat.
 	 */
 	public void resetTimeLeft() { timeLeft = 100; }
+
 	/**
 	 * Visszater egy random pandaval. Azert jo, mert lehet hogy
 	 * tobb panda van egyszerre fotel mellett, ilyenkor az egyik ul csak bele.
@@ -89,6 +80,9 @@ public class Fotel extends Entity implements MakeEffect{
 		return ret;
 	}
 
+	/**
+	 * Bevonza az egyik korulotte levo pandat
+	 */
 	@Override
 	public void makeEffect() {
 		Panda p = getRandomSubbedPanda();
@@ -96,13 +90,22 @@ public class Fotel extends Entity implements MakeEffect{
 			p.step(tile);
 	}
 
-	public Tile getEnteredFrom(){ return enteredFrom; }
-	public long getTimeLeft() { return timeLeft; }
-
+	/**
+	 * Kirajzolja sajat magat
+	 */
 	@Override
 	public void drawSelf() {
 		// mas az ikon ha ulnek benne
 		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
 	}
+
+	/**
+	 * Getter/Setter fuggvenyek
+	 */
+	public void setTimeLeft(int n){ timeLeft=n; }
+	public  void setEnteredFrom(Tile t){ enteredFrom=t;}
+	public Tile getEnteredFrom(){ return enteredFrom; }
+	public long getTimeLeft() { return timeLeft; }
+
 }
 
