@@ -13,7 +13,7 @@ public class Arcade extends NonEnterableEntity{
 		ArrayList<Tile> al = this.getTile().getNeighbors();
 		for (int i = 0; i < al.size(); i++) {
 			Animal p = al.get(i).getAnimal();
-			if (al.get(i).getAnimal() != null)
+			if (p != null)
 				p.affectedBy(this);
 		}
 	}
