@@ -153,7 +153,7 @@ public class Orangutan extends Animal {
 	public void drawSelf() {
 		// TODO multiplayerben esetleg megkulonboztetni a 2 jatekost ikonokkal
 		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
-		System.out.println("draworangutan");
+		//System.out.println("draworangutan");
 	}
 
 	//--------KEYBOARD-------

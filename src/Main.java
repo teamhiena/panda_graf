@@ -13,6 +13,7 @@ public class Main {
         GameMap gameMap = new GameMap();
 
         Timer timer = Timer.instance();
+        timer.setGamemap(gameMap);
         timer.setGame(game);
         timer.setView(view);
 

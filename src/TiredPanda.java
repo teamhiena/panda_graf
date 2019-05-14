@@ -1,7 +1,14 @@
+import java.util.Random;
+
 /**
  * A faradekony pandat(TiredPanda) megvalosito osztaly.
  */
 public class TiredPanda extends Panda {
+
+	private int stepCounter=5;
+	public void incrementStepCounter(){stepCounter++;}
+	public void resetStepCounter(){stepCounter=0;}
+	public int getStepCounter(){return stepCounter;}
 
 	//KONSTRUKTOROK
 	public TiredPanda(GameMap gm) {
@@ -25,24 +32,35 @@ public class TiredPanda extends Panda {
 		//tile.setAnimal(this);
 		//tile=f.getTile();
 
+		if(stepCounter<5) return false;
 		if (isFollowing()){
 			Panda p = this.followedBy;
 			this.getFollowing().setFollowedBy(null);
 			releasePandas();
-			while(p != null){
-				Panda b = p.followedBy;
-				p.releasePandas();
-				p = b;
-			}
 		}
+		resetStepCounter();
 		f.resetTimeLeft();
 		f.setEnteredFrom(tile);
 		return true;
 	}
 
-	/*@Override felraktam pandaba
-	public void drawSelf() {
-		// TODO �thelyezi az imageholderj�t arra a Tile-ra ahol van, m�s az ikonja ha megijedos.
-		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
-	}*/
+	@Override
+	public boolean step(){
+		boolean ret=false;
+		if(!isFollowing()){
+			//80% valoszinuseggel leptet egy szomszedra
+			Random rng=new Random();
+			boolean doAStep =rng.nextInt(10)>1;
+			if(doAStep){
+				if(tile != null){
+					int bound=tile.getNeighbors().size();
+					//System.out.println("bound :"+bound);
+					//System.out.println("ez lett a bound: "+rng.nextInt(bound));
+					ret=step(tile.getNeighbors().get(rng.nextInt(bound)));
+				}
+			}
+		}
+		stepCounter++;
+		return ret;
+	}
 }

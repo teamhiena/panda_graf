@@ -377,7 +377,7 @@ public class GamePanel extends JPanel {
             t.fill(g);
 
         for(Panda p:this.g.getPandas()){
-            if(p.isFollowing()){
+            if(p!=null&&p.isFollowing()){
                 Graphics2D g2=(Graphics2D) g;
 
                 g2.setStroke(new BasicStroke(6));

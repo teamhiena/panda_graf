@@ -13,12 +13,16 @@ public class Timer {
 	//TODO a foteleket is decreselni kell
 	private View v;
 	private GameFrame gameFrame;
-	
+
+
 	private boolean running = false;
 
 	public void setRunning(boolean r){running = r;}
-	public void addStepAttempt(StepAttempt attempt){stepAttempts.add(attempt);}
-
+	public void addStepAttempt(StepAttempt attempt){
+		if(!stepAttempts.contains(attempt))
+			stepAttempts.add(attempt);
+	}
+	//public setGameMap(GameMap gm) {gamemap=gm;}
 	static public Timer instance() {
 		if (instance == null) instance = new Timer();
 		return instance;
@@ -47,6 +51,14 @@ public class Timer {
 					System.out.println("budget hibakezeles lol");
 				}
 
+				if(gamemap!=null){
+					for(Tile fotelTile:gamemap.getSpecificTiles(GameMap.Key.Fotel))
+					{
+						Fotel f=(Fotel)fotelTile.getEntity();
+						f.decrTimeLeft();
+						System.out.println("decrtimeleft");
+					}
+				}
 
 				//Orangutanokat stepeljuk
 				for (Orangutan o : game.getOrangutans()) {
@@ -58,7 +70,7 @@ public class Timer {
 				try{
 					for (Panda p : game.getPandas()) {
 						//mindjart csinalok parameternelkuli konstruktort
-						if (!p.isFollowing()&&!stepAttempts.contains(new StepAttempt(p,new Tile()))) { //vagy a listabol kiszedi
+						if (p!=null&&!p.isFollowing()&&!stepAttempts.contains(new StepAttempt(p,new Tile()))) { //vagy a listabol kiszedi
 							p.step();
 						}
 					}

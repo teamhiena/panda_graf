@@ -5,8 +5,9 @@ import java.util.Random;
  */
 public class Fotel extends Entity implements MakeEffect{
 	private Tile enteredFrom=null; //Errol a mezorol lehet belepni a fotelre.
-	private long timeLeft=8; //Ennyi ido van meg hatra.(eddig ul meg ott a panda)
 	private Game game;
+	private int restTime=5;
+	private long timeLeft=restTime; //Ennyi ido van meg hatra.(eddig ul meg ott a panda)
 
 	public void setGame(Game g){game=g;}
 
@@ -32,8 +33,10 @@ public class Fotel extends Entity implements MakeEffect{
 	public boolean stepIn(Panda p) {
 		if (tile.getAnimal()!= null) return false; //ha pl ul valaki benne es bele akar ulni megegy
 		boolean success=p.affectedBy(this);
-		if(success)
-		game.removePanda(p);
+		if(success) {
+			setEnteredFrom(p.getTile());
+			game.removePanda(p);
+		}
 		return success;
 	}
 
@@ -54,11 +57,14 @@ public class Fotel extends Entity implements MakeEffect{
 	}
 
 	public void decrTimeLeft() {
-		if(!isEmpty()) timeLeft--;
+		if(!isEmpty())
+			timeLeft--;
 		if(timeLeft<=0) {
 			Panda p=(Panda) tile.getAnimal();
-			boolean success=tile.getAnimal().step(enteredFrom);
-
+			boolean success=true;
+			if(p!=null)
+				{success=p.step(enteredFrom);} //TODO ez valamiert null
+			tile.getSubbedPandas().clear();
 			if(!success)
 				p.getGameFrame().getTimer().addStepAttempt(new StepAttempt(p,tile));
 			/*do {
@@ -67,12 +73,13 @@ public class Fotel extends Entity implements MakeEffect{
 			if(!game.getPandas().contains(p))
 				game.addPanda(p);
 			enteredFrom=null;
+			resetTimeLeft();
 		}
 	}
 	/**
 	 * Ujrainditja az ido szamlalojat.
 	 */
-	public void resetTimeLeft() { timeLeft = 100; }
+	public void resetTimeLeft() { timeLeft = restTime; }
 	/**
 	 * Visszater egy random pandaval. Azert jo, mert lehet hogy
 	 * tobb panda van egyszerre fotel mellett, ilyenkor az egyik ul csak bele.
@@ -94,6 +101,9 @@ public class Fotel extends Entity implements MakeEffect{
 		Panda p = getRandomSubbedPanda();
 		if(p!=null)
 			p.step(tile);
+		for(Panda panda:tile.getSubbedPandas()){
+			System.out.println(panda);
+		}
 	}
 
 	public Tile getEnteredFrom(){ return enteredFrom; }

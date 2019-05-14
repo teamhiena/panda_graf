@@ -263,7 +263,7 @@ t34 k x t-t38 tr-t37 tl-t33 b-t35 bl-t35 br-t35
 16 7 23
 16 8 03
 -
-t35 z tp b-t36 t-t34 l-t32 tl-t35 tr-t35
+t35 z ap b-t36 t-t34 l-t32 tl-t35 tr-t35
 14 9 full
 15 9 full
 16 9 full
