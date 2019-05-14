@@ -100,6 +100,10 @@ public class GameFrame extends JFrame{
 					}else if(direction!= Game.Direction.TopRight&&direction!= Game.Direction.BottomRight){ //d
 						direction= Game.Direction.Right;
 					}
+				}else if(keyCode == KeyEvent.VK_Q) { //space megnyomva
+					if(game.getOrangutans().get(0).isFollowedBy()){ //csak akkor ha koveti valaki
+						game.getOrangutans().get(0).releasePandas();
+					}
 				}
 			}
 			else if(controls== Orangutan.Controls.arrows){ //mas nem is lehet de latszodjon
@@ -135,10 +139,14 @@ public class GameFrame extends JFrame{
 					}else if(direction!= Game.Direction.TopRight&&direction!= Game.Direction.BottomRight){ //d
 						direction= Game.Direction.Right;
 					}
+				}else if(keyCode == KeyEvent.VK_SPACE) { //space megnyomva
+					if(game.getOrangutans().get(1).isFollowedBy()){ //csak akkor ha koveti valaki
+						game.getOrangutans().get(1).releasePandas();
+					}
 				}
 			}
 			o.setDirection(direction);
-		}//TODO jelenleg mindket orangutan wasd
+		}
 		private Game game;
 
 		public OrangutanKeyListener(Game g){game=g;}
@@ -154,7 +162,6 @@ public class GameFrame extends JFrame{
 				o=game.getOrangutans().get(1);
 				setOrangutanDirection(o,e.getKeyCode());
 			}
-
 
 		}
 

@@ -107,11 +107,17 @@ public class GamePanel extends JPanel {
                             break;
                     }
 
+                    //WardRobeExit-ek beallitasa a GameMap-ben
+                    if(row_split[0].equals("t27") || row_split[0].equals("t34")){
+                        gm.addSpecificTile(newTile, GameMap.Key.WardrobeExit);
+                        System.out.println("WardRobeExit hozzaadva:  " + row_split[0]);
+                    }
+
                     //Entity / Animal / Weak-Entry-Exit Tile beállítása
 
                     switch (row_split[2]) {
                         case "wa":
-                            newTile.entity = new Wardrobe();
+                            newTile.entity = new Wardrobe(newTile,gm);
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/wardrobe.png")));
                             //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
                             gm.addSpecificTile(newTile, GameMap.Key.Wardrobe);
@@ -289,6 +295,13 @@ public class GamePanel extends JPanel {
                     }
                 }
             }
+
+            //WardRobeok entrance Tile valtozojanak beallitasa
+            Wardrobe wardrobet12 = (Wardrobe)tilecodes.get("t12").getEntity();
+            Wardrobe wardrobett37 = (Wardrobe)tilecodes.get("t37").getEntity();
+            wardrobet12.setEntrance(tilecodes.get("t27"));
+            wardrobett37.setEntrance(tilecodes.get("t34"));
+
 
         } catch (FileNotFoundException e) {
             System.out.println("File was not found!");

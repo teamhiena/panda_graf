@@ -39,7 +39,6 @@ public class Menu extends JFrame{
 		bFinitTime.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				g.setSelectedMode(Game.GameMode.FinitTime);
 				bFinitTime.setEnabled(false);
 				//bFinitPanda.setEnabled(true);
 				gameModePicked=true;
