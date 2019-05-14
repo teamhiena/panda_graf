@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * A cukorbeteg pandat(DiabeticPanda) megvalosito osztaly. A cukorbeteg panda megijed a csokiautomata(Automat) sipolasatol,
  * es ugrik egyet amivel az alatta levo WeakTile elettartama eggyel csokken.
@@ -11,10 +9,6 @@ public class DiabeticPanda extends Panda {
 		map = gm;
 		hatesEntity=GameMap.Key.Automat;
 	}
-
-    /*public DiabeticPanda() {
-
-    }*/
 
     //METÓDUSOK
 	/**
@@ -28,10 +22,4 @@ public class DiabeticPanda extends Panda {
 			if(t.isBroken()) t.getAnimal().die();
 		}
 	}
-
-	/*@Override felraktam pandaba
-	public void drawSelf() {
-		// TODO �thelyezi az imageholderj�t arra a Tile-ra ahol van, m�s az ikonja ha megijedos.
-		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
-	}*/
 }

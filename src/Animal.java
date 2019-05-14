@@ -1,8 +1,4 @@
-import java.util.ArrayList;
 import javax.swing.JLabel;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public abstract class Animal extends IDrawable implements Steppable{
     protected Tile tile; //Ezen all az allat.
@@ -19,8 +15,6 @@ public abstract class Animal extends IDrawable implements Steppable{
 
     @Override
     public void setGameFrame(GameFrame g) {gf=g;}
-    
-    //JLabel imageholder;
 
     //KONSTRUKTOROK
     public Animal(Tile t) {
@@ -32,10 +26,6 @@ public abstract class Animal extends IDrawable implements Steppable{
 
     //METODUSOKK
     /**
-     * Ez a metodus hivodik meg, amikor az allat "meghal".
-     */
-
-    /**
      * Elengedi az ot koveto ill. annak a pandanak a kezet akit o kovet.
      */
     public void releasePandas()
@@ -45,15 +35,14 @@ public abstract class Animal extends IDrawable implements Steppable{
 
         following = null;
 
-        //nextTile = null;
         if(isFollowedBy()){
             followedBy.releasePandas();
         }
 
     }
-
-    public abstract void die();
-
+    /*
+    ** A parameterben kapott Tile-ra ra akarunk spawnolni
+     */
     public boolean spawn(Tile t){
         if (t.getAnimal()!=null || t.getEntity()!= null)
             return false;
@@ -62,36 +51,33 @@ public abstract class Animal extends IDrawable implements Steppable{
         setTile(t);
         return true;
     }
-    /**
-     * Tile adattag getter/setter fuggvenye.
-     */
-	public void setTile(Tile t) { tile = t; }
-	public Tile getTile() { return tile; }
-    /**
-    * Following adattag setter fuggvenye.
-    */
-	public void setFollowing(Animal p) { following = p; }
+    public abstract void die();
 
     /**
-     * isFollowing adattag getter/setter fuggvenye.
+     * Megmondja, hogy kovetunk-e valakit/kovet-e minket valaki.
      */
     public boolean isFollowing() {
         return following != null;
     }
-    /**
-     * FollowedBy adattag setter fuggvenye.
-     */
-    public void setFollowedBy(Panda p) { followedBy = p; }
-
-    /**
-     * isFollowedBy adattag getter/setter fuggvenye.
-     */
     public boolean isFollowedBy() {
         return followedBy != null;
     }
 
-    public void affectedBy(Arcade a){ } //gombi szombat 22:52
-    public void affectedBy(Automat a) { } //gombi szombat 22:52
+    /*
+     * Az allatot megijeszti egy jatekgep/automata
+     */
+    public void affectedBy(Arcade a){ }
+    public void affectedBy(Automat a) { }
+    /**
+     * Getter/setter fuggvenyek
+     */
+	public void setTile(Tile t) { tile = t; }
+	public Tile getTile() { return tile; }
+	public void setFollowing(Animal p) { following = p; }
+    public void setFollowedBy(Panda p) { followedBy = p; }
+    public Panda getFollowedBy(){ return followedBy; }
+    public Animal getFollowing() { return following; }
+    public void setImageHolder(JLabel l) {imageholder = l;}
 
     /**
      * Az allatot elkapja egy Panda. Valojaban lehetetlen esemeny, de muszaj megvalositani.
@@ -100,16 +86,14 @@ public abstract class Animal extends IDrawable implements Steppable{
     public boolean getCaughtBy(Panda p){
         return false;
     }
-
     /**
      * Az allatot elkapja egy orangutan. Leszarmazottakban felulirando.
      */
     public abstract boolean getCaughtBy(Orangutan o);
-    public Panda getFollowedBy(){ return followedBy; }
-    public Animal getFollowing() { return following; }
-    public void setImageHolder(JLabel l) {imageholder = l;}
 
-
+    /*
+     * Az allat kirajzolasahoz szukseges
+     */
     @Override
     public void animate(Tile from, Tile to){
         if(gf==null) return;
@@ -118,7 +102,6 @@ public abstract class Animal extends IDrawable implements Steppable{
         int stepnr=10;
         double stepx=distx/stepnr;
         double stepy=disty/stepnr;
-        //System.out.println("animate");
         for(int i=1;i<stepnr;i++){
             imageholder.setBounds(tile.getCenter()[0]-24+(int)stepx*i, tile.getCenter()[1]-24+(int)stepy*i, 48, 48);
             gf.repaint();
