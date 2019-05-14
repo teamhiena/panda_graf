@@ -30,8 +30,16 @@ public class Menu extends JFrame{
 
 		bStart.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				f.getGp().loadMap("pandaMap.txt");
+
 				setVisible(false);
 				f.setVisible(true);
+
+				if(g.getNumberofplayers() == 1)
+				{
+					f.getV().getDrawables().remove(g.getOrangutans().get(1));
+					g.getOrangutans().remove(g.getOrangutans().get(1));
+				}
 				timer.setRunning(true);
 			}
 		});

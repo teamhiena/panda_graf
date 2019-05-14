@@ -26,6 +26,9 @@ public class GameFrame extends JFrame{
 	public Timer getTimer() { return timer; }
 	public GamePanel getGp(){return gp; }
 
+	public View getV() {
+		return v;
+	}
 	public GameFrame(GameMap gamemap, Game game, View view, Timer t) {
 		super();
 		gm = gamemap;
@@ -33,7 +36,7 @@ public class GameFrame extends JFrame{
 		v = view;
 		timer = t;
 
-		gp =new GamePanel(gm, g, v, t,this);
+		gp = new GamePanel(gm, g, v, t,this);
 		add(gp,BorderLayout.CENTER);
 
    		/*scorePanel = new ScorePanel(gm,g,v,t);

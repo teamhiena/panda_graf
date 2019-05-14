@@ -54,7 +54,6 @@ public class GamePanel extends JPanel {
         setBackground(Color.WHITE);
         initTriangles();
 
-        loadMap("pandaMap.txt");
         repaint();
 
     }
@@ -177,15 +176,19 @@ public class GamePanel extends JPanel {
                             Orangutan orangutan = new Orangutan(g);
                             orangutan.setGameFrame(gf);
                             orangutan.spawn(newTile);
-                            //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addOrangutan(orangutan);
-                            if(g.getOrangutans().size()>1) {
+                            if(g.getNumberofplayers() == 2 && g.getOrangutans().get(0) != orangutan){
                                 orangutan.setControls(Orangutan.Controls.arrows);
                                 newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/orangutan2.png")));
-
-                            }else
+                            } else if (g.getNumberofplayers() == 2 && g.getOrangutans().get(0) == orangutan){
+                                orangutan.setControls(Orangutan.Controls.wasd);
                                 newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/orangutan.png")));
-
+                            } else if (g.getNumberofplayers() == 1 && g.getOrangutans().get(0) == orangutan){
+                                orangutan.setControls(Orangutan.Controls.wasd);
+                                newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/orangutan.png")));
+                            }else if(g.getNumberofplayers() == 1 && g.getOrangutans().get(0) != orangutan){
+                                newTile.setAnimal(null);
+                            }
                             break;
                         case "w":
                             WeakTile new_WeakTile = new WeakTile();

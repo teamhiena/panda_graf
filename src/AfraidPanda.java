@@ -10,9 +10,6 @@ public class AfraidPanda extends Panda {
 		hatesEntity = GameMap.Key.Arcade;
 	}
 
-    /*public AfraidPanda() {
-    }*/
-
 	//METODUSOK
 	/**
 	 * A pandat megijeszti egy jatekgep.
