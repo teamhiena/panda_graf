@@ -56,7 +56,7 @@ public class Game{
 	public void gameOver() {
         //ResultPanel resultPanel = new ResultPanel(gameFrame, this);
 		JOptionPane jop = new JOptionPane();
-		if(numberofplayers == 1) {
+		if(gameFrame.g.getOrangutans().size() == 1) {
 			jop.showMessageDialog(gameFrame,
 					"Player1: " +
 							gameFrame.g.getOrangutans().get(0).getScore(),
@@ -67,7 +67,9 @@ public class Game{
 			else {
 				jop.showMessageDialog(gameFrame,
 						"Player1: " +
-								gameFrame.timer.getTime() + "s",
+								gameFrame.g.getOrangutans().get(0).getScore() + "\n" +
+								"Player2: "+
+								gameFrame.g.getOrangutans().get(1).getScore(),
 						"Game Over!",
 						JOptionPane.PLAIN_MESSAGE
 				);
