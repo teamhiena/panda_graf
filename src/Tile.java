@@ -142,7 +142,6 @@ public class Tile{
     // Eltavolitja a Pandat a Tile szomszedos Tile-jainak feliratkozoi kozul
     public void removePandaFromNeighborSubbedPandas(Panda p) {
         for(Tile nt:neighbors){
-
             if(nt!=null)
             nt.removeSubbedPanda(p);
         }
@@ -192,7 +191,6 @@ public class Tile{
 		}
 		center[0]/=triangles.size()*3;
 		center[1]/=triangles.size()*3;
-		//System.out.println("CENTER "+center[0]+" "+center[1]);
 		return center;
 	}
 }

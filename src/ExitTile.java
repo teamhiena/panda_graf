@@ -2,11 +2,12 @@
  * A "kilepo" csempe.
  */
 public class ExitTile extends Tile {
+    /**
+     * A csempebe belep egy orangutan
+     */
     @Override
     public boolean receiveAnimal(Orangutan o) {
         boolean success=true;
-        //if(entity != null)//Ha van ott entiy akk megprobalok belelepni. (ami nem fotel az return false)
-        //   success = entity.stepIn(o);
         if(animal != null && o.getStepCounter() >= 4) {
             success = animal.getCaughtBy(o);
         }
@@ -15,12 +16,15 @@ public class ExitTile extends Tile {
             o.increaseScore(10*o.getPandaNum());
             o.dieWithFollowers();
         }
-        return false; //mindenkepp elore akarunk menni nem akarunk tile allitgatasokat ha visszaterunk a stepbe
+        return false; //Mindenkepp elore akarunk menni nem akarunk tile allitgatasokat ha visszaterunk a stepbe
     }
+
+    /**
+     * A csempebe belep egy panda
+     */
     @Override
     public boolean receiveAnimal(Panda p) {
         if(p.following != null) {
-           // p.die();
             p.releasePandas();
             return false;
         }
@@ -34,7 +38,7 @@ public class ExitTile extends Tile {
         if (success) {
             this.setAnimal(p);
             if(p.getTile().getAnimal()==p)
-                p.getTile().setAnimal(null);//lehet hogy elkap egy orangutan es akkor az mar ott van, nem kell kinullazni
+                p.getTile().setAnimal(null); //lehet hogy elkap egy orangutan es akkor az mar ott van, nem kell kinullazni
             p.setTile(this);
         }
         return success;

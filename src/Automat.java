@@ -16,6 +16,9 @@ public class Automat extends NonEnterableEntity{
 		}
 	}
 
+	/**
+	 * Kirajzolja sajat magat
+	 */
 	@Override
 	public void drawSelf() {
 

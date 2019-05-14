@@ -11,16 +11,21 @@ public class Arcade extends NonEnterableEntity{
 	@Override
 	public void makeEffect() {
 		ArrayList<Tile> al = this.getTile().getNeighbors();
-		for (int i = 0; i < al.size(); i++) {
-			Animal p = al.get(i).getAnimal();
-			if (al.get(i).getAnimal() != null)
-				p.affectedBy(this);
+		for(Tile t : al) {
+			if(t != null) {
+				Animal p = t.getAnimal();
+				if (p != null)
+					p.affectedBy(this);
+
+			}
 		}
 	}
 
+	/**
+	 * Kirajzolja sajat magat
+	 */
 	@Override
 	public void drawSelf() {
-		// más az ikonja ha csilingel mint amikor nem
 		imageholder.setBounds(tile.getCenter()[0]-24, tile.getCenter()[1]-24, 48, 48);
 	}
 
