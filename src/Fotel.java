@@ -78,9 +78,14 @@ public class Fotel extends Entity implements MakeEffect{
 	 * tobb panda van egyszerre fotel mellett, ilyenkor az egyik ul csak bele.
 	 */
 	public Panda getRandomSubbedPanda(){
-		int a = tile.getSubbedPandas().size();
 		Random vel = new Random();
-		Panda ret  = tile.getSubbedPandas().get(a);
+		int size=tile.getSubbedPandas().size();
+		if(size==0)
+			return null;
+		int idx=vel.nextInt(size);
+		Panda ret=null;
+		if(tile.getSubbedPandas()!=null && tile.getSubbedPandas().get(idx)!=null)
+			ret  = tile.getSubbedPandas().get(idx);
 		return ret;
 	}
 
