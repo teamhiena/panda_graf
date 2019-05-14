@@ -1,24 +1,19 @@
-
 import java.awt.*;
 import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
+/**
+ * A jatekter megjelenitesere szolgalo Label
+ */
 public class GamePanel extends JPanel {
 
     View v;
@@ -26,7 +21,6 @@ public class GamePanel extends JPanel {
     Game g;
     Timer timer;
     GameFrame gf;
-    public void setGameFrame(GameFrame g) {gf=g;}
 
     private Dimension size = new Dimension(800, 550);
 
@@ -39,10 +33,7 @@ public class GamePanel extends JPanel {
     private Triangle[][][] triangles = new Triangle[tilespercol][tilesperrow][4];
     private ArrayList<Tile> tiles = new ArrayList<Tile>();
 
-    public ArrayList<Tile> getTiles() {
-        return tiles;
-    }
-
+    //KONSTRUKTOR
     public GamePanel(GameMap gamemap, Game game, View view, Timer t, GameFrame pgf) {
         super();
         gm = gamemap;
@@ -55,9 +46,9 @@ public class GamePanel extends JPanel {
         initTriangles();
 
         repaint();
-
     }
 
+    //Beolvassuk a txt-ben kapott, jatekhoz tartozo terkepet
     public void loadMap(String filename) {
 
         class Connection{
@@ -81,14 +72,14 @@ public class GamePanel extends JPanel {
 
             while ((row = br.readLine()) != null) {
 
-                //Elsõ kommentelt sorok olvasása
+                //Elso kommentelt sorok olvasasa
                 if (row.contains("#")) {
                     System.out.println("Comment: " + row);
                 } else {
                     Tile newTile = new Tile();
                     String[] row_split = row.split(" ");
 
-                    //Hozzáadandó Tile színének beállítása
+                    //Hozzaadandó Tile szinenek beallitasa
                     switch (row_split[1]) {
                         case "k":
                             newTile.setColor(Color.BLUE);
@@ -112,20 +103,17 @@ public class GamePanel extends JPanel {
                         System.out.println("WardRobeExit hozzaadva:  " + row_split[0]);
                     }
 
-                    //Entity / Animal / Weak-Entry-Exit Tile beállítása
-
+                    //Entity / Animal / Weak-Entry-Exit Tile beallitasa
                     switch (row_split[2]) {
                         case "wa":
                             newTile.entity = new Wardrobe(newTile,gm);
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/wardrobe.png")));
-                            //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
                             gm.addSpecificTile(newTile, GameMap.Key.Wardrobe);
                             break;
                         case "j":
                             Arcade arcade = new Arcade();
                             newTile.entity = arcade;
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/arcade.png")));
-                            //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
                             timer .addEntity(arcade);
                             gm.addSpecificTile(newTile, GameMap.Key.Arcade);
                             break;
@@ -133,7 +121,6 @@ public class GamePanel extends JPanel {
                             Automat automat = new Automat();
                             newTile.entity = automat;
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/automat.png")));
-                            //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
                             timer.addEntity(automat);
                             gm.addSpecificTile(newTile, GameMap.Key.Automat);
                             break;
@@ -141,7 +128,6 @@ public class GamePanel extends JPanel {
                             Fotel fotel = new Fotel(g);
                             newTile.entity = fotel;
                             newTile.entity.setImageHolder(new JLabel(new ImageIcon("png/fotel.png")));
-                            //newTile.getEntity().imageholder.setSize(new Dimension(48,48));
                             timer.addEntity(fotel);
                             gm.addSpecificTile(newTile, GameMap.Key.Fotel);
                             break;
@@ -150,7 +136,6 @@ public class GamePanel extends JPanel {
                             afraidPanda.setGameFrame(gf);
                             afraidPanda.spawn(newTile);
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/brownpanda.png")));
-                            //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addPanda(afraidPanda);
                             afraidPanda.map = gm;
                             break;
@@ -159,7 +144,6 @@ public class GamePanel extends JPanel {
                             diabeticPanda.setGameFrame(gf);
                             diabeticPanda.spawn(newTile);
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/blackpanda.png")));
-                            //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addPanda(diabeticPanda);
                             diabeticPanda.map = gm;
                             break;
@@ -168,7 +152,6 @@ public class GamePanel extends JPanel {
                             tiredPanda.setGameFrame(gf);
                             tiredPanda.spawn(newTile);
                             newTile.animal.setImageHolder(new JLabel(new ImageIcon("png/redpanda.png")));
-                            //newTile.getAnimal().imageholder.setSize(new Dimension(48,48));
                             g.addPanda(tiredPanda);
                             tiredPanda.map = gm;
                             break;
@@ -214,7 +197,7 @@ public class GamePanel extends JPanel {
                             break;
                     }
 
-                    //Szomszédságok beállítása (iranyitas szempontjabol erdekes)
+                    //Szomszedsagok beallitasa (iranyitas szempontjabol erdekes)
                     if(row_split.length>3){
                         for(int i =3;i<row_split.length;i++) {
                             String[] conn_split = row_split[i].split("-");
@@ -260,7 +243,7 @@ public class GamePanel extends JPanel {
                     }
 
 
-                    //triangles beállítása
+                    //triangles beallitasa
                     String trianglerow;
                     while (!(trianglerow = br.readLine()).equals("-")) {
                         String[] trianglerow_split = trianglerow.split(" ");
@@ -315,19 +298,18 @@ public class GamePanel extends JPanel {
         }
     }
 
-
+    //Getter/setter fuggvenyek
+    public void setGameFrame(GameFrame g) {gf=g;}
     public Dimension getSize() {
         return size;
     }
 
-    public void addTile(Tile t) {
-        tiles.add(t);
-    }
+    //A listak kezelesere szolgalo fuggvenyek
+    public void addTile(Tile t) { tiles.add(t); }
+    public Triangle getTriangleAt(int i, int j, int k) { return triangles[i][j][k]; }
+    public ArrayList<Tile> getTiles() { return tiles;}
 
-    public Triangle getTriangleAt(int i, int j, int k) {
-        return triangles[i][j][k];
-    }
-
+    //Kirajzolashoz szukseges haromszogek inicializalasa
     public void initTriangles() { //top: 0;right: 1; bottom: 2; left: 3
         Dimension base = new Dimension(0, 0);
         int[] x4 = new int[4];
@@ -357,16 +339,15 @@ public class GamePanel extends JPanel {
                     triangles[i][j][k] = t;
                 }
                 base.width += step;
-                //System.out.println(i+" "+j);
             }
             base.height += step;
         }
     }
 
-    //háromszögek körvonalukkal
+    //Haromszogek korvonalukkal
     @Override
     public void paintComponent(Graphics g) {
-        //minden triangle körvonalat megrajzol, majd filleli a kész tileokat.
+        //Minden triangle korvonalat megrajzol, majd filleli a kesz tileokat.
         super.paintComponent(g);
         for (Triangle[][] t3 : triangles)
             for (Triangle[] t2 : t3)

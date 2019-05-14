@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 /**
- * Az önamgukat kirajzolni képes drawSelf() függvénnyel rendelkezõ osztályok közös interfésze
+ * Az onamgukat kirajzolni kepes drawSelf() fuggvennyel rendelkezo osztalyok kozos interfesze
  */
 public abstract class IDrawable {
 	public abstract void drawSelf();
